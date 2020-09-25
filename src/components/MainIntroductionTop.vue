@@ -2,19 +2,19 @@
   <div class="introduction_top">
     <b-row>
       <b-col class="introduction_top_div mb-5 p-2"  cols="12" lg="4">
-        <img src="" alt="">
-        <h4>寄送服務</h4>
-        <p>恆溫的寄送服務</p>
+        <i class="fas fa-wine-glass-alt"></i>
+        <h4>酒品</h4>
+        <p>最棒的酒款</p>        
       </b-col>
       <b-col class="introduction_top_div mb-5 p-2"  cols="12" lg="4">
-        <img src="" alt="">
-        <h4>酒品</h4>
-        <p>最棒的酒款</p>
+        <i class="fas fa-comment-dollar"></i>
+        <h4>滿額</h4>
+        <p>購滿<span>$2,000</span> 就可免運</p></b-col>
       </b-col>
       <b-col class="introduction_top_div p-2"  cols="12" lg="4">
-        <img src="" alt="">
-        <h4>滿額</h4>
-        <p>滿額<span>$2,000</span> 就可免運</p></b-col>
+        <i class="fas fa-truck"></i>
+        <h4>寄送服務</h4>
+        <p>恆溫的寄送服務</p>
       </b-col>
     </b-row>
   </div>
@@ -43,10 +43,14 @@ main .introduction .introduction_top div+div{
 } 
 */
 
-
-.introduction_top_div img{
+.introduction_top_div{
+  text-align:center;
+}
+.introduction_top_div i{
   display:block;
   margin:auto;
+  font-size: 100px;
+  color:gray;
 }
 
 
