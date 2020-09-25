@@ -142,6 +142,7 @@
               </b-col>   
           </b-row>
       </div>
+    <Footer></Footer>  
 
 
   </div>
@@ -150,13 +151,15 @@
 <script>
 import Header from "@/components/Header.vue"
 import MainIntroduction from "@/components/MainIntroduction.vue"
+import Footer from "@/components/Footer.vue"
 
 
 export default {
   name: 'App',
     components:{
     Header,
-    MainIntroduction
+    MainIntroduction,
+    Footer
   },
   data() {
       return {
