@@ -2,7 +2,7 @@
     <footer>
       <div class="footer_top">
         <div class="footer_top_left">
-          <a href="##">Happy Wine</a>
+          <a href="##">Wine Space</a>
           <p class="copyright">&copy 2020 Happy Wine</p> 
         </div>
         <div class="footer_top_right">

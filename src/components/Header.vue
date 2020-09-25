@@ -12,7 +12,7 @@
 
             <div class="logo w-xl-50">
               <h1>
-                <a href="##">Happy Wine</a>
+                <a href="##">Wine Space</a>
               </h1>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
