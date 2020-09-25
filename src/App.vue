@@ -82,10 +82,10 @@
             </b-col>
             <b-col cols="1" class="page justify-content-center mb-4">
                 <div>
-                  <i class="fas fa-angle-left" @click="before2"></i>
+                  <i class="fas fa-angle-left" @click="beforeNews"></i>
                 </div>
                 <div>
-                  <i class="fas fa-angle-right" @click="after2"></i>
+                  <i class="fas fa-angle-right" @click="afterNews"></i>
                 </div>
             </b-col>
           </b-row>
@@ -185,13 +185,13 @@ export default {
           this.recentPage = 4;
         }
       },      
-      before2(){
+      beforeNews(){
         this.recentPage2 -=1;
         if(this.recentPage2 <=0){
           this.recentPage2 = 1;
         }
       },
-      after2(){
+      afterNews(){
         this.recentPage2 +=1;
         if(this.recentPage2 >= 5){
           this.recentPage2 = 4;
