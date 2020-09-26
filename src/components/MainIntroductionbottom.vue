@@ -45,6 +45,9 @@ export default {
   justify-content:center;
 }
 
+.introduction_bottom_div{
+  width:100%;
+}
 .introduction_bottom_div img{
   width:100%;
   height:100%;

@@ -55,13 +55,13 @@
           @sliding-end="onSlideEnd"
         >
           <!-- Text slides with image -->
-          <b-carousel-slide img-src="https://i.imgur.com/6x0J234.jpg" style="height:720px"></b-carousel-slide>
+          <b-carousel-slide img-src="https://i.imgur.com/6x0J234.jpg" class="carousel_img"></b-carousel-slide>
 
           <!-- Slides with custom text -->
-          <b-carousel-slide img-src="https://i.imgur.com/TBHJmjv.jpg" style="height:720px"></b-carousel-slide>
+          <b-carousel-slide img-src="https://i.imgur.com/TBHJmjv.jpg" class="carousel_img"></b-carousel-slide>
 
           <!-- Slides with image only -->
-          <b-carousel-slide img-src="https://i.imgur.com/CQyNAxw.jpg" style="height:720px"></b-carousel-slide>
+          <b-carousel-slide img-src="https://i.imgur.com/NCbpT18.jpg" class="carousel_img"></b-carousel-slide>
         </b-carousel>
       </div>
       
@@ -84,9 +84,6 @@ export default{
 }
 </script>
 <style scoped>
-#carousel-1{
-  position:relative;
-}
 /* 以下ｏｋ */
 #header{
   width:100%;
@@ -168,14 +165,23 @@ header .shopping ul a{
 header nav .n12{
   background-color:blue;
 }
+#carousel-1{
+  position:relative;
+}
+.carousel_img{
+  height:580px;
+}
 /* media query*/
 @media (max-width: 1200px) {
     .header .logo img{
       width:50%;
     }
     #header{
-    padding: 10px !important;
-}
+      padding: 10px !important;
+    }
+    .carousel_img{
+      height:50%;
+    }
   }
 
 @media (max-width: 992px) {
