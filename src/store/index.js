@@ -10,6 +10,7 @@ export default new Vuex.Store({
   state: {
     productsPicks:"",
     productsNews:"",
+    signinChange:"",
   },
   mutations: {
     add1(state, id) {
@@ -68,6 +69,9 @@ export default new Vuex.Store({
     productsNews(state, payload) {
       state.productsNews = payload;
     },
+    signinChange(state, payload){
+      state.signinChange = payload;
+    }
   },
   actions:{
     wineProductsPicks(context){

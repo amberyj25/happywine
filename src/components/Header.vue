@@ -32,7 +32,7 @@
                       <a class="nav-link" href="#">CONTACT</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Login</a>
+                      <router-link to="/Login">Login</router-link>
                     </li>
                 </ul>
               </div>
