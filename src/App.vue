@@ -4,11 +4,13 @@
     <Header></Header>
 
     <main>
+      <div class="container">
 
-      <MainIntroduction></MainIntroduction>
+        <MainIntroduction></MainIntroduction>
 
-      <Products></Products>
+        <Products></Products>
 
+      </div>
     </main>
 
     <Footer></Footer>  
@@ -35,4 +37,8 @@ export default {
 </script>
 
 <style>
+.container{
+  max-width:1400px;
+  padding: 35px;
+}
 </style>

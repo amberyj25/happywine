@@ -31,5 +31,10 @@ main .introduction hr{
   height:2px;
   margin: 50px auto;
 }
+@media (min-width:576px) and (max-width:767px){
+  main .introduction hr{
+    margin: 25px auto;
+  }
+  }
 </style>
 

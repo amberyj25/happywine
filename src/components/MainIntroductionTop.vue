@@ -1,20 +1,26 @@
 <template>
   <div class="introduction_top">
     <b-row>
-      <b-col class="introduction_top_div mb-5 p-2"  cols="12" lg="4">
+      <b-col class="introduction_top_div p-2"  cols="12" lg="4">
         <i class="fas fa-wine-glass-alt"></i>
-        <h4>酒品</h4>
-        <p>最棒的酒款</p>        
+        <div class="detail">
+          <h4>酒品</h4>
+          <p>最棒的酒款</p> 
+        </div>       
       </b-col>
-      <b-col class="introduction_top_div mb-5 p-2"  cols="12" lg="4">
+      <b-col class="introduction_top_div p-2"  cols="12" lg="4">
         <i class="fas fa-comment-dollar"></i>
-        <h4>滿額</h4>
-        <p>購滿<span>$2,000</span> 就可免運</p></b-col>
+        <div class="detail">
+          <h4>滿額</h4>
+          <p>購滿<span>$2,000</span> 就可免運</p>
+        </div>
       </b-col>
       <b-col class="introduction_top_div p-2"  cols="12" lg="4">
         <i class="fas fa-truck"></i>
-        <h4>寄送服務</h4>
-        <p>恆溫的寄送服務</p>
+        <div class="detail">
+          <h4>寄送服務</h4>
+          <p>恆溫的寄送服務</p>
+        </div>
       </b-col>
     </b-row>
   </div>
@@ -27,10 +33,6 @@ export default{
 }
 </script>
 <style scoped>
-.introduction_top{
-  margin-top: 35px;
-}
-
 .introduction_top_div{
   width: 300px;
   flex-direction:column;
@@ -49,9 +51,13 @@ main .introduction .introduction_top div+div{
 .introduction_top_div i{
   display:block;
   margin:auto;
-  font-size: 100px;
+  font-size: 150px;
   color:gray;
 }
+.introduction_top_div .detail{
+  margin:25px;
+}
+
 
 
 .introduction_top_div h4,.introduction_top_div  p{
@@ -70,6 +76,5 @@ main .introduction .introduction_top div+div{
 .introduction_top_div span{
   font-weight:bold;
 }
-
 </style>
 

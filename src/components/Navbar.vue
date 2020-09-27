@@ -48,7 +48,7 @@ export default{
   left:0;
   z-index:2;
   background-color:#494b50 !important;
-  padding: 10px 100px;
+  padding: 0 100px;
   opacity:0.9;
 }
 .header_navabar a{
@@ -74,17 +74,24 @@ export default{
 /* media query*/
 @media (max-width: 1200px) {
     .header_navabar{
-      padding: 10px 50px;
+      padding: 0 50px;
     }
     .carousel_img{
       height:50%;
     }
   }
-    /* 
 @media (max-width: 992px) {
+    .header_navabar h1 a{
+    font-size:2rem;
+      } 
   }
 @media (max-width: 576px) {
-
+  .header_navabar h1 a{
+  font-size:1.5rem;
+    } 
+  }
+    /* 
+@media (max-width: 992px) {
   }
   */
 </style>

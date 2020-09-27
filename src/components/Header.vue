@@ -59,5 +59,25 @@ export default{
 .carousel_img{
   height:580px;
 }
+@media (min-width:992px) and (max-width:1200px){
+  .carousel_img{
+      height:450px;
+    }
+  }
+@media (min-width:768px) and (max-width:991px){
+  .carousel_img{
+      height:400px;
+    }
+  }
+@media (min-width:576px) and (max-width:767px){
+  .carousel_img{
+      height:300px;
+    }
+  }
+@media (max-width:575px){
+  .carousel_img{
+      height:250px;
+    }
+  }
 
 </style>
