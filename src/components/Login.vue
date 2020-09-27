@@ -1,27 +1,40 @@
 <template>
-  <div class="form_outer">
-    <form v-if="changeComponent == `form`">
-    <div class="form_inner">
-      <div> 
-        <label for="email">登入信箱 ： </label>
-        <input type="text" id="email" placeholder="請輸入登入信箱" v-model="user.username">
-      </div>
-      <div> 
-        <label for="password">密碼 : </label>
-        <input type="password" id="password" placeholder="請輸入密碼" v-model="user.password">
-      </div>
-      <div>
-        <button type="submit" @click.prevent="signin">登入</button>
-        <p>{{notSuccess}}</p>
-      </div>
+  <div style="margin:0;">
+    <header>
+      <Navbar style="margin:0;"></Navbar>
+      <div class="header_background"></div>
+    </header>
+
+    <div class="form_outer">
+      <form v-if="changeComponent == `form`">
+        <div class="form_inner">
+          <div> 
+            <label for="email">登入信箱 ： </label>
+            <input type="text" id="email" placeholder="請輸入登入信箱" v-model="user.username">
+          </div>
+          <div> 
+            <label for="password">密碼 : </label>
+            <input type="password" id="password" placeholder="請輸入密碼" v-model="user.password">
+          </div>
+          <div>
+            <button type="submit" @click.prevent="signin">登入</button>
+            <p>{{notSuccess}}</p>
+          </div>
+        </div>
+      </form>
     </div>
-    </form>
+
   </div>
 </template>
 
 <script>
+import Navbar from "@/components/Navbar.vue"
+
 export default{
   name:"Login",
+  components:{
+      Navbar
+    },
   data(){
     return{
       user:{
@@ -51,6 +64,15 @@ export default{
 }
 </script>
 <style scoped>
+div{
+  margin:0;
+}
+.header_background{
+  width:100%;
+  height:50px;
+  background-color:#494b50;
+  margin:0;
+}
 .form_outer{
   width:100vw;
   height:100vh;
@@ -59,9 +81,10 @@ export default{
   flex-direction:column;
   align-items: center;
   margin: 0;
+  background-color:#494b50;
 }
 form{
-  width: 350px;
+  width: 450px;
   background: #ABDADC;
   border-radius: 25px;
   padding: 25px;
@@ -100,5 +123,11 @@ p{
 h2{
   width:100%;
   text-align: center;
+}
+.header_img{
+  width:100%;
+  height:580px;
+  background: url("https://i.imgur.com/3isOg5S.jpg") no-repeat 50% 50%;
+  background-size: cover;
 }
 </style>
