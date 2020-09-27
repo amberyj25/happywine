@@ -32,7 +32,8 @@
                       <a class="nav-link" href="#">CONTACT</a>
                     </li>
                     <li class="nav-item">
-                      <router-link to="/Login">Login</router-link>
+                      <router-link to="/Login" v-show="logInOrOut == false">Login</router-link>
+                      <p v-show="logInOrOut == true" @click="logOut">Logout</p>
                     </li>
                 </ul>
               </div>
@@ -72,7 +73,7 @@
 
 <script>
 export default{
-  name:"Rooms",
+  name:"Header",
     methods: {
       onSlideStart(slide) {
         this.sliding = true
@@ -80,6 +81,11 @@ export default{
       onSlideEnd(slide) {
         this.sliding = false
       },
+    },
+    computed:{
+      logInOrOut(){
+        return this.$store.state.signinChange;
+      }
     }
 }
 </script>
