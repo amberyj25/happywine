@@ -38,7 +38,7 @@ export default {
 
 <style>
 .container{
-  max-width:1400px;
+  max-width:1400px !important;
   padding: 35px;
 }
 </style>
