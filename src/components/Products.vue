@@ -3,7 +3,7 @@
     <div class="products_picks">
       <b-row class="top">
         <b-col cols="11">
-          <h2>top picks</h2>
+          <h2>Classic</h2>
         </b-col>
         <b-col cols="1" class="page justify-content-center mb-4">
           <div>
@@ -39,16 +39,19 @@
               <div class="product_right" style="width:30%;">
                 <img :src="item.image" alt="product">
               </div>
+              <div class="product_top_detail">
+                <div class="product_top_detail_inner">
+                  <p>經典</p>
+                </div>
+              </div>
             </div>
             <div class="product_bottom">
               <div class="cart_num_out">
-                <div class="cart_num">
-                  <div class="reduce" @click="reduce1(item.id)">-</div>
-                    <div class="num">{{item.num}}</div>
-                      <div class="add" @click="add1(item.id)">+</div>
-                    </div>
-                    <button @click="addCart1(item.id)">Add to cart</button>
-                  </div>
+                <select class="cart_num">
+                  <option :value="num" v-for="num in 10" :key="num">{{ num }}</option> 
+                </select>
+                <button @click="addCart1">Add to cart</button>
+              </div>
               </div>
             </div>   
           </b-col>   
@@ -58,7 +61,7 @@
     <div class="products_news">
       <b-row class="top">
         <b-col cols="11">
-          <h2>products news</h2>
+          <h2>New</h2>
         </b-col>
         <b-col cols="1" class="page justify-content-center mb-4">
           <div>
@@ -94,16 +97,19 @@
               <div class="product_right" style="width:30%;">
                 <img :src="item.image" alt="product">
               </div>
+              <div class="product_top_detail">
+                <div class="product_top_detail_inner">
+                  <p>新款</p>
+                </div>
+              </div>
             </div>
             <div class="product_bottom">
               <div class="cart_num_out">
-                <div class="cart_num">
-                  <div class="reduce" @click="reduce1(item.id)">-</div>
-                    <div class="num">{{item.num}}</div>
-                      <div class="add" @click="add1(item.id)">+</div>
-                    </div>
-                    <button @click="addCart1(item.id)">Add to cart</button>
-                  </div>
+                <select class="cart_num">
+                  <option v-for="item in 10">{{item}}</option>
+                </select>
+                <button @click="addCart2">Add to cart</button>
+              </div>
               </div>
             </div>   
           </b-col>   
@@ -120,6 +126,7 @@ export default {
       return {
         recentPage:1,
         recentPage2:1,   
+        ClassicNum:1,
       }
   },
   mounted(){
@@ -151,20 +158,9 @@ export default {
           this.recentPage2 = 2;
         }
       },
-      add1(id){
-        this.$store.commit("add1",id);
-      },
-      add2(id){
-        this.$store.commit("add2",id);
-      },
-      reduce1(id){
-        this.$store.commit("reduce1",id);
-      },
-      reduce2(id){
-      this.$store.commit("reduce2",id);
-      },
-      addCart1(id){
-        this.$store.commit("addCart1",id);
+      addCart1(nums){
+        console.log(12345,nums)
+        // this.$store.commit("addCart1",id);
       },
       addCart2(id){
         this.$store.commit("addCart2",id);
@@ -243,17 +239,11 @@ export default {
 }
 
 .wine .product_bottom .cart_num{
-  display:flex;
+  width:100px;
   border:1px solid white;
 }
 .wine .product_bottom .cart{
   margin:25px 0 0 20px;
-}
-.wine .product_bottom .cart_num .reduce,.wine .product_bottom .cart_num .add,.wine .product_bottom .cart_num .num{
-  width:25px;
-  text-align:center;
-  height: 35px;
-  line-height:35px;
 }
 
 .wine .product_bottom button{
@@ -264,14 +254,6 @@ export default {
   color: white;
 }
 
-.wine .product_bottom .cart_num .reduce,.wine .product_bottom .cart_num .add{
-  background:#b59983;
-  color:white;
-}
-.wine .product_bottom .cart_num .reduce,.wine .product_bottom .cart_num .add{
-  background:#b59983;
-  color:white;
-}
 h2{
   font-size: 50px;
 }
@@ -309,7 +291,9 @@ h2{
 .wine .product_top:hover .product_top_detail{
   bottom: 0px;
 }
-
+.product_top_detail_inner{
+  font-size:2rem;
+}
 
 main .products_news .top .page,main .products_picks .top .page{
   display:flex;

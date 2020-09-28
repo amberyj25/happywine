@@ -19,7 +19,7 @@
                 </b-nav-item>
                 <b-nav-item right>
                   <router-link to="/login" v-show="logInOrOut == false">Login</router-link>
-                  <p v-show="logInOrOut == true" @click="logOut">Logout</p>
+                  <p v-show="logInOrOut == true">Logout</p>
                 </b-nav-item>
               </b-navbar-nav>
             </b-collapse>

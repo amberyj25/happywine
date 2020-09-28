@@ -13,34 +13,6 @@ export default new Vuex.Store({
     signinChange: false,
   },
   mutations: {
-    add1(state, id) {
-      if (state.productsPicks[id].num >= 5) {
-        state.productsPicks[id].num = 5;
-      } else {
-        state.productsPicks[id].num += 1;
-      };
-    },
-    add2(state, id) {
-      if (state.productsNews[id].num >= 5) {
-        state.productsNews[id].num = 5;
-      } else {
-        state.productsNews[id].num += 1;
-      }
-    },
-    reduce1(state, id) {
-      if (state.productsPicks[id].num <= 1) {
-        state.productsPicks[id].num = 1;
-      } else {
-        state.productsPicks[id].num -= 1;
-      }
-    },
-    reduce2(state, id) {
-      if (state.productsPicks[id].num <= 1) {
-        state.productsNews[id].num = 1;
-      } else {
-        state.productsNews[id].num -= 1;
-      }
-    },
     addCart1(state, id) {
       if (state.productsPicks[id].total >= state.productsPicks[id].num) {
         state.productsPicks[id].cart += state.productsPicks[id].num;
