@@ -11,6 +11,10 @@ export default new Vuex.Store({
     productsPicks:"",
     productsNews:"",
     signinChange: false,
+    addCartClassic1:"",
+    addCartNews1:"",
+    ab1:"",
+    abab1:"",
   },
   mutations: {
     addCart1(state, id) {
@@ -36,13 +40,35 @@ export default new Vuex.Store({
       }
     },
     productsPicks(state, payload) {
-      state.productsPicks = payload;
+      let newPayload=[];
+      newPayload=payload.map((item)=>{
+                  item.nums=1;
+                  return item
+                });
+      state.productsPicks = newPayload;
     },
     productsNews(state, payload) {
-      state.productsNews = payload;
+      let newPayload=[];
+      newPayload=payload.map((item)=>{
+                  item.nums=1;
+                  return item
+                });
+      state.productsNews = newPayload;
     },
     signinChange(state, payload){
       state.signinChange = payload;
+    },
+    addCartClassic1(state, payload){
+      state.addCartClassic1 = payload;
+    },
+    addCartNews1(state, payload){
+      state.addCartNews1 = payload;
+    },
+    ab1(state, payload){
+      state.ab1 = payload;
+    },
+    abab1(state, payload){
+      state.abab1 = payload;
     }
   },
   actions:{
@@ -54,6 +80,28 @@ export default new Vuex.Store({
     wineProductsNews(context){
       axios.get("https://vue-course-api.hexschool.io/api/wine52/products").then((res)=>{
         context.commit("productsNews",res.data.products);
+      })
+    },
+    addCartClassic(context,payload){
+      axios.post("https://vue-course-api.hexschool.io/api/wine5/cart",{data:payload}).then((res)=>{
+        context.commit("addCartClassic1",res.data);
+      })
+    },
+    addCartNews(context,payload){
+      axios.post("https://vue-course-api.hexschool.io/api/wine52/cart",{data:payload}).then((res)=>{
+        context.commit("addCartNews1",res.data.carts);
+      })
+    },
+    ab(context){
+      axios.get("https://vue-course-api.hexschool.io/api/wine5/cart").then((res)=>{
+        context.commit("ab1",res.data.data.carts);
+        console.log("12345",res.data.data.carts)
+      })
+    },
+    abab(context){
+      axios.get("https://vue-course-api.hexschool.io/api/wine52/cart").then((res)=>{
+        context.commit("abab1",res.data.data.carts);
+        console.log("54321",res.data.data.carts)
       })
     }
   }

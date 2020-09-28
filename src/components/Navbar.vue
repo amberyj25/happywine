@@ -23,6 +23,22 @@
                 </b-nav-item>
               </b-navbar-nav>
             </b-collapse>
+
+            <div>
+              <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none" no-caret>
+                <template v-slot:button-content>
+                  <i class="fas fa-shopping-cart" @click="aa"></i>
+                </template>
+                <p style="text-align:center">Classic</p>
+                <b-dropdown-item href="#" v-for="(item,index) in ab2" :key="index">
+                  <span>{{item.product.title}}</span>  <span>${{item.product.price}}</span>
+                </b-dropdown-item>
+                <p style="text-align:center">New</p>
+                <b-dropdown-item href="#" v-for="(item,index) in abab2" :key="index">
+                  <span>{{item.product.title}}</span>  <span>${{item.product.price}}</span>
+                </b-dropdown-item>
+              </b-dropdown>
+            </div>
           </b-navbar>
         </div>
 
@@ -32,9 +48,21 @@
 
 export default{
   name:"Navbar",
+  methods:{
+    aa(){
+      this.$store.dispatch("ab");
+      this.$store.dispatch("abab");
+    }
+  },
   computed:{
     logInOrOut(){
       return this.$store.state.signinChange;
+    },
+    ab2(){
+      return this.$store.state.ab1;
+    },
+    abab2(){
+      return this.$store.state.abab1;
     }
   }
 }
