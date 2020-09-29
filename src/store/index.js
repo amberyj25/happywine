@@ -115,6 +115,12 @@ export default new Vuex.Store({
         console.log(res);
         context.dispatch("abab");
       })
+    },
+    signOutChange(context){
+      axios.post("https://vue-course-api.hexschool.io/logout").then((result)=>{
+        console.log(result);
+        context.commit("signinChange",false);
+      })
     }
   }
 })
