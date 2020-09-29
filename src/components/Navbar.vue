@@ -28,6 +28,7 @@
               <b-dropdown id="dropdown-right" right text="Right align" size="lg" variant="link" toggle-class="text-decoration-none" no-caret>
                 <template v-slot:button-content>
                   <i class="fas fa-shopping-cart" @click="aa"></i>
+                  <b-badge variant="primary">{{productLength}}</b-badge>
                 </template>
                 <p class="title">已選購 Classic 商品</p>
                 <b-dropdown-item href="#" v-for="(item,index) in ab2" :key="index" class="content">
@@ -75,6 +76,9 @@ export default{
       this.$store.dispatch("signOutChange")
     }
   },
+  mounted(){
+    this.aa();
+  },
   computed:{
     logInOrOut(){
       return this.$store.state.signinChange;
@@ -84,6 +88,10 @@ export default{
     },
     abab2(){
       return this.$store.state.abab1;
+    },
+    productLength(){
+      console.log(this.$store.state.ab1.length + this.$store.state.abab1.length);
+      return this.$store.state.ab1.length + this.$store.state.abab1.length;
     }
   }
 }
