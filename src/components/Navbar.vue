@@ -36,7 +36,7 @@
                     <span>{{item.product.title}}</span>  
                     <span>{{item.qty}}瓶</span>
                     <span>${{item.product.price}}</span>
-                    <span @click.prevent="delectProductClassic(item.id)">delect</span>
+                    <span @click.prevent="delectProductClassic(item.id)"><i class="far fa-trash-alt"></i></span>
                   </div>
                   <hr>
                 </b-dropdown-item>
@@ -46,7 +46,7 @@
                     <span>{{item.product.title}}</span>  
                     <span>{{item.qty}}瓶</span>
                     <span>${{item.product.price}}</span>
-                    <span @click.prevent="delectProductNew(item.id)">delect</span>
+                    <span @click.prevent="delectProductNew(item.id)"><i class="far fa-trash-alt"></i></span>
                   </div>
                   <hr>
                 </b-dropdown-item>
