@@ -66,10 +66,10 @@ export default{
       this.$store.dispatch("abab");
     },
     delectProductClassic(id){
-      this.$store.dispatch("delectProducts",id);
+      this.$store.dispatch("delectProductsClassic",id);
     },
     delectProductNew(id){
-      this.$store.dispatch("delectProducts",id);
+      this.$store.dispatch("delectProductsNew",id);
     }
   },
   computed:{

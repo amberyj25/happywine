@@ -104,13 +104,13 @@ export default new Vuex.Store({
         console.log("54321",res.data.data.carts)
       })
     },
-    delectProducts(context,payload){
+    delectProductsClassic(context,payload){
       axios.delete(`https://vue-course-api.hexschool.io/api/wine5/cart/${payload}`).then((res)=>{
         console.log(res);
         context.dispatch("ab");
       })
     },
-    delectProducts(context,payload){
+    delectProductsNew(context,payload){
       axios.delete(`https://vue-course-api.hexschool.io/api/wine52/cart/${payload}`).then((res)=>{
         console.log(res);
         context.dispatch("abab");
