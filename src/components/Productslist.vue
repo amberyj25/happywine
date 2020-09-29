@@ -14,12 +14,12 @@
             </b-col>
           </b-row>
           <b-row>
-            <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="3" v-for="item in productsPicks" :key="item.num">
+            <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="3" v-for="product1 in productsPicks" :key="product1.num">
               <div class="wine">
                 <div class="product_top">
                   <div class="product_left" style="width:60%;">
-                    <h5>{{item.title}}</h5>
-                    <p>{{item.category}}</p>
+                    <h5>{{product1.title}}</h5>
+                    <p>{{product1.category}}</p>
                     <div class="year">
                       <div class="am">
                         <p class="title">AM</p>
@@ -31,20 +31,20 @@
                       </div>
                     </div>
                     <div class="sale_price">
-                      <div class="sale">＄{{item.origin_price}}</div>
-                      <div class="price">＄{{item.price}}</div>
+                      <div class="sale">＄{{product1.origin_price}}</div>
+                      <div class="price">＄{{product1.price}}</div>
                     </div>
                   </div>
                   <div class="product_right" style="width:30%;">
-                    <img :src="item.image" alt="product">
+                    <img :src="product1.image" alt="product">
                   </div>
                 </div>
                 <div class="product_bottom">
                   <div class="cart_num_out">
-                    <select class="cart_num">
-                      <option v-for="item in 10">{{item}}</option>
+                    <select class="cart_num" v-model="product1.nums">
+                      <option :value="num" v-for="num in 10" :key="num">{{num}}</option>
                     </select>
-                    <button @click="addCart1()">Add to cart</button>
+                    <button @click="addCart1(product1.id,product1.nums)">Add to cart</button>
                   </div>
                   </div>
                 </div>   
@@ -59,12 +59,12 @@
             </b-col>
           </b-row>
           <b-row>
-            <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="3" v-for="item in productsNews" :key="item.num">
+            <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="3" v-for="product2 in productsNews" :key="product2.num">
               <div class="wine">
                 <div class="product_top">
                   <div class="product_left" style="width:60%;">
-                    <h5>{{item.title}}</h5>
-                    <p>{{item.category}}</p>
+                    <h5>{{product2.title}}</h5>
+                    <p>{{product2.category}}</p>
                     <div class="year">
                       <div class="am">
                         <p class="title">AM</p>
@@ -76,20 +76,20 @@
                       </div>
                     </div>
                     <div class="sale_price">
-                      <div class="sale">＄{{item.origin_price}}</div>
-                      <div class="price">＄{{item.price}}</div>
+                      <div class="sale">＄{{product2.origin_price}}</div>
+                      <div class="price">＄{{product2.price}}</div>
                     </div>
                   </div>
                   <div class="product_right" style="width:30%;">
-                    <img :src="item.image" alt="product">
+                    <img :src="product2.image" alt="product">
                   </div>
                 </div>
                 <div class="product_bottom">
                   <div class="cart_num_out">
-                    <select class="cart_num">
-                      <option v-for="item in 10">{{item}}</option>
+                    <select class="cart_num" v-model="product2.nums">
+                      <option :value="num" v-for="num in 10" :key="num">{{num}}</option> 
                     </select>
-                    <button @click="addCart2()">Add to cart</button>
+                    <button @click="addCart2(product2.id,product2.nums)">Add to cart</button>
                   </div>
                 </div>
               </div>   
@@ -122,6 +122,22 @@ export default {
     this.$store.dispatch("wineProductsPicks");
     this.$store.dispatch("wineProductsNews");
   },
+    methods: {
+      addCart1(id,qty){
+        let params = {};
+        params.product_id = id;
+        params.qty = qty;
+        console.log("addCartClassic",params);
+        this.$store.dispatch("addCartClassic",params);
+      },
+      addCart2(id,qty){
+        let params = {};
+        params.product_id = id;
+        params.qty = qty;
+        console.log(params);
+        this.$store.dispatch("addCartNews",params);
+      }
+    },
     computed: {
       productsPicks(){
         return this.$store.state.productsPicks;
