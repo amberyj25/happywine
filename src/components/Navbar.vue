@@ -40,7 +40,7 @@
                   <hr>
                 </b-dropdown-item>
                 <p class="title">已選購 New 商品</p>
-                <b-dropdown-item href="#" v-for="(item,index) in ab2" :key="index" class="content">
+                <b-dropdown-item href="#" v-for="(item,index) in abab2" :key="index" class="content">
                   <div class="content_item">
                     <span>{{item.product.title}}</span>  
                     <span>{{item.qty}}瓶</span>
