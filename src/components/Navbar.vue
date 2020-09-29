@@ -27,7 +27,7 @@
             <div>
               <b-dropdown id="dropdown-right" right text="Right align" size="lg" variant="link" toggle-class="text-decoration-none" no-caret>
                 <template v-slot:button-content>
-                  <i class="fas fa-shopping-cart" @click="aa"></i>
+                  <i class="fas fa-shopping-cart" @click="shopping"></i>
                   <b-badge variant="primary">{{productLength}}</b-badge>
                 </template>
                 <p class="title">已選購 Classic 商品</p>
@@ -62,7 +62,7 @@
 export default{
   name:"Navbar",
   methods:{
-    aa(){
+    shopping(){
       this.$store.dispatch("ab");
       this.$store.dispatch("abab");
     },
@@ -77,7 +77,7 @@ export default{
     }
   },
   mounted(){
-    this.aa();
+    this.shopping();
   },
   computed:{
     logInOrOut(){
