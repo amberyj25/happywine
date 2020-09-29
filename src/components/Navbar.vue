@@ -31,7 +31,7 @@
                   <b-badge variant="primary">{{productLength}}</b-badge>
                 </template>
                 <p class="title">已選購 Classic 商品</p>
-                <b-dropdown-item href="#" v-for="(item,index) in ab2" :key="index" class="content">
+                <b-dropdown-item href="#" v-for="(item,index) in catchShoppingProductsClassic" :key="index" class="content">
                   <div class="content_item">
                     <span>{{item.product.title}}</span>  
                     <span>{{item.qty}}瓶</span>
@@ -63,7 +63,7 @@ export default{
   name:"Navbar",
   methods:{
     shopping(){
-      this.$store.dispatch("ab");
+      this.$store.dispatch("shoppingProductsClassic");
       this.$store.dispatch("shoppingProductsNew");
     },
     delectProductClassic(id){
@@ -83,15 +83,15 @@ export default{
     logInOrOut(){
       return this.$store.state.signinChange;
     },
-    ab2(){
-      return this.$store.state.ab1;
+    catchShoppingProductsClassic(){
+      return this.$store.state.shoppingProductsClassic1;
     },
     catchShoppingProductsNew(){
       return this.$store.state.shoppingProductsNew1;
     },
     productLength(){
-      console.log(this.$store.state.ab1.length + this.$store.state.shoppingProductsNew1.length);
-      return this.$store.state.ab1.length + this.$store.state.shoppingProductsNew1.length;
+      console.log(this.$store.state.shoppingProductsClassic1.length + this.$store.state.shoppingProductsNew1.length);
+      return this.$store.state.shoppingProductsClassic1.length + this.$store.state.shoppingProductsNew1.length;
     }
   }
 }
