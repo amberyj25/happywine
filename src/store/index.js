@@ -14,7 +14,7 @@ export default new Vuex.Store({
     addCartClassic1:"",
     addCartNews1:"",
     ab1:"",
-    abab1:"",
+    shoppingProductsNew1:"",
   },
   mutations: {
     addCart1(state, id) {
@@ -67,8 +67,8 @@ export default new Vuex.Store({
     ab1(state, payload){
       state.ab1 = payload;
     },
-    abab1(state, payload){
-      state.abab1 = payload;
+    shoppingProductsNew1(state, payload){
+      state.shoppingProductsNew1 = payload;
     }
   },
   actions:{
@@ -98,9 +98,9 @@ export default new Vuex.Store({
         console.log("12345",res.data.data.carts)
       })
     },
-    abab(context){
+    shoppingProductsNew(context){
       axios.get("https://vue-course-api.hexschool.io/api/wine52/cart").then((res)=>{
-        context.commit("abab1",res.data.data.carts);
+        context.commit("shoppingProductsNew1",res.data.data.carts);
         console.log("54321",res.data.data.carts)
       })
     },
@@ -113,7 +113,7 @@ export default new Vuex.Store({
     delectProductsNew(context,payload){
       axios.delete(`https://vue-course-api.hexschool.io/api/wine52/cart/${payload}`).then((res)=>{
         console.log(res);
-        context.dispatch("abab");
+        context.dispatch("shoppingProductsNew");
       })
     },
     signOutChange(context){
