@@ -103,6 +103,18 @@ export default new Vuex.Store({
         context.commit("abab1",res.data.data.carts);
         console.log("54321",res.data.data.carts)
       })
+    },
+    delectProducts(context,payload){
+      axios.delete(`https://vue-course-api.hexschool.io/api/wine5/cart/${payload}`).then((res)=>{
+        console.log(res);
+        context.dispatch("ab");
+      })
+    },
+    delectProducts(context,payload){
+      axios.delete(`https://vue-course-api.hexschool.io/api/wine52/cart/${payload}`).then((res)=>{
+        console.log(res);
+        context.dispatch("abab");
+      })
     }
   }
 })

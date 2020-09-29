@@ -29,21 +29,23 @@
                 <template v-slot:button-content>
                   <i class="fas fa-shopping-cart" @click="aa"></i>
                 </template>
-                <p class="title">已選購Classic 商品</p>
+                <p class="title">已選購 Classic 商品</p>
                 <b-dropdown-item href="#" v-for="(item,index) in ab2" :key="index" class="content">
                   <div class="content_item">
                     <span>{{item.product.title}}</span>  
-                    <span>{{item.product.unit}}瓶</span>
+                    <span>{{item.qty}}瓶</span>
                     <span>${{item.product.price}}</span>
+                    <span @click.prevent="delectProductClassic(item.id)">delect</span>
                   </div>
                   <hr>
                 </b-dropdown-item>
-                <p class="title">已選購New商品</p>
+                <p class="title">已選購 New 商品</p>
                 <b-dropdown-item href="#" v-for="(item,index) in ab2" :key="index" class="content">
                   <div class="content_item">
                     <span>{{item.product.title}}</span>  
-                    <span>{{item.product.unit}}瓶</span>
+                    <span>{{item.qty}}瓶</span>
                     <span>${{item.product.price}}</span>
+                    <span @click.prevent="delectProductNew(item.id)">delect</span>
                   </div>
                   <hr>
                 </b-dropdown-item>
@@ -62,6 +64,12 @@ export default{
     aa(){
       this.$store.dispatch("ab");
       this.$store.dispatch("abab");
+    },
+    delectProductClassic(id){
+      this.$store.dispatch("delectProducts",id);
+    },
+    delectProductNew(id){
+      this.$store.dispatch("delectProducts",id);
     }
   },
   computed:{
@@ -114,7 +122,7 @@ export default{
   color: #8c6e55;
   }
 .content{
-  width:200px;
+  width:250px;
 }
 .content_item{
   display:flex; 
