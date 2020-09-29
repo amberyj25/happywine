@@ -25,21 +25,27 @@
             </b-collapse>
 
             <div>
-              <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none" no-caret>
+              <b-dropdown id="dropdown-right" right text="Right align" size="lg" variant="link" toggle-class="text-decoration-none" no-caret>
                 <template v-slot:button-content>
                   <i class="fas fa-shopping-cart" @click="aa"></i>
                 </template>
-                <p style="text-align:center">Classic</p>
-                <b-dropdown-item href="#" v-for="(item,index) in ab2" :key="index">
-                  <p>{{item.product.title}}</p>  
-                  <span>{{item.product.unit}}瓶</span>
-                  <span>${{item.product.price}}</span>
+                <p class="title">已選購Classic 商品</p>
+                <b-dropdown-item href="#" v-for="(item,index) in ab2" :key="index" class="content">
+                  <div class="content_item">
+                    <span>{{item.product.title}}</span>  
+                    <span>{{item.product.unit}}瓶</span>
+                    <span>${{item.product.price}}</span>
+                  </div>
+                  <hr>
                 </b-dropdown-item>
-                <p style="text-align:center">New</p>
-                <b-dropdown-item href="#" v-for="(item,index) in abab2" :key="index">
-                  <p>{{item.product.title}}</p>  
-                  <span>{{item.product.unit}}瓶</span>
-                  <span>${{item.product.price}}</span>
+                <p class="title">已選購New商品</p>
+                <b-dropdown-item href="#" v-for="(item,index) in ab2" :key="index" class="content">
+                  <div class="content_item">
+                    <span>{{item.product.title}}</span>  
+                    <span>{{item.product.unit}}瓶</span>
+                    <span>${{item.product.price}}</span>
+                  </div>
+                  <hr>
                 </b-dropdown-item>
               </b-dropdown>
             </div>
@@ -100,9 +106,23 @@ export default{
   font-size: 1.4rem;
 }
 #header a:hover{
-    font-weight:bold;
+  font-weight:bold;
 }
-
+.title{
+  text-align:center;
+  font-size:1.3rem;
+  color: #8c6e55;
+  }
+.content{
+  width:200px;
+}
+.content_item{
+  display:flex; 
+  justify-content:space-between;
+}
+hr{
+  border:1px solid black;
+}
 /* media query*/
 @media (max-width: 1200px) {
     .header_navabar{
