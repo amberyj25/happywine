@@ -23,7 +23,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ## github pages
 https://amberyj25.github.io/wineSpace/dist/#/
 
-## 會員登入驗證
-會員頁面可輸入 
-信箱：amber12345@gmail.com 
-密碼：ab12345
+## Login 
+Login頁面可輸入 - 信箱：amber12345@gmail.com  / 密碼：ab12345
