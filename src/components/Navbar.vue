@@ -31,11 +31,15 @@
                 </template>
                 <p style="text-align:center">Classic</p>
                 <b-dropdown-item href="#" v-for="(item,index) in ab2" :key="index">
-                  <span>{{item.product.title}}</span>  <span>${{item.product.price}}</span>
+                  <p>{{item.product.title}}</p>  
+                  <span>{{item.product.unit}}瓶</span>
+                  <span>${{item.product.price}}</span>
                 </b-dropdown-item>
                 <p style="text-align:center">New</p>
                 <b-dropdown-item href="#" v-for="(item,index) in abab2" :key="index">
-                  <span>{{item.product.title}}</span>  <span>${{item.product.price}}</span>
+                  <p>{{item.product.title}}</p>  
+                  <span>{{item.product.unit}}瓶</span>
+                  <span>${{item.product.price}}</span>
                 </b-dropdown-item>
               </b-dropdown>
             </div>
