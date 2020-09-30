@@ -15,12 +15,12 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="3" v-for="product1 in productsPicks" :key="product1.num" v-if="recentPage ==product1.unit">
+        <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="3" v-for="productClassic in productsPicks" :key="productClassic.num" v-if="recentPage ==productClassic.unit">
           <div class="wine">
             <div class="product_top">
               <div class="product_left" style="width:60%;">
-                <h5>{{product1.title}}</h5>
-                <p>{{product1.category}}</p>
+                <h5>{{productClassic.title}}</h5>
+                <p>{{productClassic.category}}</p>
                 <div class="year">
                   <div class="am">
                     <p class="title">AM</p>
@@ -32,12 +32,12 @@
                   </div>
                 </div>
                 <div class="sale_price">
-                  <div class="sale">＄{{product1.price}}</div>
-                  <div class="price">＄{{product1.origin_price}}</div>
+                  <div class="sale">＄{{productClassic.price}}</div>
+                  <div class="price">＄{{productClassic.origin_price}}</div>
                 </div>
               </div>
               <div class="product_right" style="width:30%;">
-                <img :src="product1.image" alt="product">
+                <img :src="productClassic.image" alt="product">
               </div>
               <div class="product_top_detail">
                 <div class="product_top_detail_inner">
@@ -47,10 +47,10 @@
             </div>
             <div class="product_bottom">
               <div class="cart_num_out">
-                <select class="cart_num" v-model="product1.nums">
+                <select class="cart_num" v-model="productClassic.nums">
                   <option :value="num" v-for="num in 10" :key="num">{{num}}</option> 
                 </select>
-                <button @click="addCart1(product1.id,product1.nums)">Add to cart</button>
+                <button @click="addCart1(productClassic.id,productClassic.nums)">Add to cart</button>
               </div>
               </div>
             </div>   
@@ -73,12 +73,12 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="3" v-for="product2 in productsNews" :key="product2.num" v-if="recentPage2 ==product2.unit">
+        <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="3" v-for="productNew in productsNews" :key="productNew.num" v-if="recentPage2 ==productNew.unit">
           <div class="wine">
             <div class="product_top">
               <div class="product_left" style="width:60%;">
-                <h5>{{product2.title}}</h5>
-                <p>{{product2.category}}</p>
+                <h5>{{productNew.title}}</h5>
+                <p>{{productNew.category}}</p>
                 <div class="year">
                   <div class="am">
                     <p class="title">AM</p>
@@ -90,12 +90,12 @@
                   </div>
                 </div>
                 <div class="sale_price">
-                  <div class="sale">＄{{product2.price}}</div>
-                  <div class="price">＄{{product2.origin_price}}</div>
+                  <div class="sale">＄{{productNew.price}}</div>
+                  <div class="price">＄{{productNew.origin_price}}</div>
                 </div>
               </div>
               <div class="product_right" style="width:30%;">
-                <img :src="product2.image" alt="product">
+                <img :src="productNew.image" alt="product">
               </div>
               <div class="product_top_detail">
                 <div class="product_top_detail_inner">
@@ -105,10 +105,10 @@
             </div>
             <div class="product_bottom">
               <div class="cart_num_out">
-                <select class="cart_num" v-model="product2.nums">
+                <select class="cart_num" v-model="productNew.nums">
                   <option :value="num" v-for="num in 10" :key="num">{{num}}</option> 
                 </select>
-                <button @click="addCart2(product2.id,product2.nums)">Add to cart</button>
+                <button @click="addCart2(productNew.id,productNew.nums)">Add to cart</button>
               </div>
               </div>
             </div>   
