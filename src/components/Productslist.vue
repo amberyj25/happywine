@@ -31,8 +31,8 @@
                       </div>
                     </div>
                     <div class="sale_price">
-                      <div class="sale">＄{{product1.origin_price}}</div>
-                      <div class="price">＄{{product1.price}}</div>
+                      <div class="sale">＄{{product1.price}}</div>
+                      <div class="price">＄{{product1.origin_price}}</div>
                     </div>
                   </div>
                   <div class="product_right" style="width:30%;">
@@ -76,8 +76,8 @@
                       </div>
                     </div>
                     <div class="sale_price">
-                      <div class="sale">＄{{product2.origin_price}}</div>
-                      <div class="price">＄{{product2.price}}</div>
+                      <div class="sale">＄{{product2.price}}</div>
+                      <div class="price">＄{{product2.origin_price}}</div>
                     </div>
                   </div>
                   <div class="product_right" style="width:30%;">
