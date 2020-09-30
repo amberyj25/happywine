@@ -10,11 +10,11 @@
         <div class="form_inner">
           <div> 
             <label for="email">登入信箱 ： </label>
-            <input type="text" id="email" placeholder="請輸入登入信箱" v-model="user.username">
+            <input type="text" id="email" placeholder="請輸入登入信箱" v-model.trim="user.username">
           </div>
           <div> 
             <label for="password">密碼 : </label>
-            <input type="password" id="password" placeholder="請輸入密碼" v-model="user.password">
+            <input type="password" id="password" placeholder="請輸入密碼" v-model.trim="user.password">
           </div>
           <div>
             <button type="submit" @click.prevent="signin">登入</button>
