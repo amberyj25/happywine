@@ -35,7 +35,7 @@
                       <div class="price">＄{{productClassic.origin_price}}</div>
                     </div>
                   </div>
-                  <div class="product_right" style="width:30%;">
+                  <div class="product_right">
                     <img :src="productClassic.image" alt="product">
                   </div>
                 </div>
@@ -80,7 +80,7 @@
                       <div class="price">＄{{productNew.origin_price}}</div>
                     </div>
                   </div>
-                  <div class="product_right" style="width:30%;">
+                  <div class="product_right">
                     <img :src="productNew.image" alt="product">
                   </div>
                 </div>
@@ -176,8 +176,12 @@ export default {
   font-size:24px; 
   margin-left:80px;
 }
+.wine .product_right{
+  width:40%;
+  text-align:center;
+}
 .wine img{
-  width: 100%;
+  max-width: 100%;
   height: 350px;
   object-fit: cover;
 }
@@ -299,9 +303,9 @@ main .products_news .top .page div+div,main .products_picks .top .page div+div{
 
 @media (max-width:768px){
     .wine img{
-      width: 100%;
+      max-width: 100%;
       height: 350px;
-      object-fit: contain;
+      object-fit: cover;
     }
   }
 </style>
