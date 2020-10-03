@@ -2,28 +2,28 @@
     <div class="introduction_bottom">
       <b-row>
         <b-col class="introduction_bottom_div" cols="12 mb-5" xl="3" md="6 mb-0" sm="12">
-          <img src="https://i.imgur.com/74Ix92a.jpg" alt="image">
+          <img src="../assets/introduction1.jpg" alt="image">
           <div>
             <h5>Lorem</h5>
             <p>恆溫的寄送服務</p>
           </div>
         </b-col>
         <b-col class="introduction_bottom_div" cols="12 mb-5" xl="3" md="6 mb-0" sm="12">
-          <img src="https://i.imgur.com/7KWIixk.jpg" alt="image">
+          <img src="../assets/introduction2.jpg" alt="image">
           <div>
             <h5>Lorem</h5>
             <p>恆溫的寄送服務</p>
           </div>
         </b-col>
         <b-col class="introduction_bottom_div" cols="12 mb-5" xl="3" md="6 mb-0" sm="12">
-          <img src="https://i.imgur.com/7utTzva.jpg" alt="image">
+          <img src="../assets/introduction3.jpg" alt="image">
           <div>
             <h5>Lorem</h5>
             <p>恆溫的寄送服務</p>
           </div>
         </b-col>
         <b-col class="introduction_bottom_div" cols="12 mb-5" xl="3" md="6 mb-0" sm="12">
-          <img src="https://i.imgur.com/64BxYpv.jpg" alt="image">
+          <img src="../assets/introduction4.jpg" alt="image">
           <div>
             <h5>Lorem</h5>
             <p>恆溫的寄送服務</p>
