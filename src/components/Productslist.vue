@@ -158,7 +158,7 @@ export default {
 .header_img{
   width:100%;
   height:580px;
-  background: url("https://i.imgur.com/3isOg5S.jpg") no-repeat 50% 50%;
+  background: url("../assets/banner.jpg") no-repeat 50% 50%;
   background-size: cover;
 }
 
