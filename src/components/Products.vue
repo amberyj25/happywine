@@ -327,12 +327,4 @@ main .products_news .top .page div,main .products_picks .top .page div{
 main .products_news .top .page div+div,main .products_picks .top .page div+div{
   margin-left: 5px;
 }
-
-@media (max-width:768px){
-    .wine img{
-      max-width: 100%;
-      height: 350px;
-      object-fit: cover;
-    }
-  }
 </style>

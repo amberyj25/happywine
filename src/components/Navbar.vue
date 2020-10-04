@@ -165,7 +165,7 @@ hr{
       order:3;
     }
     .navbar_button_content{
-      order:4
+      order:4;
     }
   }
 @media (max-width: 576px) {
