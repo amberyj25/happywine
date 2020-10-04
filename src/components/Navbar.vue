@@ -1,15 +1,15 @@
 <template>
         <div>
           <b-navbar toggleable="lg" type="dark" variant="info" class="header_navabar">
-            <b-navbar-brand>
+            <b-navbar-brand class="navbar_h1">
               <h1>
                 <router-link to="/">Wine Space</router-link>
               </h1>
             </b-navbar-brand>
 
-            <b-navbar-toggle target="nav-collapse"><i class="fas fa-bars menu_color"></i></b-navbar-toggle>
+            <b-navbar-toggle target="nav-collapse" class="navbar_button"><i class="fas fa-bars menu_color"></i></b-navbar-toggle>
 
-            <b-collapse id="nav-collapse" is-nav>
+            <b-collapse id="nav-collapse" is-nav class="navbar_button_content">
               <b-navbar-nav class="ml-auto navbar_right">
                 <b-nav-item right>
                   <router-link to="/">首頁</router-link>
@@ -24,7 +24,7 @@
               </b-navbar-nav>
             </b-collapse>
 
-            <div>
+            <div class="navbar_shopping">
               <b-dropdown id="dropdown-right" right text="Right align" size="lg" variant="link" toggle-class="text-decoration-none" no-caret>
                 <template v-slot:button-content>
                   <i class="fas fa-shopping-cart" @click="shopping"></i>
@@ -155,6 +155,18 @@ hr{
     .header_navabar h1 a{
     font-size:2rem;
       } 
+    .navbar_h1{
+      order:1;
+    }
+    .navbar_shopping{
+      order:2;
+    }
+    .navbar_button{
+      order:3;
+    }
+    .navbar_button_content{
+      order:4
+    }
   }
 @media (max-width: 576px) {
   .header_navabar h1 a{
