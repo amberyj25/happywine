@@ -7,9 +7,9 @@
     <div class="container">
       <section class="filter">
       <h5 class="category">酒品分類</h5>
-      <p @click="newWine">New酒品</p>
-      <p @click="classicWine">Classic酒品</p>
-      <p @click="allWine">全部酒品</p>
+      <p @click="newWine" :class="{filter_p: winecategoryClassic === false &  winecategorynews ===true}">New酒品</p>
+      <p @click="classicWine" :class="{filter_p: winecategoryClassic === true &  winecategorynews ===false}">Classic酒品</p>
+      <p @click="allWine" :class="{filter_p: winecategoryClassic === true &  winecategorynews ===true}">全部酒品</p>
       </section>
       <main>
         <div class="products_picks" v-show="winecategoryClassic">
@@ -204,7 +204,7 @@ export default {
   background-color:#c1ad9e;
 }
 .filter p:hover{
-  background-color: #fec89c;
+  background-color: #e7bc91;
   cursor:pointer;
 }
 .category{
