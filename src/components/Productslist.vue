@@ -64,7 +64,7 @@
             </b-col>
           </b-row>
           <b-row>
-            <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="3" v-for="productNew in productsNews" :key="productNew.num">
+            <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="4" xl="3"  v-for="productNew in productsNews" :key="productNew.num">
               <div class="wine">
                 <div class="product_top">
                   <div class="product_left" style="width:60%;">
@@ -182,12 +182,12 @@ export default {
 
 .container{
   max-width:1400px;
-  padding: 35px;
+  padding: 25px;
   display:flex;
 }
 
 .filter{
-  width:20%;
+  width:15%;
   height:400px;
   margin:55px 20px 0 0;
   box-sizing:border-box;
@@ -328,7 +328,7 @@ h2{
 }
 
 main{
-  width:80%;
+  width:85%;
 }
 
 main .products_news .top .page,main .products_picks .top .page{
