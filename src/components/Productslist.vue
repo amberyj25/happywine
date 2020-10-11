@@ -4,9 +4,14 @@
       <Navbar></Navbar>
       <div class="header_img"></div>
     </header>
-
-    <main>
-      <div class="container">
+    <div class="container">
+      <section class="filter">
+      <h5 class="category">酒品分類</h5>
+      <p>New酒品</p>
+      <p>Classic酒品</p>
+      <p>全部酒品</p>
+      </section>
+      <main>
         <div class="products_picks">
           <b-row class="top">
             <b-col cols="12">
@@ -96,9 +101,9 @@
               </b-col>   
             </b-row>
         </div>
-      </div>
 
-    </main>
+      </main>
+    </div>
 
     <Footer></Footer>  
 
