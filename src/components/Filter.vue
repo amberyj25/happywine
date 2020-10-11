@@ -7,100 +7,100 @@
     <div class="container">
       <section class="filter">
       <h5 class="category">酒品分類</h5>
-      <p>New酒品</p>
-      <p>Classic酒品</p>
-      <p>全部酒品</p>
+      <p @click="allWine" :class="{filter_p: winecategoryClassic === true &  winecategorynews ===true}">全部酒品</p>
+      <p @click="newWine" :class="{filter_p: winecategoryClassic === false &  winecategorynews ===true}">New酒品</p>
+      <p @click="classicWine" :class="{filter_p: winecategoryClassic === true &  winecategorynews ===false}">Classic酒品</p>
       </section>
-      <main>
-        <div class="products_picks">
-          <b-row class="top">
-            <b-col cols="12">
-              <h2>Classic</h2>
-            </b-col>
-          </b-row>
-          <b-row>
-            <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="3" v-for="productClassic in productsPicks" :key="productClassic.num">
-              <div class="wine">
-                <div class="product_top">
-                  <div class="product_left" style="width:60%;">
-                    <h5>{{productClassic.title}}</h5>
-                    <p>{{productClassic.category}}</p>
-                    <div class="year">
-                      <div class="am">
-                        <p class="title">AM</p>
-                        <p>85</p>
+      <main style="width:80%;">
+          <div class="products_picks" v-show="winecategoryClassic">
+            <b-row class="top">
+              <b-col cols="12">
+                <h2>Classic</h2>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="3" v-for="productClassic in productsPicks" :key="productClassic.num">
+                <div class="wine">
+                  <div class="product_top">
+                    <div class="product_left" style="width:60%;">
+                      <h5>{{productClassic.title}}</h5>
+                      <p>{{productClassic.category}}</p>
+                      <div class="year">
+                        <div class="am">
+                          <p class="title">AM</p>
+                          <p>85</p>
+                        </div>
+                        <div class="ws">
+                          <p class="title">WS</p>
+                          <p>100</p>
+                        </div>
                       </div>
-                      <div class="ws">
-                        <p class="title">WS</p>
-                        <p>100</p>
+                      <div class="sale_price">
+                        <div class="sale">＄{{productClassic.price}}</div>
+                        <div class="price">＄{{productClassic.origin_price}}</div>
                       </div>
                     </div>
-                    <div class="sale_price">
-                      <div class="sale">＄{{productClassic.price}}</div>
-                      <div class="price">＄{{productClassic.origin_price}}</div>
+                    <div class="product_right">
+                      <img :src="productClassic.image" alt="product">
                     </div>
                   </div>
-                  <div class="product_right">
-                    <img :src="productClassic.image" alt="product">
+                  <div class="product_bottom">
+                    <div class="cart_num_out">
+                      <select class="cart_num" v-model="productClassic.nums">
+                        <option :value="num" v-for="num in 10" :key="num">{{num}}</option>
+                      </select>
+                      <button @click="addCart1(productClassic.id,productClassic.nums)">Add to cart</button>
+                    </div>
+                    </div>
+                  </div>   
+                </b-col>   
+              </b-row>
+          </div>
+
+          <div class="products_news" v-show="winecategorynews">
+            <b-row class="top">
+              <b-col cols="12">
+                <h2>New</h2>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="3" v-for="productNew in productsNews" :key="productNew.num">
+                <div class="wine">
+                  <div class="product_top">
+                    <div class="product_left" style="width:60%;">
+                      <h5>{{productNew.title}}</h5>
+                      <p>{{productNew.category}}</p>
+                      <div class="year">
+                        <div class="am">
+                          <p class="title">AM</p>
+                          <p>85</p>
+                        </div>
+                        <div class="ws">
+                          <p class="title">WS</p>
+                          <p>100</p>
+                        </div>
+                      </div>
+                      <div class="sale_price">
+                        <div class="sale">＄{{productNew.price}}</div>
+                        <div class="price">＄{{productNew.origin_price}}</div>
+                      </div>
+                    </div>
+                    <div class="product_right">
+                      <img :src="productNew.image" alt="product">
+                    </div>
                   </div>
-                </div>
-                <div class="product_bottom">
-                  <div class="cart_num_out">
-                    <select class="cart_num" v-model="productClassic.nums">
-                      <option :value="num" v-for="num in 10" :key="num">{{num}}</option>
-                    </select>
-                    <button @click="addCart1(productClassic.id,productClassic.nums)">Add to cart</button>
-                  </div>
+                  <div class="product_bottom">
+                    <div class="cart_num_out">
+                      <select class="cart_num" v-model="productNew.nums">
+                        <option :value="num" v-for="num in 10" :key="num">{{num}}</option> 
+                      </select>
+                      <button @click="addCart2(productNew.id,productNew.nums)">Add to cart</button>
+                    </div>
                   </div>
                 </div>   
-              </b-col>   
-            </b-row>
-        </div>
-
-        <div class="products_news">
-          <b-row class="top">
-            <b-col cols="12">
-              <h2>New</h2>
-            </b-col>
-          </b-row>
-          <b-row>
-            <b-col class="introduction_bottom_div" cols="12 mb-5" md="6" lg="3" v-for="productNew in productsNews" :key="productNew.num">
-              <div class="wine">
-                <div class="product_top">
-                  <div class="product_left" style="width:60%;">
-                    <h5>{{productNew.title}}</h5>
-                    <p>{{productNew.category}}</p>
-                    <div class="year">
-                      <div class="am">
-                        <p class="title">AM</p>
-                        <p>85</p>
-                      </div>
-                      <div class="ws">
-                        <p class="title">WS</p>
-                        <p>100</p>
-                      </div>
-                    </div>
-                    <div class="sale_price">
-                      <div class="sale">＄{{productNew.price}}</div>
-                      <div class="price">＄{{productNew.origin_price}}</div>
-                    </div>
-                  </div>
-                  <div class="product_right">
-                    <img :src="productNew.image" alt="product">
-                  </div>
-                </div>
-                <div class="product_bottom">
-                  <div class="cart_num_out">
-                    <select class="cart_num" v-model="productNew.nums">
-                      <option :value="num" v-for="num in 10" :key="num">{{num}}</option> 
-                    </select>
-                    <button @click="addCart2(productNew.id,productNew.nums)">Add to cart</button>
-                  </div>
-                </div>
-              </div>   
-              </b-col>   
-            </b-row>
-        </div>
+                </b-col>   
+              </b-row>
+          </div>
 
       </main>
     </div>
@@ -117,11 +117,17 @@ import Footer from "@/components/Footer.vue"
 
 
 export default {
-  name: 'Productslist',
+  name: 'Filter',
     components:{
       Navbar,
       Products,
       Footer
+    },
+    data(){
+      return {
+        winecategoryClassic:false,
+        winecategorynews:true,
+      }
     },
     mounted(){
     this.$store.dispatch("wineProductsPicks");
@@ -141,6 +147,18 @@ export default {
         params.qty = qty;
         console.log(params);
         this.$store.dispatch("addCartNews",params);
+      },
+      allWine(){
+        this.winecategoryClassic = true;
+        this.winecategorynews=true;
+      },
+      classicWine(){
+        this.winecategoryClassic = true;
+        this.winecategorynews= false;
+      },
+      newWine(){
+        this.winecategoryClassic = false;
+        this.winecategorynews= true;
       }
     },
     computed: {
@@ -167,7 +185,6 @@ export default {
   padding: 35px;
   display:flex;
 }
-
 .filter{
   width:20%;
   height:400px;
@@ -311,7 +328,6 @@ h2{
 main{
   width:80%;
 }
-
 main .products_news .top .page,main .products_picks .top .page{
   display:flex;
   box-sizing:border-box;
