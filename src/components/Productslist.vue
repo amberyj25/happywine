@@ -7,12 +7,12 @@
     <div class="container">
       <section class="filter">
       <h5 class="category">酒品分類</h5>
-      <p>New酒品</p>
-      <p>Classic酒品</p>
-      <p>全部酒品</p>
+      <p @click="newWine">New酒品</p>
+      <p @click="classicWine">Classic酒品</p>
+      <p @click="allWine">全部酒品</p>
       </section>
       <main>
-        <div class="products_picks">
+        <div class="products_picks" v-show="winecategoryClassic">
           <b-row class="top">
             <b-col cols="12">
               <h2>Classic</h2>
@@ -57,7 +57,7 @@
             </b-row>
         </div>
 
-        <div class="products_news">
+        <div class="products_news" v-show="winecategorynews">
           <b-row class="top">
             <b-col cols="12">
               <h2>New</h2>
@@ -123,6 +123,12 @@ export default {
       Products,
       Footer
     },
+    data(){
+      return {
+        winecategoryClassic:false,
+        winecategorynews:true,
+      }
+    },
     mounted(){
     this.$store.dispatch("wineProductsPicks");
     this.$store.dispatch("wineProductsNews");
@@ -141,6 +147,18 @@ export default {
         params.qty = qty;
         console.log(params);
         this.$store.dispatch("addCartNews",params);
+      },
+      allWine(){
+        this.winecategoryClassic = true;
+        this.winecategorynews=true;
+      },
+      classicWine(){
+        this.winecategoryClassic = true;
+        this.winecategorynews= false;
+      },
+      newWine(){
+        this.winecategoryClassic = false;
+        this.winecategorynews= true;
       }
     },
     computed: {
