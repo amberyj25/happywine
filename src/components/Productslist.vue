@@ -353,4 +353,15 @@ main .products_news .top .page div,main .products_picks .top .page div{
 main .products_news .top .page div+div,main .products_picks .top .page div+div{
   margin-left: 5px;
 }
+@media (max-width:992px){
+    .container{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    .filter{
+      width:85%;
+      margin:55px 0 0 0;
+    }
+  }
 </style>
