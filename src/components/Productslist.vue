@@ -267,14 +267,15 @@ export default {
 }
 .wine .product_bottom{
   background-color:#c1ad9e;
-  padding:25px;
+  padding:20px;
 }
 .wine .product_bottom .cart_num_out{
   display: flex;
   justify-content: space-around;
 }
 .wine .product_bottom .cart_num{
-  width:100px;
+  width:35%;
+  height:45px;
   border:1px solid white;
 }
 .wine .product_bottom .cart{
