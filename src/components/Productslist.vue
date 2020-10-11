@@ -255,7 +255,7 @@ export default {
   margin: 0;
 }
 .sale_price{
-  margin:80px 0 0;
+  margin:50px 0 0;
 }
 .wine .sale{
   font-size: 30px;
