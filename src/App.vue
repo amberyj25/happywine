@@ -5,11 +5,8 @@
 
     <main>
       <div class="container">
-
-        <MainIntroduction></MainIntroduction>
-
         <Products></Products>
-
+        <MainIntroduction></MainIntroduction>
       </div>
     </main>
 
