@@ -138,14 +138,12 @@ export default {
         let params = {};
         params.product_id = id;
         params.qty = qty;
-        console.log("addCartClassic",params);
         this.$store.dispatch("addCartClassic",params);
       },
       addCart2(id,qty){
         let params = {};
         params.product_id = id;
         params.qty = qty;
-        console.log(params);
         this.$store.dispatch("addCartNews",params);
       },
       allWine(){

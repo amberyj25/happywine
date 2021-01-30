@@ -95,30 +95,25 @@ export default new Vuex.Store({
     shoppingProductsClassic(context){
       axios.get("https://vue-course-api.hexschool.io/api/wine5/cart").then((res)=>{
         context.commit("shoppingProductsClassic1",res.data.data.carts);
-        console.log("12345",res.data.data.carts)
       })
     },
     shoppingProductsNew(context){
       axios.get("https://vue-course-api.hexschool.io/api/wine52/cart").then((res)=>{
         context.commit("shoppingProductsNew1",res.data.data.carts);
-        console.log("54321",res.data.data.carts)
       })
     },
     delectProductsClassic(context,payload){
       axios.delete(`https://vue-course-api.hexschool.io/api/wine5/cart/${payload}`).then((res)=>{
-        console.log(res);
         context.dispatch("shoppingProductsClassic");
       })
     },
     delectProductsNew(context,payload){
       axios.delete(`https://vue-course-api.hexschool.io/api/wine52/cart/${payload}`).then((res)=>{
-        console.log(res);
         context.dispatch("shoppingProductsNew");
       })
     },
     signOutChange(context){
       axios.post("https://vue-course-api.hexschool.io/logout").then((result)=>{
-        console.log(result);
         context.commit("signinChange",false);
       })
     }

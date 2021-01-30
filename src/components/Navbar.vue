@@ -90,7 +90,6 @@ export default{
       return this.$store.state.shoppingProductsNew1;
     },
     productLength(){
-      console.log(this.$store.state.shoppingProductsClassic1.length + this.$store.state.shoppingProductsNew1.length);
       return this.$store.state.shoppingProductsClassic1.length + this.$store.state.shoppingProductsNew1.length;
     }
   }

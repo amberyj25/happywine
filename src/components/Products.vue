@@ -168,7 +168,6 @@ export default {
         let params = {};
         params.product_id = id;
         params.qty = qty;
-        console.log(params);
         this.$store.dispatch("addCartNews",params);
       }
     },
