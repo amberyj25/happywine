@@ -31,7 +31,7 @@
                   <b-badge variant="primary">{{productLength}}</b-badge>
                 </template>
                 <p class="title">已選購 Classic 商品</p>
-                <b-dropdown-item href="#" v-for="(item,index) in catchShoppingProductsClassic" :key="index" class="content">
+                <b-dropdown-item href="#" v-for="(item,index) in catchShoppingProductsClassic" :key="`classicProduct${index}`" class="content">
                   <div class="content_item">
                     <span>{{item.product.title}}</span>  
                     <span>{{item.qty}}瓶</span>
@@ -41,7 +41,7 @@
                   <hr>
                 </b-dropdown-item>
                 <p class="title">已選購 New 商品</p>
-                <b-dropdown-item href="#" v-for="(item,index) in catchShoppingProductsNew" :key="index" class="content">
+                <b-dropdown-item href="#" v-for="(item,index) in catchShoppingProductsNew" :key="`newProduct${index}`" class="content">
                   <div class="content_item">
                     <span>{{item.product.title}}</span>  
                     <span>{{item.qty}}瓶</span>
