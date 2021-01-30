@@ -41,14 +41,19 @@ export default{
   components:{
     Navbar
   },
-    methods: {
-      onSlideStart(slide) {
-        this.sliding = true
-      },
-      onSlideEnd(slide) {
-        this.sliding = false
-      },
+  data () {
+    return {
+      slide: 1
     }
+  },
+  methods: {
+    onSlideStart(slide) {
+      this.sliding = true
+    },
+    onSlideEnd(slide) {
+      this.sliding = false
+    }
+  }
 }
 </script>
 <style scoped>
