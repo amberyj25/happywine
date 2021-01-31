@@ -129,9 +129,9 @@ export default {
         ClassicNum:1,
       }
   },
-  mounted(){
-    this.$store.dispatch("wineProductsPicks");
-    this.$store.dispatch("wineProductsNews");
+  created(){
+    this.$store.dispatch("shoppingProductsClassic");
+    this.$store.dispatch("shoppingProductsNew");
   },
   methods: {
       before(){
@@ -163,12 +163,14 @@ export default {
         params.product_id = id;
         params.qty = qty;
         this.$store.dispatch("addCartClassic",params);
+        this.$store.dispatch("shoppingProductsClassic");
       },
       addCart2(id,qty){
         let params = {};
         params.product_id = id;
         params.qty = qty;
         this.$store.dispatch("addCartNews",params);
+        this.$store.dispatch("shoppingProductsNew");
       }
     },
   computed: {

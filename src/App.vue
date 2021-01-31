@@ -29,6 +29,10 @@ export default {
     Introduction,
     Products,
     Footer
+  },
+  mounted(){
+    this.$store.dispatch("wineProductsPicks");
+    this.$store.dispatch("wineProductsNews");
   }
 }
 </script>

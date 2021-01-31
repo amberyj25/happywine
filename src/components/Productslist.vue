@@ -132,19 +132,21 @@ export default {
     mounted(){
     this.$store.dispatch("wineProductsPicks");
     this.$store.dispatch("wineProductsNews");
-  },
+    },
     methods: {
       addCart1(id,qty){
         let params = {};
         params.product_id = id;
         params.qty = qty;
         this.$store.dispatch("addCartClassic",params);
+        this.$store.dispatch("shoppingProductsClassic");
       },
       addCart2(id,qty){
         let params = {};
         params.product_id = id;
         params.qty = qty;
         this.$store.dispatch("addCartNews",params);
+        this.$store.dispatch("shoppingProductsNew");
       },
       allWine(){
         this.winecategoryClassic = true;

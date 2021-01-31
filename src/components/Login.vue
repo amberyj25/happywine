@@ -53,7 +53,7 @@ export default{
       vm.axios.post("https://vue-course-api.hexschool.io/signin",vm.user).then((result)=>{
         if(result.data.success == true){
           this.$router.push("/");
-          this.$store.commit("signinChange",true);
+          this.$store.commit("checkSignIn",true);
           // vm.answer = "恭喜您成功登入";
         } else if(result.data.success == false) {
           vm.notSuccess = "沒有登入成功";

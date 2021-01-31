@@ -37,7 +37,7 @@
           no-caret
         >
           <template v-slot:button-content>
-            <i class="fas fa-shopping-cart" @click="shopping"></i>
+            <i class="fas fa-shopping-cart"></i>
             <b-badge variant="primary">{{productLength}}</b-badge>
           </template>
           <p class="title">已選購 Classic 商品</p>
@@ -81,41 +81,66 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: "Navbar",
+  data () {
+    return {
+      shoppingProductsClassic1Data: [],
+      shoppingProductsNew1Data: [],
+      totalNumData: '',
+      checkSignInData: false
+    }
+  },
+  computed: {
+    ...mapState(['checkSignIn', 'shoppingProductsClassic1', 'shoppingProductsNew1']),
+    checkLogIn() {
+      return this.checkSignIn;
+    },
+    catchShoppingProductsClassic() {
+      return this.shoppingProductsClassic1;
+    },
+    catchShoppingProductsNew() {
+      return this.shoppingProductsNew1;
+    },
+    productLength() {
+      return this.totalNumData;
+    }
+  },
+  watch: {
+    shoppingProductsClassic1 () {
+      this.getShoppingCartClassic1();
+      this.getTotalNumData();
+    },
+    shoppingProductsNew1 () {
+      this.getShoppingCartNew1();
+      this.getTotalNumData();
+    }
+  },
+  mounted () {
+    this.getTotalNumData();
+  },
   methods: {
-    getShoppingContent() {
-      this.$store.dispatch("shoppingProductsClassic");
-      this.$store.dispatch("shoppingProductsNew");
+    getTotalNumData () {
+      this.totalNumData = this.shoppingProductsClassic1Data.length+this.shoppingProductsNew1Data.length
+    },
+    getShoppingCartClassic1 () {
+      this.shoppingProductsClassic1Data = this.shoppingProductsClassic1;
+    },
+    getShoppingCartNew1 () {
+      this.shoppingProductsNew1Data = this.shoppingProductsNew1;
     },
     delectProductClassic(id) {
       this.$store.dispatch("delectProductsClassic", id);
+      this.$store.dispatch("shoppingProductsClassic");
     },
     delectProductNew(id) {
       this.$store.dispatch("delectProductsNew", id);
+      this.$store.dispatch("shoppingProductsNew");
     },
     signOut() {
       this.$store.dispatch("signOutChange");
-    }
-  },
-  mounted() {
-    this.shopping();
-  },
-  computed: {
-    checkLogIn() {
-      return this.$store.state.checkSignIn;
-    },
-    catchShoppingProductsClassic() {
-      return this.$store.state.shoppingProductsClassic1;
-    },
-    catchShoppingProductsNew() {
-      return this.$store.state.shoppingProductsNew1;
-    },
-    productLength() {
-      return (
-        this.$store.state.shoppingProductsClassic1.length +
-        this.$store.state.shoppingProductsNew1.length
-      );
     }
   }
 };
