@@ -10,7 +10,7 @@ export default new Vuex.Store({
   state: {
     productsPicks:"",
     productsNews:"",
-    signinChange: false,
+    checkSignIn: false,
     addCartClassic1:"",
     addCartNews1:"",
     shoppingProductsClassic1:"",
@@ -55,8 +55,8 @@ export default new Vuex.Store({
                 });
       state.productsNews = newPayload;
     },
-    signinChange(state, payload){
-      state.signinChange = payload;
+    checkSignIn(state, payload){
+      state.checkSignIn = payload;
     },
     addCartClassic1(state, payload){
       state.addCartClassic1 = payload;
@@ -114,7 +114,7 @@ export default new Vuex.Store({
     },
     signOutChange(context){
       axios.post("https://vue-course-api.hexschool.io/logout").then((result)=>{
-        context.commit("signinChange",false);
+        context.commit("checkSignIn",false);
       })
     }
   }

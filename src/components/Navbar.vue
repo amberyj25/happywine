@@ -1,18 +1,18 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info" class="header_navabar">
-      <b-navbar-brand class="navbar_h1">
+    <b-navbar class="header_navabar" toggleable="lg" type="dark" variant="info">
+      <b-navbar-brand class="brand_name">
         <h1>
           <router-link to="/">Wine Space</router-link>
         </h1>
       </b-navbar-brand>
-
-      <b-navbar-toggle target="nav-collapse" class="navbar_button">
-        <i class="fas fa-bars menu_color"></i>
+      <!-- rwd - 漢堡選單 -->
+      <b-navbar-toggle target="nav-collapse" class="navigation_btn_rwd">
+        <i class="fas fa-bars"></i>
       </b-navbar-toggle>
-
-      <b-collapse id="nav-collapse" is-nav class="navbar_button_content">
-        <b-navbar-nav class="ml-auto navbar_right">
+      <!-- 不是 rwd - 會呈現在na -->
+      <b-collapse id="nav-collapse" is-nav class="navigation_content">
+        <b-navbar-nav class="ml-auto navigation_content_right">
           <b-nav-item right>
             <router-link to="/">首頁</router-link>
           </b-nav-item>
@@ -20,13 +20,13 @@
             <router-link to="/productslist">商品</router-link>
           </b-nav-item>
           <b-nav-item right>
-            <router-link to="/login" v-show="logInOrOut == false">Login</router-link>
-            <p v-show="logInOrOut == true" @click="signOut">Logout</p>
+            <router-link to="/login" v-if="checkLogIn === false">Login</router-link>
+            <p v-else @click="signOut">Logout</p>
           </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
 
-      <div class="navbar_shopping">
+      <div class="shopping_cart">
         <b-dropdown
           id="dropdown-right"
           right
@@ -84,7 +84,7 @@
 export default {
   name: "Navbar",
   methods: {
-    shopping() {
+    getShoppingContent() {
       this.$store.dispatch("shoppingProductsClassic");
       this.$store.dispatch("shoppingProductsNew");
     },
@@ -102,8 +102,8 @@ export default {
     this.shopping();
   },
   computed: {
-    logInOrOut() {
-      return this.$store.state.signinChange;
+    checkLogIn() {
+      return this.$store.state.checkSignIn;
     },
     catchShoppingProductsClassic() {
       return this.$store.state.shoppingProductsClassic1;
@@ -144,7 +144,7 @@ export default {
   color: white;
 }
 
-.header_navabar .navbar_right a {
+.header_navabar .navigation_content_right a {
   margin: 0 20px;
   font-size: 1.4rem;
 }
@@ -179,16 +179,16 @@ hr {
   .header_navabar h1 a {
     font-size: 2rem;
   }
-  .navbar_h1 {
+  .brand_name {
     order: 1;
   }
-  .navbar_shopping {
+  .shopping_cart {
     order: 2;
   }
-  .navbar_button {
+  .navigation_btn_rwd {
     order: 3;
   }
-  .navbar_button_content {
+  .navigation_content {
     order: 4;
   }
 }
