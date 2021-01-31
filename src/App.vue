@@ -6,7 +6,7 @@
     <main>
       <div class="container">
         <Products></Products>
-        <MainIntroduction></MainIntroduction>
+        <Introduction></Introduction>
       </div>
     </main>
 
@@ -17,7 +17,7 @@
 
 <script>
 import Header from "@/components/Header.vue"
-import MainIntroduction from "@/components/MainIntroduction.vue"
+import Introduction from "@/components/Introduction.vue"
 import Products from "@/components/Products.vue"
 import Footer from "@/components/Footer.vue"
 
@@ -26,7 +26,7 @@ export default {
   name: 'App',
     components:{
     Header,
-    MainIntroduction,
+    Introduction,
     Products,
     Footer
   }
