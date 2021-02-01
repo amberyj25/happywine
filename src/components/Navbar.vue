@@ -38,12 +38,12 @@
         >
           <template v-slot:button-content>
             <i class="fas fa-shopping-cart"></i>
-            <b-badge variant="primary">{{productLength}}</b-badge>
+            <b-badge variant="primary">{{shoppingItemsLength}}</b-badge>
           </template>
           <p class="title">已選購 Classic 商品</p>
           <b-dropdown-item
             href="#"
-            v-for="(item,index) in catchShoppingProductsClassic"
+            v-for="(item,index) in getClassicProducts"
             :key="`classicProduct${index}`"
             class="content"
           >
@@ -51,7 +51,7 @@
               <span>{{item.product.title}}</span>
               <span>{{item.qty}}瓶</span>
               <span>${{item.qty*item.product.price}}</span>
-              <span @click.prevent="delectProductClassic(item.id)">
+              <span @click.prevent="delectClassicProduct(item.id)">
                 <i class="far fa-trash-alt"></i>
               </span>
             </div>
@@ -60,7 +60,7 @@
           <p class="title">已選購 New 商品</p>
           <b-dropdown-item
             href="#"
-            v-for="(item,index) in catchShoppingProductsNew"
+            v-for="(item,index) in getNewProducts"
             :key="`newProduct${index}`"
             class="content"
           >
@@ -68,7 +68,7 @@
               <span>{{item.product.title}}</span>
               <span>{{item.qty}}瓶</span>
               <span>${{item.qty*item.product.price}}</span>
-              <span @click.prevent="delectProductNew(item.id)">
+              <span @click.prevent="delectNewProduct(item.id)">
                 <i class="far fa-trash-alt"></i>
               </span>
             </div>
@@ -81,66 +81,70 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: "Navbar",
   data () {
     return {
-      shoppingProductsClassic1Data: [],
-      shoppingProductsNew1Data: [],
-      totalNumData: '',
+      classicProductData: [],
+      newProductData: [],
+      totalDataLength: '',
       checkSignInData: false
     }
   },
   computed: {
-    ...mapState(['checkSignIn', 'shoppingProductsClassic1', 'shoppingProductsNew1']),
+    ...mapState(['checkSignIn', 'classicProducts', 'newProducts']),
     checkLogIn() {
       return this.checkSignIn;
     },
-    catchShoppingProductsClassic() {
-      return this.shoppingProductsClassic1;
+    getClassicProducts() {
+      return this.classicProducts;
     },
-    catchShoppingProductsNew() {
-      return this.shoppingProductsNew1;
+    getNewProducts() {
+      return this.newProducts;
     },
-    productLength() {
-      return this.totalNumData;
+    shoppingItemsLength() {
+      return this.totalDataLength;
     }
   },
   watch: {
-    shoppingProductsClassic1 () {
-      this.getShoppingCartClassic1();
+    classicProducts () {
+      this.getShoppingCartClassic();
       this.getTotalNumData();
     },
-    shoppingProductsNew1 () {
-      this.getShoppingCartNew1();
+    newProducts () {
+      this.getShoppingCartNew();
       this.getTotalNumData();
+    },
+    delectClassicProduct () {
+
     }
   },
   mounted () {
     this.getTotalNumData();
   },
   methods: {
+    ...mapActions(['totalClassicProducts', 'totalNewProducts', 'signOutChange']),
     getTotalNumData () {
-      this.totalNumData = this.shoppingProductsClassic1Data.length+this.shoppingProductsNew1Data.length
+      this.totalDataLength = this.classicProductData.length+this.newProductData.length
     },
-    getShoppingCartClassic1 () {
-      this.shoppingProductsClassic1Data = this.shoppingProductsClassic1;
+    getShoppingCartClassic () {
+      this.classicProductData = this.classicProducts;
     },
-    getShoppingCartNew1 () {
-      this.shoppingProductsNew1Data = this.shoppingProductsNew1;
+    getShoppingCartNew () {
+      this.newProductData = this.newProducts;
     },
-    delectProductClassic(id) {
+    delectClassicProduct(id) {
       this.$store.dispatch("delectProductsClassic", id);
-      this.$store.dispatch("shoppingProductsClassic");
+      this.totalClassicProducts;
     },
-    delectProductNew(id) {
+    delectNewProduct(id) {
       this.$store.dispatch("delectProductsNew", id);
-      this.$store.dispatch("shoppingProductsNew");
+      this.totalNewProducts;
     },
     signOut() {
-      this.$store.dispatch("signOutChange");
+      this.signOutChange;
     }
   }
 };

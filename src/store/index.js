@@ -13,8 +13,8 @@ export default new Vuex.Store({
     checkSignIn: false,
     addCartClassic1:"",
     addCartNews1:"",
-    shoppingProductsClassic1:"",
-    shoppingProductsNew1:"",
+    classicProducts:"",
+    newProducts:"",
   },
   mutations: {
     addCart1(state, id) {
@@ -64,11 +64,11 @@ export default new Vuex.Store({
     addCartNews1(state, payload){
       state.addCartNews1 = payload;
     },
-    shoppingProductsClassic1(state, payload){
-      state.shoppingProductsClassic1 = payload;
+    classicProducts(state, payload){
+      state.classicProducts = payload;
     },
-    shoppingProductsNew1(state, payload){
-      state.shoppingProductsNew1 = payload;
+    newProducts(state, payload){
+      state.newProducts = payload;
     }
   },
   actions:{
@@ -92,24 +92,24 @@ export default new Vuex.Store({
         context.commit("addCartNews1",res.data.carts);
       })
     },
-    shoppingProductsClassic(context){
+    totalClassicProducts(context){
       axios.get("https://vue-course-api.hexschool.io/api/wine5/cart").then((res)=>{
-        context.commit("shoppingProductsClassic1",res.data.data.carts);
+        context.commit("classicProducts",res.data.data.carts);
       })
     },
-    shoppingProductsNew(context){
+    totalNewProducts(context){
       axios.get("https://vue-course-api.hexschool.io/api/wine52/cart").then((res)=>{
-        context.commit("shoppingProductsNew1",res.data.data.carts);
+        context.commit("newProducts",res.data.data.carts);
       })
     },
     delectProductsClassic(context,payload){
       axios.delete(`https://vue-course-api.hexschool.io/api/wine5/cart/${payload}`).then((res)=>{
-        context.dispatch("shoppingProductsClassic");
+        context.dispatch("totalClassicProducts");
       })
     },
     delectProductsNew(context,payload){
       axios.delete(`https://vue-course-api.hexschool.io/api/wine52/cart/${payload}`).then((res)=>{
-        context.dispatch("shoppingProductsNew");
+        context.dispatch("totalNewProducts");
       })
     },
     signOutChange(context){

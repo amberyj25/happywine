@@ -130,8 +130,8 @@ export default {
       }
   },
   created(){
-    this.$store.dispatch("shoppingProductsClassic");
-    this.$store.dispatch("shoppingProductsNew");
+    this.$store.dispatch("totalClassicProducts");
+    this.$store.dispatch("totalNewProducts");
   },
   methods: {
       before(){
@@ -163,14 +163,14 @@ export default {
         params.product_id = id;
         params.qty = qty;
         this.$store.dispatch("addCartClassic",params);
-        this.$store.dispatch("shoppingProductsClassic");
+        this.$store.dispatch("totalClassicProducts");
       },
       addCart2(id,qty){
         let params = {};
         params.product_id = id;
         params.qty = qty;
         this.$store.dispatch("addCartNews",params);
-        this.$store.dispatch("shoppingProductsNew");
+        this.$store.dispatch("totalNewProducts");
       }
     },
   computed: {
