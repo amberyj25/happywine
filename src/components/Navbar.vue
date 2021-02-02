@@ -116,9 +116,6 @@ export default {
     newProducts () {
       this.getShoppingCartNew();
       this.getTotalNumData();
-    },
-    delectClassicProduct () {
-
     }
   },
   mounted () {
