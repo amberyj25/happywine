@@ -22,7 +22,7 @@
           lg="3"
           v-for="(product,index) in classicProductsData"
           :key="index"
-          v-if="recentPage ==product.unit"
+          v-show="currentClassicPage === Number(product.unit)"
         >
           <div class="wine">
             <div class="introduction">
@@ -88,7 +88,7 @@
           lg="3"
           v-for="product in newProductsData"
           :key="product.num"
-          v-if="recentPage2 ==productNew.unit"
+          v-show="currentNewPage === Number(product.unit)"
         >
           <div class="wine">
             <div class="introduction">
