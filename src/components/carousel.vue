@@ -1,6 +1,6 @@
 <template>
   <b-carousel
-    id="carousel-1"
+    id="carousel"
     v-model="slide"
     :interval="2000"
     controls
@@ -42,7 +42,7 @@ export default {
 };
 </script>
 <style scoped>
-#carousel-1 {
+#carousel {
   position: relative;
 }
 .carousel_img {
