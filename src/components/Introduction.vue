@@ -1,24 +1,24 @@
 <template>
   <div class="introduction">
-    <MainIntroductionTop></MainIntroductionTop>
+    <Service></Service>
     <b-row class="justify-content-center">
       <b-col cols="5">
         <hr />
       </b-col>
     </b-row>
-    <MainIntroductionbottom></MainIntroductionbottom>
+    <DeliverInfo></DeliverInfo>
   </div>
 </template>
 
 <script>
-import MainIntroductionTop from "@/components/MainIntroductionTop.vue";
-import MainIntroductionbottom from "@/components/MainIntroductionbottom.vue";
+import Service from "@/components/Service.vue";
+import DeliverInfo from "@/components/DeliverInfo.vue";
 
 export default {
-  name: "App",
+  name: "Introduction",
   components: {
-    MainIntroductionTop,
-    MainIntroductionbottom
+    Service,
+    DeliverInfo
   }
 };
 </script>

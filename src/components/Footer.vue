@@ -1,43 +1,43 @@
 <template>
-    <footer>
-      <div class="footer_top">
-        <div class="footer_top_left">
-          <a href="##">Wine Space</a>
-          <p class="copyright">&copy 2020 Happy Wine</p> 
-        </div>
-        <div class="footer_top_right">
-          <p>contact</p>
-          <p>Email : XXX@gmail.com</p>
-          <p>mobile : 09XX-XXX-XXX</p>
-        </div>  
+  <footer>
+    <div class="content">
+      <div class="content_left">
+        <a href="##">Wine Space</a>
+        <p class="copyright">&copy 2020 Happy Wine</p>
       </div>
-    </footer>
+      <div class="content_right">
+        <p>contact</p>
+        <p>Email : XXX@gmail.com</p>
+        <p>mobile : 09XX-XXX-XXX</p>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <script>
-export default{
-  name:"Footer",
-}
+export default {
+  name: "Footer"
+};
 </script>
 
 <style scoped>
-footer .footer_top{
-  background:#f2f0ea;
+footer .content {
+  background: #f2f0ea;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 25px;
 }
-footer .footer_top_left{
+footer .content_left {
   font-size: 15px;
-  color:#55381d;
+  color: #55381d;
 }
-footer .footer_top_left a{
-  font-size:25px;
+footer .content_left a {
+  font-size: 25px;
   display: block;
-  color:#55381d;
+  color: #55381d;
 }
-footer .footer_top_right{
-  color:#55381d;
+footer .content_right {
+  color: #55381d;
 }
 </style>
