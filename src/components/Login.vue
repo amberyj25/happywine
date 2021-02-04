@@ -1,18 +1,17 @@
 <template>
-  <div style="margin:0;">
+  <div class="outer">
     <header>
-      <Navbar style="margin:0;"></Navbar>
-      <div class="header_background"></div>
+      <Navbar class="navbar_outer"></Navbar>
     </header>
 
     <div class="form_outer">
-      <form v-if="changeComponent == `form`">
-        <div class="form_inner">
-          <div> 
+      <form>
+        <div>
+          <div>
             <label for="email">登入信箱 ： </label>
             <input type="text" id="email" placeholder="請輸入登入信箱" v-model.trim="user.username">
           </div>
-          <div> 
+          <div>
             <label for="password">密碼 : </label>
             <input type="password" id="password" placeholder="請輸入密碼" v-model.trim="user.password">
           </div>
@@ -23,55 +22,54 @@
         </div>
       </form>
     </div>
-
   </div>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar.vue"
 
-export default{
-  name:"Login",
-  components:{
-      Navbar
-    },
-  data(){
-    return{
-      user:{
-        username:"",
-        password:"",
+export default {
+  name: "Login",
+  components: {
+    Navbar
+  },
+  data () {
+    return {
+      user: {
+        username: "",
+        password: "",
       },
-      changeComponent: "form",
-      answer:"",
-      notSuccess:"",
-      isLoading:false,
+      answer: "",
+      notSuccess: "",
+      isLoading: false
     }
   },
-  methods:{
-    signin(){
-      const vm = this;
-      vm.axios.post("https://vue-course-api.hexschool.io/signin",vm.user).then((result)=>{
-        if(result.data.success == true){
-          this.$router.push("/");
-          this.$store.commit("checkSignIn",true);
-          // vm.answer = "恭喜您成功登入";
-        } else if(result.data.success == false) {
-          vm.notSuccess = "沒有登入成功";
+  methods: {
+    signin () {
+      console.log(49, this.user)
+      this.axios.post("https://vue-course-api.hexschool.io/signin",this.user).then((result)=>{
+        const isResultSuccess= result.data.success
+        switch (isResultSuccess) {
+          case true:
+            this.$router.push("/");
+            this.$store.commit("checkSignIn",true);
+            break;
+          case false:
+            this.notSuccess = "沒有登入成功";
+            break;
         }
       })
-    },
+    }
   }
 }
 </script>
 <style scoped>
-div{
-  margin:0;
+.outer {
+  background-color: #494b50;
+  margin: 0;
 }
-.header_background{
-  width:100%;
-  height:50px;
-  background-color:#494b50;
-  margin:0;
+.navbar_outer {
+  margin: 0;
 }
 .form_outer{
   width:100vw;
