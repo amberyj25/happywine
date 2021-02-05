@@ -13,11 +13,16 @@
           >{{ category }}</p>
         </div>
       </div>
+
       <div class="products">
-        <div class="products_classic" v-show="wineRender === 'Classic酒品' || '全部酒品'">
+        <div
+          class="products_classic"
+          v-for="(category,index) in categoryProducts"
+          :key="index"
+        >
           <b-row class="top">
             <b-col cols="12">
-              <h2>Classic</h2>
+              <h2>{{ category.title }}</h2>
             </b-col>
           </b-row>
           <b-row>
@@ -26,14 +31,14 @@
               cols="12 mb-5"
               md="6"
               lg="3"
-              v-for="productClassic in productsPicks"
-              :key="productClassic.num"
+              v-for="(item,index) in category.data"
+              :key="index"
             >
               <div class="wine">
                 <div class="product_top">
                   <div class="product_left" style="width:60%;">
-                    <h5>{{productClassic.title}}</h5>
-                    <p>{{productClassic.category}}</p>
+                    <h5>{{item.title}}</h5>
+                    <p>{{item.category}}</p>
                     <div class="year">
                       <div class="am">
                         <p class="title">AM</p>
@@ -45,73 +50,20 @@
                       </div>
                     </div>
                     <div class="sale_price">
-                      <div class="sale">＄{{productClassic.price}}</div>
-                      <div class="price">＄{{productClassic.origin_price}}</div>
+                      <div class="sale">＄{{item.price}}</div>
+                      <div class="price">＄{{item.origin_price}}</div>
                     </div>
                   </div>
                   <div class="product_right">
-                    <img :src="productClassic.image" alt="product" />
+                    <img :src="item.image" alt="product" />
                   </div>
                 </div>
                 <div class="product_bottom">
                   <div class="cart_num_out">
-                    <select class="cart_num" v-model="productClassic.nums">
+                    <select class="cart_num" v-model="item.nums">
                       <option :value="num" v-for="num in 10" :key="num">{{num}}</option>
                     </select>
-                    <button @click="addCart1(productClassic.id,productClassic.nums)">Add to cart</button>
-                  </div>
-                </div>
-              </div>
-            </b-col>
-          </b-row>
-        </div>
-
-        <div class="products_news" v-show="wineRender === 'New酒品' || '全部酒品'">
-          <b-row class="top">
-            <b-col cols="12">
-              <h2>New</h2>
-            </b-col>
-          </b-row>
-          <b-row>
-            <b-col
-              class="introduction_bottom_div"
-              cols="12 mb-5"
-              md="6"
-              lg="4"
-              xl="3"
-              v-for="productNew in productsNews"
-              :key="productNew.num"
-            >
-              <div class="wine">
-                <div class="product_top">
-                  <div class="product_left" style="width:60%;">
-                    <h5>{{productNew.title}}</h5>
-                    <p>{{productNew.category}}</p>
-                    <div class="year">
-                      <div class="am">
-                        <p class="title">AM</p>
-                        <p>85</p>
-                      </div>
-                      <div class="ws">
-                        <p class="title">WS</p>
-                        <p>100</p>
-                      </div>
-                    </div>
-                    <div class="sale_price">
-                      <div class="sale">＄{{productNew.price}}</div>
-                      <div class="price">＄{{productNew.origin_price}}</div>
-                    </div>
-                  </div>
-                  <div class="product_right">
-                    <img :src="productNew.image" alt="product" />
-                  </div>
-                </div>
-                <div class="product_bottom">
-                  <div class="cart_num_out">
-                    <select class="cart_num" v-model="productNew.nums">
-                      <option :value="num" v-for="num in 10" :key="num">{{num}}</option>
-                    </select>
-                    <button @click="addCart2(productNew.id,productNew.nums)">Add to cart</button>
+                    <button @click="addCart1(item.id,item.nums)">Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -126,12 +78,13 @@
 </template>
 
 <script>
+import { mapState , mapActions } from 'vuex'
 import Navbar from "@/components/Navbar.vue";
 import Products from "@/components/Products.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
-  name: "Productslist",
+  name: "ProductsList",
   components: {
     Navbar,
     Products,
@@ -141,14 +94,35 @@ export default {
     return {
       wineCategory: ['New酒品', 'Classic酒品', '全部酒品'],
       wineRender: 'New酒品',
-      winecategorynews: true
+      classicAndNewData: []
     };
   },
-  mounted() {
-    this.$store.dispatch("wineProductsPicks");
-    this.$store.dispatch("wineProductsNews");
+  computed: {
+    ...mapState(['productsPicks', 'productsNews']),
+    categoryProducts () {
+      return this.getCategoryProducts();
+    }
+  },
+  watch: {
+    productsNews () {
+      const tempNewData = {}
+      tempNewData['title'] = 'new';
+      tempNewData['data'] = this.$store.state.productsNews;
+      this.classicAndNewData.push(tempNewData)
+    },
+    productsPicks () {
+      const tempClassicData = {}
+      tempClassicData['title'] = 'classic';
+      tempClassicData['data'] = this.$store.state.productsPicks;
+      this.classicAndNewData.push(tempClassicData)
+    }
+  },
+  mounted () {
+    this.wineProductsPicks();
+    this.wineProductsNews();
   },
   methods: {
+    ...mapActions(['wineProductsPicks', 'wineProductsNews']),
     addCart1(id, qty) {
       let params = {};
       params.product_id = id;
@@ -175,14 +149,16 @@ export default {
           this.wineRender = '全部酒品'
           break
       }
-    }
-  },
-  computed: {
-    productsPicks() {
-      return this.$store.state.productsPicks;
     },
-    productsNews() {
-      return this.$store.state.productsNews;
+    getCategoryProducts () {
+      switch (this.wineRender) {
+        case 'New酒品':
+          return this.classicAndNewData.filter(item => item.title === 'new');
+        case 'Classic酒品':
+          return this.classicAndNewData.filter(item => item.title === 'classic');
+        case '全部酒品':
+          return this.classicAndNewData;
+      }
     }
   }
 };
