@@ -6,18 +6,18 @@
     <main class="container">
       <div class="filter">
         <h5 class="category">酒品分類</h5>
-        <div v-for="(category,index) in wineCategory" :key="index">
+        <div v-for="(category, index) in wineCategory" :key="index">
           <p
-            :class="{filter_p: wineRender === category}"
+            :class="{filter_category: categoryRender === category}"
             @click="getCategory(category)"
           >{{ category }}</p>
         </div>
       </div>
 
-      <div class="products">
+      <div class="products_outer">
         <div
-          class="products_classic"
-          v-for="(category,index) in categoryProducts"
+          class="products"
+          v-for="(category, index) in categoryProducts"
           :key="index"
         >
           <b-row class="top">
@@ -27,16 +27,16 @@
           </b-row>
           <b-row>
             <b-col
-              class="introduction_bottom_div"
+              class="product"
               cols="12 mb-5"
               md="6"
               lg="3"
-              v-for="(item,index) in category.data"
+              v-for="(item, index) in category.data"
               :key="index"
             >
               <div class="wine">
                 <div class="product_top">
-                  <div class="product_left" style="width:60%;">
+                  <div class="product_left">
                     <h5>{{item.title}}</h5>
                     <p>{{item.category}}</p>
                     <div class="year">
@@ -61,9 +61,9 @@
                 <div class="product_bottom">
                   <div class="cart_num_out">
                     <select class="cart_num" v-model="item.nums">
-                      <option :value="num" v-for="num in 10" :key="num">{{num}}</option>
+                      <option :value="num" v-for="(num, index) in 10" :key="index">{{num}}</option>
                     </select>
-                    <button @click="addCart1(item.id,item.nums)">Add to cart</button>
+                    <button @click="addCart(item.title, item.id, item.nums)">Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -93,7 +93,7 @@ export default {
   data() {
     return {
       wineCategory: ['New酒品', 'Classic酒品', '全部酒品'],
-      wineRender: 'New酒品',
+      categoryRender: 'New酒品',
       classicAndNewData: []
     };
   },
@@ -107,13 +107,13 @@ export default {
     productsNews () {
       const tempNewData = {}
       tempNewData['title'] = 'new';
-      tempNewData['data'] = this.$store.state.productsNews;
+      tempNewData['data'] = this.productsNews;
       this.classicAndNewData.push(tempNewData)
     },
     productsPicks () {
       const tempClassicData = {}
       tempClassicData['title'] = 'classic';
-      tempClassicData['data'] = this.$store.state.productsPicks;
+      tempClassicData['data'] = this.productsPicks;
       this.classicAndNewData.push(tempClassicData)
     }
   },
@@ -123,12 +123,20 @@ export default {
   },
   methods: {
     ...mapActions(['wineProductsPicks', 'wineProductsNews']),
-    addCart1(id, qty) {
+    addCart(title, id, qty) {
       let params = {};
       params.product_id = id;
       params.qty = qty;
-      this.$store.dispatch("addCartClassic", params);
-      this.$store.dispatch("totalClassicProducts");
+      const titleSplit = title.split('')
+      console.log(133, titleSplit);
+      switch (titleSplit) {
+        case 'A' || 'B':
+          this.$store.dispatch("addCartClassic", params);
+          break;
+        case 'V':
+          this.$store.dispatch("addCartNews", params);
+          break;
+      }
     },
     addCart2(id, qty) {
       let params = {};
@@ -140,18 +148,18 @@ export default {
     getCategory (category) {
       switch (category) {
         case 'New酒品':
-          this.wineRender = 'New酒品'
+          this.categoryRender = 'New酒品'
           break
         case 'Classic酒品':
-          this.wineRender = 'Classic酒品'
+          this.categoryRender = 'Classic酒品'
           break
         case '全部酒品':
-          this.wineRender = '全部酒品'
+          this.categoryRender = '全部酒品'
           break
       }
     },
     getCategoryProducts () {
-      switch (this.wineRender) {
+      switch (this.categoryRender) {
         case 'New酒品':
           return this.classicAndNewData.filter(item => item.title === 'new');
         case 'Classic酒品':
@@ -193,7 +201,7 @@ export default {
   margin: 0;
   border-bottom: 1px solid gray;
 }
-.filter_p {
+.filter_category {
   background-color: #c1ad9e;
 }
 .filter p:hover {
@@ -204,7 +212,7 @@ export default {
   background-color: #7f5c5c;
   color: white;
 }
-.products_classic,
+.products,
 .products_news {
   margin: 55px 0;
 }
@@ -302,6 +310,9 @@ h2 {
   box-sizing: border-box;
   overflow: hidden;
 }
+.wine .product_left {
+  width:60%;
+}
 .wine .product_top_detail {
   position: absolute;
   bottom: -401px;
@@ -326,13 +337,13 @@ main {
 }
 
 main .products_news .top .page,
-main .products_classic .top .page {
+main .products .top .page {
   display: flex;
   box-sizing: border-box;
   padding-top: 25px;
 }
-main .products_classic .fa-angle-left,
-main .products_classic .fa-angle-right {
+main .products .fa-angle-left,
+main .products .fa-angle-right {
   font-size: 35px;
 }
 main .products_news .fa-angle-left,
@@ -341,7 +352,7 @@ main .products_news .fa-angle-right {
 }
 
 main .products_news .top .page div,
-main .products_classic .top .page div {
+main .products .top .page div {
   width: 35px;
   height: 35px;
   border: 1px solid #b49782;
@@ -349,7 +360,7 @@ main .products_classic .top .page div {
 }
 
 main .products_news .top .page div + div,
-main .products_classic .top .page div + div {
+main .products .top .page div + div {
   margin-left: 5px;
 }
 @media (max-width: 992px) {
