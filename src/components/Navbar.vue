@@ -109,6 +109,9 @@ export default {
     }
   },
   watch: {
+    // $route (to, from) {
+    //   this.getTotalNumData();
+    // },
     classicProducts () {
       this.getShoppingCartClassic();
       this.getTotalNumData();
@@ -119,10 +122,12 @@ export default {
     }
   },
   mounted () {
+    this.getShoppingCartClassic();
+    this.getShoppingCartNew();
     this.getTotalNumData();
   },
   methods: {
-    ...mapActions(['totalClassicProducts', 'totalNewProducts', 'signOutChange']),
+    ...mapActions(['currentClassicProducts', 'currentNewProducts', 'signOutChange']),
     getTotalNumData () {
       this.totalDataLength = this.classicProductData.length+this.newProductData.length
     },
@@ -134,11 +139,11 @@ export default {
     },
     delectClassicProduct(id) {
       this.$store.dispatch("delectProductsClassic", id);
-      this.totalClassicProducts;
+      this.currentClassicProducts();
     },
     delectNewProduct(id) {
       this.$store.dispatch("delectProductsNew", id);
-      this.totalNewProducts;
+      this.currentNewProducts();
     },
     signOut() {
       this.signOutChange;
