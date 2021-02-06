@@ -122,14 +122,13 @@ export default {
     this.wineProductsNews();
   },
   methods: {
-    ...mapActions(['wineProductsPicks', 'wineProductsNews']),
+    ...mapActions(['wineProductsPicks', 'wineProductsNews', 'currentClassicProducts', 'currentNewProducts']),
     addCart(title, id, qty) {
-      let params = {};
+      const params = {};
       params.product_id = id;
       params.qty = qty;
       const titleSplit = title.split('')
-      console.log(133, titleSplit);
-      switch (titleSplit) {
+      switch (titleSplit[0]) {
         case 'A' || 'B':
           this.$store.dispatch("addCartClassic", params);
           break;
@@ -137,13 +136,8 @@ export default {
           this.$store.dispatch("addCartNews", params);
           break;
       }
-    },
-    addCart2(id, qty) {
-      let params = {};
-      params.product_id = id;
-      params.qty = qty;
-      this.$store.dispatch("addCartNews", params);
-      this.$store.dispatch("totalNewProducts");
+      this.currentClassicProducts();
+      this.currentNewProducts();
     },
     getCategory (category) {
       switch (category) {
