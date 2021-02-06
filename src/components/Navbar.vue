@@ -94,15 +94,15 @@ export default {
     }
   },
   computed: {
-    ...mapState(['checkSignIn', 'classicProducts', 'newProducts']),
+    ...mapState(['checkSignIn', 'currentClassicProducts', 'currentNewProducts']),
     checkLogIn() {
       return this.checkSignIn;
     },
     getClassicProducts() {
-      return this.classicProducts;
+      return this.currentClassicProducts;
     },
     getNewProducts() {
-      return this.newProducts;
+      return this.currentNewProducts;
     },
     shoppingItemsLength() {
       return this.totalDataLength;
@@ -112,11 +112,11 @@ export default {
     // $route (to, from) {
     //   this.getTotalNumData();
     // },
-    classicProducts () {
+    currentClassicProducts () {
       this.getShoppingCartClassic();
       this.getTotalNumData();
     },
-    newProducts () {
+    currentNewProducts () {
       this.getShoppingCartNew();
       this.getTotalNumData();
     }
@@ -127,23 +127,23 @@ export default {
     this.getTotalNumData();
   },
   methods: {
-    ...mapActions(['currentClassicProducts', 'currentNewProducts', 'signOutChange']),
+    ...mapActions(['getCurrentClassicProducts', 'getCurrentNewProducts', 'signOutChange']),
     getTotalNumData () {
       this.totalDataLength = this.classicProductData.length+this.newProductData.length
     },
     getShoppingCartClassic () {
-      this.classicProductData = this.classicProducts;
+      this.classicProductData = this.currentClassicProducts;
     },
     getShoppingCartNew () {
-      this.newProductData = this.newProducts;
+      this.newProductData = this.currentNewProducts;
     },
     delectClassicProduct(id) {
       this.$store.dispatch("delectProductsClassic", id);
-      this.currentClassicProducts();
+      this.getCurrentClassicProducts();
     },
     delectNewProduct(id) {
       this.$store.dispatch("delectProductsNew", id);
-      this.currentNewProducts();
+      this.getCurrentNewProducts();
     },
     signOut() {
       this.signOutChange;

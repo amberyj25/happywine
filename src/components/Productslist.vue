@@ -118,22 +118,27 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['getOrgProductsPicks', 'getOrgProductsNews', 'currentClassicProducts', 'currentNewProducts']),
+    ...mapActions(['getOrgProductsPicks', 'getOrgProductsNews', 'getCurrentClassicProducts', 'getCurrentNewProducts']),
     addCart(title, id, qty) {
       const params = {};
       params.product_id = id;
       params.qty = qty;
       const titleSplit = title.split('')
+      console.log('tp', titleSplit[0]);
       switch (titleSplit[0]) {
-        case 'A' || 'B':
+        case "A":
           this.$store.dispatch("addCartClassic", params);
+          this.getCurrentClassicProducts();
           break;
-        case 'V':
+        case "B":
+          this.$store.dispatch("addCartClassic", params);
+          this.getCurrentClassicProducts();
+          break;
+        case "V":
           this.$store.dispatch("addCartNews", params);
+          this.getCurrentNewProducts();
           break;
       }
-      this.currentClassicProducts();
-      this.currentNewProducts();
     },
     getCategory (category) {
       switch (category) {
@@ -162,8 +167,8 @@ export default {
   mounted () {
     this.getOrgProductsPicks();
     this.getOrgProductsNews();
-    this.currentClassicProducts();
-    this.currentNewProducts();
+    this.getCurrentClassicProducts();
+    this.getCurrentNewProducts();
   }
 };
 </script>

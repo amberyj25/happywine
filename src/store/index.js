@@ -13,8 +13,8 @@ export default new Vuex.Store({
     checkSignIn: false,
     addCartClassic1: "",
     addCartNews1: "",
-    classicProducts: "",
-    newProducts: ""
+    currentClassicProducts: "",
+    currentNewProducts: ""
   },
   mutations: {
     getOrgProductsPicks(state, payload) {
@@ -40,11 +40,11 @@ export default new Vuex.Store({
     addCartNews1(state, payload) {
       state.addCartNews1 = payload;
     },
-    classicProducts(state, payload) {
-      state.classicProducts = payload;
+    getCurrentClassicProducts(state, payload) {
+      state.currentClassicProducts = payload;
     },
-    newProducts(state, payload) {
-      state.newProducts = payload;
+    getCurrentNewProducts(state, payload) {
+      state.currentNewProducts = payload;
     }
   },
   actions: {
@@ -80,35 +80,35 @@ export default new Vuex.Store({
           context.commit("addCartNews1", res.data.data);
         });
     },
-    currentClassicProducts(context) {
+    getCurrentClassicProducts(context) {
       axios
         .get("https://vue-course-api.hexschool.io/api/wine5/cart")
         .then(res => {
-          context.commit("classicProducts", res.data.data.carts);
+          context.commit("getCurrentClassicProducts", res.data.data.carts);
         });
     },
-    currentNewProducts(context) {
+    getCurrentNewProducts(context) {
       axios
         .get("https://vue-course-api.hexschool.io/api/wine52/cart")
         .then(res => {
-          context.commit("newProducts", res.data.data.carts);
+          context.commit("getCurrentNewProducts", res.data.data.carts);
         });
     },
     delectProductsClassic(context, payload) {
       axios
         .delete(`https://vue-course-api.hexschool.io/api/wine5/cart/${payload}`)
-        .then(res => {
-          context.dispatch("currentClassicProducts");
-        });
+        // .then(res => {
+        //   context.dispatch("currentClassicProducts");
+        // });
     },
     delectProductsNew(context, payload) {
       axios
         .delete(
           `https://vue-course-api.hexschool.io/api/wine52/cart/${payload}`
         )
-        .then(res => {
-          context.dispatch("currentNewProducts");
-        });
+        // .then(res => {
+        //   context.dispatch("currentNewProducts");
+        // });
     },
     signOutChange(context) {
       axios.post("https://vue-course-api.hexschool.io/logout").then(result => {
