@@ -31,7 +31,7 @@ export default {
     Footer
   },
   mounted(){
-    this.$store.dispatch("getOrgProductsPicks");
+    this.$store.dispatch("getOrgProductsClassic");
     this.$store.dispatch("getOrgProductsNews");
   }
 }

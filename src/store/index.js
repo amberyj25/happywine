@@ -17,7 +17,7 @@ export default new Vuex.Store({
     currentNewProducts: ""
   },
   mutations: {
-    getOrgProductsPicks(state, payload) {
+    getOrgProductsClassic(state, payload) {
       const newPayload = payload.map(item => {
         item.nums = 1;
         return item;
@@ -48,11 +48,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getOrgProductsPicks(context) {
+    getOrgProductsClassic(context) {
       axios
         .get("https://vue-course-api.hexschool.io/api/wine5/products")
         .then(res => {
-          context.commit("getOrgProductsPicks", res.data.products);
+          context.commit("getOrgProductsClassic", res.data.products);
         });
     },
     getOrgProductsNews(context) {

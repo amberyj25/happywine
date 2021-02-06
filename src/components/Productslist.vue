@@ -118,7 +118,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['getOrgProductsPicks', 'getOrgProductsNews', 'getCurrentClassicProducts', 'getCurrentNewProducts']),
+    ...mapActions(['getOrgProductsClassic', 'getOrgProductsNews', 'getCurrentClassicProducts', 'getCurrentNewProducts']),
     addCart(title, id, qty) {
       const params = {
         product_id: id,
@@ -171,7 +171,7 @@ export default {
     }
   },
   mounted () {
-    this.getOrgProductsPicks();
+    this.getOrgProductsClassic();
     this.getOrgProductsNews();
     this.getCurrentClassicProducts();
     this.getCurrentNewProducts();
