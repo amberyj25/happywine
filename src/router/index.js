@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from "@/App.vue"
 import Login from "@/components/Login.vue"
-import Productslist from "@/components/Productslist.vue"
+import ProductsList from "@/components/ProductsList.vue"
 
 
 Vue.use(VueRouter)
@@ -14,9 +14,9 @@ export default new VueRouter({
       name: "App",
       component: App,
     },{
-      path: "/productslist",
-      name: "Productslist",
-      component: Productslist,
+      path: "/productsList",
+      name: "ProductsList",
+      component: ProductsList,
     },{
       path: "/login",
       name: "Login",
