@@ -98,31 +98,27 @@ export default {
     };
   },
   computed: {
-    ...mapState(['productsPicks', 'productsNews']),
+    ...mapState(['orgProductsPicks', 'orgProductsNews']),
     categoryProducts () {
       return this.getCategoryProducts();
     }
   },
   watch: {
-    productsNews () {
-      const tempNewData = {}
-      tempNewData['title'] = 'new';
-      tempNewData['data'] = this.productsNews;
-      this.classicAndNewData.push(tempNewData)
-    },
-    productsPicks () {
+    orgProductsPicks () {
       const tempClassicData = {}
       tempClassicData['title'] = 'classic';
-      tempClassicData['data'] = this.productsPicks;
+      tempClassicData['data'] = this.orgProductsPicks;
       this.classicAndNewData.push(tempClassicData)
+    },
+    orgProductsNews () {
+      const tempNewData = {}
+      tempNewData['title'] = 'new';
+      tempNewData['data'] = this.orgProductsNews;
+      this.classicAndNewData.push(tempNewData)
     }
   },
-  mounted () {
-    this.wineProductsPicks();
-    this.wineProductsNews();
-  },
   methods: {
-    ...mapActions(['wineProductsPicks', 'wineProductsNews', 'currentClassicProducts', 'currentNewProducts']),
+    ...mapActions(['getOrgProductsPicks', 'getOrgProductsNews', 'currentClassicProducts', 'currentNewProducts']),
     addCart(title, id, qty) {
       const params = {};
       params.product_id = id;
@@ -162,6 +158,12 @@ export default {
           return this.classicAndNewData;
       }
     }
+  },
+  mounted () {
+    this.getOrgProductsPicks();
+    this.getOrgProductsNews();
+    this.currentClassicProducts();
+    this.currentNewProducts();
   }
 };
 </script>

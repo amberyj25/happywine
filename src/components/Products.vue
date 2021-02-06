@@ -189,11 +189,10 @@ export default {
   },
   computed: {
     classicProductsData() {
-      console.log(195, this.$store.state.productsPicks)
-      return this.$store.state.productsPicks;
+      return this.$store.state.orgProductsPicks;
     },
     newProductsData() {
-      return this.$store.state.productsNews;
+      return this.$store.state.orgProductsNews;
     }
   }
 };

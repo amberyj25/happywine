@@ -31,8 +31,8 @@ export default {
     Footer
   },
   mounted(){
-    this.$store.dispatch("wineProductsPicks");
-    this.$store.dispatch("wineProductsNews");
+    this.$store.dispatch("getOrgProductsPicks");
+    this.$store.dispatch("getOrgProductsNews");
   }
 }
 </script>
