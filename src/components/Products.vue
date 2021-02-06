@@ -124,7 +124,7 @@
                 <select class="cart_num" v-model="product.nums">
                   <option :value="num" v-for="(num,index) in 10" :key="index">{{num}}</option>
                 </select>
-                <button @click="addCart2(product.id,product.nums)">Add to cart</button>
+                <button @click="addCartNew(product.id,product.nums)">Add to cart</button>
               </div>
             </div>
           </div>
@@ -177,14 +177,18 @@ export default {
       params.product_id = id;
       params.qty = qty;
       this.$store.dispatch("addCartClassic", params);
-      this.$store.dispatch("getCurrentClassicProducts");
+      setTimeout(() => {
+        this.$store.dispatch("getCurrentClassicProducts");
+      }, 500)
     },
-    addCart2(id, qty) {
+    addCartNew(id, qty) {
       let params = {};
       params.product_id = id;
       params.qty = qty;
       this.$store.dispatch("addCartNews", params);
-      this.$store.dispatch("getCurrentNewProducts");
+      setTimeout(() => {
+        this.$store.dispatch("getCurrentNewProducts");
+      }, 500)
     }
   },
   computed: {

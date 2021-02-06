@@ -11,8 +11,8 @@ export default new Vuex.Store({
     orgProductsPicks: "",
     orgProductsNews: "",
     checkSignIn: false,
-    addCartClassic1: "",
-    addCartNews1: "",
+    addCartClassic: "",
+    addCartNews: "",
     currentClassicProducts: "",
     currentNewProducts: ""
   },
@@ -34,11 +34,11 @@ export default new Vuex.Store({
     checkSignIn(state, payload) {
       state.checkSignIn = payload;
     },
-    addCartClassic1(state, payload) {
-      state.addCartClassic1 = payload;
+    addCartClassic(state, payload) {
+      state.addCartClassic = payload;
     },
-    addCartNews1(state, payload) {
-      state.addCartNews1 = payload;
+    addCartNews(state, payload) {
+      state.addCartNews = payload;
     },
     getCurrentClassicProducts(state, payload) {
       state.currentClassicProducts = payload;
@@ -68,7 +68,7 @@ export default new Vuex.Store({
           data: payload
         })
         .then(res => {
-          context.commit("addCartClassic1", res.data);
+          context.commit("addCartClassic", res.data);
         });
     },
     addCartNews(context, payload) {
@@ -77,7 +77,7 @@ export default new Vuex.Store({
           data: payload
         })
         .then(res => {
-          context.commit("addCartNews1", res.data.data);
+          context.commit("addCartNews", res.data.data);
         });
     },
     getCurrentClassicProducts(context) {

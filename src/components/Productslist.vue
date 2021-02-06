@@ -120,23 +120,29 @@ export default {
   methods: {
     ...mapActions(['getOrgProductsPicks', 'getOrgProductsNews', 'getCurrentClassicProducts', 'getCurrentNewProducts']),
     addCart(title, id, qty) {
-      const params = {};
-      params.product_id = id;
-      params.qty = qty;
+      const params = {
+        product_id: id,
+        qty: qty
+      };
       const titleSplit = title.split('')
-      console.log('tp', titleSplit[0]);
       switch (titleSplit[0]) {
         case "A":
           this.$store.dispatch("addCartClassic", params);
-          this.getCurrentClassicProducts();
+          setTimeout(() => {
+            this.getCurrentClassicProducts();
+          }, 500)
           break;
         case "B":
           this.$store.dispatch("addCartClassic", params);
-          this.getCurrentClassicProducts();
+          setTimeout(() => {
+            this.getCurrentClassicProducts();
+          }, 500)
           break;
         case "V":
           this.$store.dispatch("addCartNews", params);
-          this.getCurrentNewProducts();
+          setTimeout(() => {
+            this.getCurrentNewProducts();
+          }, 500)
           break;
       }
     },
