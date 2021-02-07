@@ -31,10 +31,6 @@ export default {
   },
   methods: {
     ...mapActions([ 'getOrgProductsClassic', 'getOrgProductsNews'])
-  },
-  mounted () {
-    this.getOrgProductsClassic();
-    this.getOrgProductsNews();
   }
 }
 </script>
