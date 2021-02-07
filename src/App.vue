@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import Header from "@/components/Header.vue"
 import Introduction from "@/components/Introduction.vue"
 import Products from "@/components/Products.vue"
@@ -22,22 +23,25 @@ import Footer from "@/components/Footer.vue"
 
 export default {
   name: 'App',
-    components:{
+  components: {
     Header,
     Introduction,
     Products,
     Footer
   },
-  mounted(){
-    this.$store.dispatch("getOrgProductsClassic");
-    this.$store.dispatch("getOrgProductsNews");
+  methods: {
+    ...mapActions([ 'getOrgProductsClassic', 'getOrgProductsNews'])
+  },
+  mounted () {
+    this.getOrgProductsClassic();
+    this.getOrgProductsNews();
   }
 }
 </script>
 
 <style>
-.container{
-  max-width:1400px !important;
+.container {
+  max-width: 1400px !important;
   padding: 35px;
 }
 </style>
