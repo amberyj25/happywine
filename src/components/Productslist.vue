@@ -117,6 +117,12 @@ export default {
       this.classicAndNewData.push(tempNewData)
     }
   },
+  mounted () {
+    this.getOrgProductsClassic();
+    this.getOrgProductsNews();
+    this.getCurrentClassicProducts();
+    this.getCurrentNewProducts();
+  },
   methods: {
     ...mapActions(['getOrgProductsClassic', 'getOrgProductsNews', 'getCurrentClassicProducts', 'getCurrentNewProducts']),
     addCart(title, id, qty) {
@@ -169,12 +175,6 @@ export default {
           return this.classicAndNewData;
       }
     }
-  },
-  mounted () {
-    this.getOrgProductsClassic();
-    this.getOrgProductsNews();
-    this.getCurrentClassicProducts();
-    this.getCurrentNewProducts();
   }
 };
 </script>
