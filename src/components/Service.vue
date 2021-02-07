@@ -2,7 +2,7 @@
   <div class="service">
     <b-row>
       <b-col
-        v-for="(item,index) in serviceContent"
+        v-for="(item, index) in serviceContent"
         :key="index"
         cols="12"
         lg="4"
@@ -20,7 +20,7 @@
 <script>
 export default {
   name: "Service",
-  data() {
+  data () {
     return {
       serviceContent: [
         {

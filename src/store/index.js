@@ -19,6 +19,7 @@ export default new Vuex.Store({
   mutations: {
     getOrgProductsClassic(state, payload) {
       const newPayload = payload.map(item => {
+        console.log(22, item)
         item.nums = 1;
         return item;
       });
@@ -94,14 +95,14 @@ export default new Vuex.Store({
           context.commit("getCurrentNewProducts", res.data.data.carts);
         });
     },
-    delectProductsClassic(context, payload) {
+    deleteProductsClassic(context, payload) {
       axios
         .delete(`https://vue-course-api.hexschool.io/api/wine5/cart/${payload}`)
         // .then(res => {
         //   context.dispatch("currentClassicProducts");
         // });
     },
-    delectProductsNew(context, payload) {
+    deleteProductsNew(context, payload) {
       axios
         .delete(
           `https://vue-course-api.hexschool.io/api/wine52/cart/${payload}`
@@ -113,7 +114,7 @@ export default new Vuex.Store({
     signOutChange(context) {
       axios.post("https://vue-course-api.hexschool.io/logout").then(result => {
         context.commit("checkSignIn", false);
-      });
+      })
     }
   }
-});
+})

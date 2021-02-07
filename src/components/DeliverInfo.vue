@@ -2,7 +2,7 @@
   <div class="deliver_info">
     <b-row>
       <b-col
-        v-for="(item,index) in deliverContent"
+        v-for="(item, index) in deliverContent"
         :key="index"
         class="content"
         cols="12 mb-5"
@@ -28,7 +28,7 @@ import deliverImg4 from '../assets/introduction4.jpg'
 
 export default {
   name: "DeliverInfo",
-  data() {
+  data () {
     return {
       deliverContent: [
         {
@@ -49,7 +49,7 @@ export default {
           img: deliverImg4
         }
       ]
-    };
+    }
   }
 };
 </script>

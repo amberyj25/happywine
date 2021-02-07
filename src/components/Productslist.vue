@@ -37,8 +37,8 @@
               <div class="wine">
                 <div class="product_top">
                   <div class="product_left">
-                    <h5>{{item.title}}</h5>
-                    <p>{{item.category}}</p>
+                    <h5>{{ item.title }}</h5>
+                    <p>{{ item.category }}</p>
                     <div class="year">
                       <div class="am">
                         <p class="title">AM</p>
@@ -50,8 +50,8 @@
                       </div>
                     </div>
                     <div class="sale_price">
-                      <div class="sale">＄{{item.price}}</div>
-                      <div class="price">＄{{item.origin_price}}</div>
+                      <div class="sale">＄{{ item.price }}</div>
+                      <div class="price">＄{{ item.origin_price }}</div>
                     </div>
                   </div>
                   <div class="product_right">
@@ -61,7 +61,7 @@
                 <div class="product_bottom">
                   <div class="cart_num_out">
                     <select class="cart_num" v-model="item.nums">
-                      <option :value="num" v-for="(num, index) in 10" :key="index">{{num}}</option>
+                      <option :value="num" v-for="(num, index) in 10" :key="index">{{ num }}</option>
                     </select>
                     <button @click="addCart(item.title, item.id, item.nums)">Add to cart</button>
                   </div>
@@ -90,7 +90,7 @@ export default {
     Products,
     Footer
   },
-  data() {
+  data () {
     return {
       wineCategory: ['New酒品', 'Classic酒品', '全部酒品'],
       categoryRender: 'New酒品',

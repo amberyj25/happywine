@@ -17,7 +17,7 @@
           </div>
           <div>
             <button type="submit" @click.prevent="signin">登入</button>
-            <p>{{notSuccess}}</p>
+            <p>{{ notSuccess }}</p>
           </div>
         </div>
       </form>
@@ -46,13 +46,12 @@ export default {
   },
   methods: {
     signin () {
-      console.log(49, this.user)
-      this.axios.post("https://vue-course-api.hexschool.io/signin",this.user).then((result)=>{
-        const isResultSuccess= result.data.success
+      this.axios.post("https://vue-course-api.hexschool.io/signin",this.user).then(result => {
+        const isResultSuccess = result.data.success
         switch (isResultSuccess) {
           case true:
             this.$router.push("/");
-            this.$store.commit("checkSignIn",true);
+            this.$store.commit("checkSignIn", true);
             break;
           case false:
             this.notSuccess = "沒有登入成功";
@@ -71,7 +70,7 @@ export default {
 .navbar_outer {
   margin: 0;
 }
-.form_outer{
+.form_outer {
   width:100vw;
   height:100vh;
   display: flex;
@@ -81,7 +80,7 @@ export default {
   margin: 0;
   background-color:#494b50;
 }
-form{
+form {
   width: 450px;
   background: #ABDADC;
   border-radius: 25px;
@@ -91,14 +90,14 @@ form{
   justify-content: center;
   box-shadow: 2px 2px 8px black;
 }
-div{
+div {
   margin: 15px;
 }
-label{
+label {
   display: block;
   margin: 5px 0;
 }
-input{
+input {
   width: 250px;
   height: 25px;
   border:none;
@@ -106,7 +105,7 @@ input{
   outline: none;
   padding: 5px 15px;
 }
-button{
+button {
   display: block;
   width:100px;
   padding: 5px;
@@ -114,15 +113,15 @@ button{
   border-radius: 8px;
   margin-top: 25px; 
 }
-p{
+p {
   text-align: center;
   color: yellow;
 }
-h2{
+h2 {
   width:100%;
   text-align: center;
 }
-.header_img{
+.header_img {
   width:100%;
   height:580px;
   background: url("https://i.imgur.com/3isOg5S.jpg") no-repeat 50% 50%;

@@ -20,15 +20,15 @@
           cols="12 mb-5"
           md="6"
           lg="3"
-          v-for="(product,index) in classicProductsData"
+          v-for="(product, index) in classicProductsData"
           :key="index"
           v-show="currentClassicPage === Number(product.unit)"
         >
           <div class="wine">
             <div class="introduction">
               <div class="product_left">
-                <h5>{{product.title}}</h5>
-                <p>{{product.category}}</p>
+                <h5>{{ product.title }}</h5>
+                <p>{{ product.category }}</p>
                 <div class="year">
                   <div class="am">
                     <p class="title">AM</p>
@@ -40,8 +40,8 @@
                   </div>
                 </div>
                 <div class="sale_price">
-                  <div class="sale">＄{{product.price}}</div>
-                  <div class="price">＄{{product.origin_price}}</div>
+                  <div class="sale">＄{{ product.price }}</div>
+                  <div class="price">＄{{ product.origin_price }}</div>
                 </div>
               </div>
               <div class="product_right">
@@ -56,9 +56,9 @@
             <div class="product_bottom">
               <div class="cart_num_out">
                 <select class="cart_num" v-model="product.nums">
-                  <option :value="num" v-for="(num,index) in 10" :key="index">{{num}}</option>
+                  <option :value="num" v-for="(num, index) in 10" :key="index">{{num}}</option>
                 </select>
-                <button @click="addCartClassic(product.id,product.nums)">Add to cart</button>
+                <button @click="addCartClassic(product.id, product.nums)">Add to cart</button>
               </div>
             </div>
           </div>
@@ -86,15 +86,15 @@
           cols="12 mb-5"
           md="6"
           lg="3"
-          v-for="product in newProductsData"
-          :key="product.num"
+          v-for="(product, index) in newProductsData"
+          :key="index"
           v-show="currentNewPage === Number(product.unit)"
         >
           <div class="wine">
             <div class="introduction">
               <div class="product_left">
-                <h5>{{product.title}}</h5>
-                <p>{{product.category}}</p>
+                <h5>{{ product.title }}</h5>
+                <p>{{ product.category }}</p>
                 <div class="year">
                   <div class="am">
                     <p class="title">AM</p>
@@ -106,8 +106,8 @@
                   </div>
                 </div>
                 <div class="sale_price">
-                  <div class="sale">＄{{product.price}}</div>
-                  <div class="price">＄{{product.origin_price}}</div>
+                  <div class="sale">＄{{ product.price }}</div>
+                  <div class="price">＄{{ product.origin_price }}</div>
                 </div>
               </div>
               <div class="product_right">
@@ -122,9 +122,9 @@
             <div class="product_bottom">
               <div class="cart_num_out">
                 <select class="cart_num" v-model="product.nums">
-                  <option :value="num" v-for="(num,index) in 10" :key="index">{{num}}</option>
+                  <option :value="num" v-for="(num, index) in 10" :key="index">{{num}}</option>
                 </select>
-                <button @click="addCartNew(product.id,product.nums)">Add to cart</button>
+                <button @click="addCartNew(product.id, product.nums)">Add to cart</button>
               </div>
             </div>
           </div>
@@ -143,36 +143,36 @@ export default {
       currentNewPage: 1
     };
   },
-  created() {
+  created () {
     this.$store.dispatch("getCurrentClassicProducts");
     this.$store.dispatch("getCurrentNewProducts");
   },
   methods: {
-    getClassicPreviousPage() {
+    getClassicPreviousPage () {
       this.currentClassicPage -= 1;
       if (this.currentClassicPage <= 0) {
         this.currentClassicPage = 1;
       }
     },
-    getClassicNextPage() {
+    getClassicNextPage () {
       this.currentClassicPage += 1;
       if (this.currentClassicPage >= 3) {
         this.currentClassicPage = 2;
       }
     },
-    getNewsPreviousPage() {
+    getNewsPreviousPage () {
       this.currentNewPage -= 1;
       if (this.currentNewPage <= 0) {
         this.currentNewPage = 1;
       }
     },
-    getNewsAfterPage() {
+    getNewsAfterPage () {
       this.currentNewPage += 1;
       if (this.currentNewPage >= 3) {
         this.currentNewPage = 2;
       }
     },
-    addCartClassic(id, qty) {
+    addCartClassic (id, qty) {
       let params = {};
       params.product_id = id;
       params.qty = qty;
@@ -181,7 +181,7 @@ export default {
         this.$store.dispatch("getCurrentClassicProducts");
       }, 500)
     },
-    addCartNew(id, qty) {
+    addCartNew (id, qty) {
       let params = {};
       params.product_id = id;
       params.qty = qty;
@@ -192,10 +192,10 @@ export default {
     }
   },
   computed: {
-    classicProductsData() {
+    classicProductsData () {
       return this.$store.state.orgProductsPicks;
     },
-    newProductsData() {
+    newProductsData () {
       return this.$store.state.orgProductsNews;
     }
   }
@@ -203,8 +203,7 @@ export default {
 </script>
 
 <style scoped>
-.products_picks,
-.products_news {
+.products_picks, .products_news {
   margin: 55px 0;
 }
 

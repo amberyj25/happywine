@@ -1,16 +1,19 @@
 <template>
   <div>
-    <b-navbar class="header_navabar" toggleable="lg" type="dark" variant="info">
+    <b-navbar class="navabar_root" toggleable="lg" type="dark" variant="info">
+      <!-- logo -->
       <b-navbar-brand class="brand_name">
         <h1>
           <router-link to="/">Wine Space</router-link>
         </h1>
       </b-navbar-brand>
+
       <!-- rwd - 漢堡選單 -->
       <b-navbar-toggle target="nav-collapse" class="navigation_btn_rwd">
         <i class="fas fa-bars"></i>
       </b-navbar-toggle>
-      <!-- 不是 rwd - 會呈現在na -->
+
+      <!-- 不是 rwd - 會呈現在navigation 各個選項 -->
       <b-collapse id="nav-collapse" is-nav class="navigation_content">
         <b-navbar-nav class="ml-auto navigation_content_right">
           <b-nav-item right>
@@ -26,6 +29,7 @@
         </b-navbar-nav>
       </b-collapse>
 
+      <!-- shopping_cart -->
       <div class="shopping_cart">
         <b-dropdown
           id="dropdown-right"
@@ -38,20 +42,20 @@
         >
           <template v-slot:button-content>
             <i class="fas fa-shopping-cart"></i>
-            <b-badge variant="primary">{{shoppingItemsLength}}</b-badge>
+            <b-badge variant="primary">{{ shoppingItemsLength }}</b-badge>
           </template>
           <p class="title">已選購 Classic 商品</p>
           <b-dropdown-item
             href="#"
-            v-for="(item,index) in getClassicProducts"
+            v-for="(item, index) in getClassicProducts"
             :key="`classicProduct${index}`"
             class="content"
           >
             <div class="content_item">
-              <span>{{item.product.title}}</span>
-              <span>{{item.qty}}瓶</span>
-              <span>${{item.qty*item.product.price}}</span>
-              <span @click.prevent="delectClassicProduct(item.id)">
+              <span>{{ item.product.title }}</span>
+              <span>{{ item.qty }}瓶</span>
+              <span>${{ item.qty*item.product.price }}</span>
+              <span @click.prevent="deleteClassicProduct(item.id)">
                 <i class="far fa-trash-alt"></i>
               </span>
             </div>
@@ -60,15 +64,15 @@
           <p class="title">已選購 New 商品</p>
           <b-dropdown-item
             href="#"
-            v-for="(item,index) in getNewProducts"
+            v-for="(item, index) in getNewProducts"
             :key="`newProduct${index}`"
             class="content"
           >
             <div class="content_item">
-              <span>{{item.product.title}}</span>
-              <span>{{item.qty}}瓶</span>
-              <span>${{item.qty*item.product.price}}</span>
-              <span @click.prevent="delectNewProduct(item.id)">
+              <span>{{ item.product.title }}</span>
+              <span>{{ item.qty }}瓶</span>
+              <span>${{ item.qty*item.product.price }}</span>
+              <span @click.prevent="deleteNewProduct(item.id)">
                 <i class="far fa-trash-alt"></i>
               </span>
             </div>
@@ -81,7 +85,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Navbar",
@@ -89,29 +93,26 @@ export default {
     return {
       classicProductData: [],
       newProductData: [],
-      totalDataLength: '',
+      totalDataLength: "",
       checkSignInData: false
-    }
+    };
   },
   computed: {
-    ...mapState(['checkSignIn', 'currentClassicProducts', 'currentNewProducts']),
-    checkLogIn() {
+    ...mapState([ "checkSignIn", "currentClassicProducts", "currentNewProducts"]),
+    checkLogIn () {
       return this.checkSignIn;
     },
-    getClassicProducts() {
+    getClassicProducts () {
       return this.currentClassicProducts;
     },
-    getNewProducts() {
+    getNewProducts () {
       return this.currentNewProducts;
     },
-    shoppingItemsLength() {
+    shoppingItemsLength () {
       return this.totalDataLength;
     }
   },
   watch: {
-    // $route (to, from) {
-    //   this.getTotalNumData();
-    // },
     currentClassicProducts () {
       this.getShoppingCartClassic();
       this.getTotalNumData();
@@ -121,15 +122,15 @@ export default {
       this.getTotalNumData();
     }
   },
-  mounted () {
+  mounted() {
     this.getShoppingCartClassic();
     this.getShoppingCartNew();
     this.getTotalNumData();
   },
   methods: {
-    ...mapActions(['getCurrentClassicProducts', 'getCurrentNewProducts', 'signOutChange']),
+    ...mapActions([ "getCurrentClassicProducts", "getCurrentNewProducts", "signOutChange"]),
     getTotalNumData () {
-      this.totalDataLength = this.classicProductData.length+this.newProductData.length
+      this.totalDataLength = this.classicProductData.length + this.newProductData.length;
     },
     getShoppingCartClassic () {
       this.classicProductData = this.currentClassicProducts;
@@ -137,23 +138,23 @@ export default {
     getShoppingCartNew () {
       this.newProductData = this.currentNewProducts;
     },
-    delectClassicProduct(id) {
-      this.$store.dispatch("delectProductsClassic", id);
+    deleteClassicProduct (id) {
+      this.$store.dispatch("deleteProductsClassic", id);
       this.getCurrentClassicProducts();
     },
-    delectNewProduct(id) {
-      this.$store.dispatch("delectProductsNew", id);
+    deleteNewProduct (id) {
+      this.$store.dispatch("deleteProductsNew", id);
       this.getCurrentNewProducts();
     },
-    signOut() {
-      this.signOutChange;
+    signOut () {
+      this.signOutChange();
     }
   }
 };
 </script>
 
 <style scoped>
-.header_navabar {
+.navabar_root {
   width: 100%;
   position: absolute;
   top: 0;
@@ -163,19 +164,19 @@ export default {
   padding: 0 100px;
   opacity: 0.9;
 }
-.header_navabar a {
+.navabar_root a {
   color: white;
   text-decoration: none;
 }
-.header_navabar h1 a {
+.navabar_root h1 a {
   font-size: 3rem;
 }
-.header_navabar button i {
+.navabar_root button i {
   font-size: 25px;
   color: white;
 }
 
-.header_navabar .navigation_content_right a {
+.navabar_root .navigation_content_right a {
   margin: 0 20px;
   font-size: 1.4rem;
 }
@@ -199,7 +200,7 @@ hr {
 }
 /* media query*/
 @media (max-width: 1200px) {
-  .header_navabar {
+  .navabar_root {
     padding: 0 50px;
   }
   .carousel_img {
@@ -207,7 +208,7 @@ hr {
   }
 }
 @media (max-width: 992px) {
-  .header_navabar h1 a {
+  .navabar_root h1 a {
     font-size: 2rem;
   }
   .brand_name {
@@ -224,7 +225,7 @@ hr {
   }
 }
 @media (max-width: 576px) {
-  .header_navabar h1 a {
+  .navabar_root h1 a {
     font-size: 1.5rem;
   }
 }

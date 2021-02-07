@@ -26,20 +26,20 @@
 <script>
 export default {
   name: "carousel",
-  data() {
+  data () {
     return {
       slide: 1
-    };
+    }
   },
   methods: {
-    onSlideStart(slide) {
+    onSlideStart (slide) {
       this.sliding = true;
     },
     onSlideEnd(slide) {
       this.sliding = false;
     }
   }
-};
+}
 </script>
 <style scoped>
 #carousel {

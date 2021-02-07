@@ -1,20 +1,20 @@
 <template>
   <header>
-    <navbar></navbar>
+    <Navbar></Navbar>
 
-    <carousel></carousel>
+    <Carousel></Carousel>
   </header>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import carousel from "@/components/carousel.vue";
+import Carousel from "@/components/Carousel.vue";
 
 export default {
   name: "Header",
   components: {
     Navbar,
-    carousel
+    Carousel
   }
 };
 </script>
