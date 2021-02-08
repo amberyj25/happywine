@@ -8,7 +8,7 @@ Vue.use(VueAxios, axios);
 
 export default new Vuex.Store({
   state: {
-    orgProductsPicks: "",
+    orgProductsClassic: "",
     orgProductsNews: "",
     checkSignIn: false,
     addCartClassic: "",
@@ -22,14 +22,14 @@ export default new Vuex.Store({
         item.nums = 1;
         return item;
       });
-      state.orgProductsPicks = payload;
+      state.orgProductsClassic = newPayload;
     },
     getOrgProductsNews(state, payload) {
       const newPayload = payload.map(item => {
         item.nums = 1;
         return item;
       });
-      state.orgProductsNews = payload;
+      state.orgProductsNews = newPayload;
     },
     checkSignIn(state, payload) {
       state.checkSignIn = payload;

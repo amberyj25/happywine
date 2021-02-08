@@ -88,16 +88,16 @@ export default {
     }
   },
   computed: {
-    ...mapState(['orgProductsPicks', 'orgProductsNews']),
+    ...mapState(['orgProductsClassic', 'orgProductsNews']),
     categoryProducts () {
       return this.getCategoryProducts();
     }
   },
   watch: {
-    orgProductsPicks () {
+    orgProductsClassic () {
       const tempClassicData = {}
       this.classicData['title'] = 'classic';
-      this.classicData['data'] = this.orgProductsPicks.filter(item => item.num < 5);
+      this.classicData['data'] = this.orgProductsClassic.filter(item => item.num < 5);
       this.classicAndNewData.push(this.classicData)
     },
     orgProductsNews () {
@@ -110,10 +110,10 @@ export default {
       this.classicAndNewData = [];
       switch (this.currentClassicPage) {
         case 1:
-          this.classicData['data'] = this.orgProductsPicks.filter(item => item.num < 5);
+          this.classicData['data'] = this.orgProductsClassic.filter(item => item.num < 5);
           break
         case 2:
-          this.classicData['data'] = this.orgProductsPicks.filter(item => 4 < item.num && item.num < 9);
+          this.classicData['data'] = this.orgProductsClassic.filter(item => 4 < item.num && item.num < 9);
           break
       }
       this.classicAndNewData.push(this.classicData);

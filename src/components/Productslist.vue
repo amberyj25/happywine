@@ -98,16 +98,16 @@ export default {
     };
   },
   computed: {
-    ...mapState(['orgProductsPicks', 'orgProductsNews']),
+    ...mapState(['orgProductsClassic', 'orgProductsNews']),
     categoryProducts () {
       return this.getCategoryProducts();
     }
   },
   watch: {
-    orgProductsPicks () {
+    orgProductsClassic () {
       const tempClassicData = {}
       tempClassicData['title'] = 'classic';
-      tempClassicData['data'] = this.orgProductsPicks;
+      tempClassicData['data'] = this.orgProductsClassic;
       this.classicAndNewData.push(tempClassicData)
     },
     orgProductsNews () {
