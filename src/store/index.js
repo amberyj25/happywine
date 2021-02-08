@@ -18,18 +18,14 @@ export default new Vuex.Store({
   },
   mutations: {
     getOrgProductsClassic(state, payload) {
-      const newPayload = payload.map(item => {
-        item.nums = 1;
-        return item;
-      });
-      state.orgProductsClassic = newPayload;
+      payload.forEach(item => item.productNum = 1)
+
+      state.orgProductsClassic = payload
     },
     getOrgProductsNews(state, payload) {
-      const newPayload = payload.map(item => {
-        item.nums = 1;
-        return item;
-      });
-      state.orgProductsNews = newPayload;
+      payload.forEach(item => item['productNum'] = 1)
+      
+      state.orgProductsNews = payload
     },
     checkSignIn(state, payload) {
       state.checkSignIn = payload;

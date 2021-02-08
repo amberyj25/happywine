@@ -60,10 +60,10 @@
                 </div>
                 <div class="product_bottom">
                   <div class="cart_num_out">
-                    <select class="cart_num" v-model="item.nums">
+                    <select class="cart_num" v-model="item.productNum">
                       <option :value="num" v-for="(num, index) in 10" :key="index">{{ num }}</option>
                     </select>
-                    <button @click="addCart(item.title, item.id, item.nums)">Add to cart</button>
+                    <button @click="addCart(item.title, item.id, item.productNum)">Add to cart</button>
                   </div>
                 </div>
               </div>
