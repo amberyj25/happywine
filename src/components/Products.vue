@@ -70,72 +70,6 @@
         </b-row>
       </div>
     </div>
-
-    <!-- <div class="products_news">
-      <b-row class="top">
-        <b-col cols="11">
-          <h2>New</h2>
-        </b-col>
-        <b-col cols="1" class="page justify-content-center mb-4">
-          <div>
-            <i class="fas fa-angle-left" @click="getNewsPreviousPage"></i>
-          </div>
-          <div>
-            <i class="fas fa-angle-right" @click="getNewsAfterPage"></i>
-          </div>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col
-          class="products"
-          cols="12 mb-5"
-          md="6"
-          lg="3"
-          v-for="(product, index) in newProductsData"
-          :key="index"
-          v-show="currentNewPage === Number(product.unit)"
-        >
-          <div class="wine">
-            <div class="introduction">
-              <div class="product_left">
-                <h5>{{ product.title }}</h5>
-                <p>{{ product.category }}</p>
-                <div class="year">
-                  <div class="am">
-                    <p class="title">AM</p>
-                    <p>85</p>
-                  </div>
-                  <div class="ws">
-                    <p class="title">WS</p>
-                    <p>100</p>
-                  </div>
-                </div>
-                <div class="sale_price">
-                  <div class="sale">＄{{ product.price }}</div>
-                  <div class="price">＄{{ product.origin_price }}</div>
-                </div>
-              </div>
-              <div class="product_right">
-                <img :src="product.image" alt="product" />
-              </div>
-              <div class="product_top_detail">
-                <div class="product_top_detail_inner">
-                  <p>新款</p>
-                </div>
-              </div>
-            </div>
-            <div class="product_bottom">
-              <div class="cart_num_out">
-                <select class="cart_num" v-model="product.nums">
-                  <option :value="num" v-for="(num, index) in 10" :key="index">{{num}}</option>
-                </select>
-                <button @click="addCartNew(product.id, product.nums)">Add to cart</button>
-              </div>
-            </div>
-          </div>
-        </b-col>
-      </b-row>
-    </div> -->
   </div>
 </template>
 
@@ -213,7 +147,6 @@ export default {
           if (this.currentClassicPage === 1) return
 
           this.currentClassicPage -= 1;
-          console.log(210, this.currentClassicPage);
           break;
         case 'new':
           if (this.currentNewPage === 1) return
@@ -228,7 +161,6 @@ export default {
           if (this.currentClassicPage === 2) return
 
           this.currentClassicPage += 1;
-          console.log(212, this.currentClassicPage);
           break;
         case 'new':
           if (this.currentNewPage === 2) return
@@ -265,54 +197,10 @@ export default {
       }
     },
     getCategoryProducts () {
-      // const a = this.classicAndNewData.filter(item => item.title === 'classic')
-      // const ab = a[0]['data']
-      // console.log(225, ab)
-      // const pageClassicData = this.classicAndNewData.forEach(item => item.title === 'classic').filter(item => item.nums === 1)
-      // const pageNewData = this.classicAndNewData.forEach(item => item.title === 'new').filter(item => item.nums === 1)
-      // this.classicAndNewData[0]['classic'] = pageClassicData
-      // this.classicAndNewData[1]['new'] = pageNewData
       return this.classicAndNewData;
     }
-    // getNewsPreviousPage () {
-    //   this.currentNewPage -= 1;
-    //   if (this.currentNewPage <= 0) {
-    //     this.currentNewPage = 1;
-    //   }
-    // },
-    // getNewsAfterPage () {
-    //   this.currentNewPage += 1;
-    //   if (this.currentNewPage >= 3) {
-    //     this.currentNewPage = 2;
-    //   }
-    // },
-    // addCart (id, qty) {
-    //   let params = {};
-    //   params.product_id = id;
-    //   params.qty = qty;
-    //   this.$store.dispatch("addCartClassic", params);
-    //   setTimeout(() => {
-    //     this.$store.dispatch("getCurrentClassicProducts");
-    //   }, 500)
-    // },
-    // addCartNew (id, qty) {
-    //   let params = {};
-    //   params.product_id = id;
-    //   params.qty = qty;
-    //   this.$store.dispatch("addCartNews", params);
-    //   setTimeout(() => {
-    //     this.$store.dispatch("getCurrentNewProducts");
-    //   }, 500)
   }
-  // computed: {
-  //   classicProductsData () {
-  //     return this.$store.state.orgProductsPicks;
-  //   },
-  //   newProductsData () {
-  //     return this.$store.state.orgProductsNews;
-  //   }
-  // }
-};
+}
 </script>
 
 <style scoped>

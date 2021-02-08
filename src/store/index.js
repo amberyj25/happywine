@@ -19,7 +19,6 @@ export default new Vuex.Store({
   mutations: {
     getOrgProductsClassic(state, payload) {
       const newPayload = payload.map(item => {
-        console.log(22, item)
         item.nums = 1;
         return item;
       });
