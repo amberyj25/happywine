@@ -28,9 +28,6 @@ export default {
     Introduction,
     Products,
     Footer
-  },
-  methods: {
-    ...mapActions([ 'getOrgProductsClassic', 'getOrgProductsNews'])
   }
 }
 </script>
