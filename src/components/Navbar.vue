@@ -55,7 +55,7 @@
               <span>{{ item.product.title }}</span>
               <span>{{ item.qty }}瓶</span>
               <span>${{ item.qty*item.product.price }}</span>
-              <span @click.prevent="deleteClassicProduct(item.id)">
+              <span @click.prevent="deleteClassicProduct(item.id)" class="deleteIcon">
                 <i class="far fa-trash-alt"></i>
               </span>
             </div>
@@ -72,7 +72,7 @@
               <span>{{ item.product.title }}</span>
               <span>{{ item.qty }}瓶</span>
               <span>${{ item.qty*item.product.price }}</span>
-              <span @click.prevent="deleteNewProduct(item.id)">
+              <span @click.prevent="deleteNewProduct(item.id)" class="deleteIcon">
                 <i class="far fa-trash-alt"></i>
               </span>
             </div>
@@ -197,6 +197,12 @@ export default {
 }
 hr {
   border: 1px solid black;
+}
+.deleteIcon {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  text-align: center;
 }
 /* media query*/
 @media (max-width: 1200px) {

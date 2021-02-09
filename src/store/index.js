@@ -37,7 +37,6 @@ export default new Vuex.Store({
       state.addCartNews = payload;
     },
     getCurrentShoppingCartClassic(state, payload) {
-      console.log(40, payload)
       state.currentShoppingCartClassic = payload;
     },
     getCurrentShoppingCartNew(state, payload) {
