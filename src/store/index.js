@@ -8,13 +8,13 @@ Vue.use(VueAxios, axios);
 
 export default new Vuex.Store({
   state: {
-    orgProductsClassic: "",
-    orgProductsNews: "",
+    orgProductsClassic: [],
+    orgProductsNews: [],
     checkSignIn: false,
-    addCartClassic: "",
-    addCartNews: "",
-    currentShoppingCartClassic: "",
-    currentShoppingCartNew: ""
+    addCartClassic: [],
+    addCartNews: [],
+    currentShoppingCartClassic: [],
+    currentShoppingCartNew: []
   },
   mutations: {
     getOrgProductsClassic(state, payload) {
@@ -37,6 +37,7 @@ export default new Vuex.Store({
       state.addCartNews = payload;
     },
     getCurrentShoppingCartClassic(state, payload) {
+      console.log(40, payload)
       state.currentShoppingCartClassic = payload;
     },
     getCurrentShoppingCartNew(state, payload) {
