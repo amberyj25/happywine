@@ -39,9 +39,7 @@ export default {
         username: "",
         password: "",
       },
-      answer: "",
-      notSuccess: "",
-      isLoading: false
+      notSuccess: ""
     }
   },
   methods: {
@@ -111,7 +109,7 @@ button {
   padding: 5px;
   border: none;
   border-radius: 8px;
-  margin-top: 25px; 
+  margin-top: 25px;
 }
 p {
   text-align: center;
