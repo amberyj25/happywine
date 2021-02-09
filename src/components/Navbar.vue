@@ -98,26 +98,26 @@ export default {
     };
   },
   computed: {
-    ...mapState([ "checkSignIn", "currentClassicProducts", "currentNewProducts"]),
+    ...mapState([ "checkSignIn", "currentShoppingCartClassic", "currentShoppingCartNew"]),
     checkLogIn () {
       return this.checkSignIn;
     },
     getClassicProducts () {
-      return this.currentClassicProducts;
+      return this.currentShoppingCartClassic;
     },
     getNewProducts () {
-      return this.currentNewProducts;
+      return this.currentShoppingCartNew;
     },
     shoppingItemsLength () {
       return this.totalDataLength;
     }
   },
   watch: {
-    currentClassicProducts () {
+    currentShoppingCartClassic () {
       this.getShoppingCartClassic();
       this.getTotalNumData();
     },
-    currentNewProducts () {
+    currentShoppingCartNew () {
       this.getShoppingCartNew();
       this.getTotalNumData();
     }
@@ -128,23 +128,23 @@ export default {
     this.getTotalNumData();
   },
   methods: {
-    ...mapActions([ "getCurrentClassicProducts", "getCurrentNewProducts", "signOutChange"]),
+    ...mapActions([ "getCurrentShoppingCartClassic", "getCurrentShoppingCartNew", "signOutChange"]),
     getTotalNumData () {
       this.totalDataLength = this.classicProductData.length + this.newProductData.length;
     },
     getShoppingCartClassic () {
-      this.classicProductData = this.currentClassicProducts;
+      this.classicProductData = this.currentShoppingCartClassic;
     },
     getShoppingCartNew () {
-      this.newProductData = this.currentNewProducts;
+      this.newProductData = this.currentShoppingCartNew;
     },
     deleteClassicProduct (id) {
       this.$store.dispatch("deleteProductsClassic", id);
-      this.getCurrentClassicProducts();
+      this.getCurrentShoppingCartClassic();
     },
     deleteNewProduct (id) {
       this.$store.dispatch("deleteProductsNew", id);
-      this.getCurrentNewProducts();
+      this.getCurrentShoppingCartNew();
     },
     signOut () {
       this.signOutChange();

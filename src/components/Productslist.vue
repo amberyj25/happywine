@@ -120,11 +120,11 @@ export default {
   mounted () {
     this.getOrgProductsClassic();
     this.getOrgProductsNews();
-    this.getCurrentClassicProducts();
-    this.getCurrentNewProducts();
+    this.getCurrentShoppingCartClassic();
+    this.getCurrentShoppingCartNew();
   },
   methods: {
-    ...mapActions(['getOrgProductsClassic', 'getOrgProductsNews', 'getCurrentClassicProducts', 'getCurrentNewProducts']),
+    ...mapActions(['getOrgProductsClassic', 'getOrgProductsNews', 'getCurrentShoppingCartClassic', 'getCurrentShoppingCartNew']),
     addCart(title, id, qty) {
       const params = {
         product_id: id,
@@ -135,19 +135,19 @@ export default {
         case "A":
           this.$store.dispatch("addCartClassic", params);
           setTimeout(() => {
-            this.getCurrentClassicProducts();
+            this.getCurrentShoppingCartClassic();
           }, 500)
           break;
         case "B":
           this.$store.dispatch("addCartClassic", params);
           setTimeout(() => {
-            this.getCurrentClassicProducts();
+            this.getCurrentShoppingCartClassic();
           }, 500)
           break;
         case "V":
           this.$store.dispatch("addCartNews", params);
           setTimeout(() => {
-            this.getCurrentNewProducts();
+            this.getCurrentShoppingCartNew();
           }, 500)
           break;
       }

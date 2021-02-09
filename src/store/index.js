@@ -13,8 +13,8 @@ export default new Vuex.Store({
     checkSignIn: false,
     addCartClassic: "",
     addCartNews: "",
-    currentClassicProducts: "",
-    currentNewProducts: ""
+    currentShoppingCartClassic: "",
+    currentShoppingCartNew: ""
   },
   mutations: {
     getOrgProductsClassic(state, payload) {
@@ -24,7 +24,7 @@ export default new Vuex.Store({
     },
     getOrgProductsNews(state, payload) {
       payload.forEach(item => item['productNum'] = 1)
-      
+
       state.orgProductsNews = payload
     },
     checkSignIn(state, payload) {
@@ -36,11 +36,11 @@ export default new Vuex.Store({
     addCartNews(state, payload) {
       state.addCartNews = payload;
     },
-    getCurrentClassicProducts(state, payload) {
-      state.currentClassicProducts = payload;
+    getCurrentShoppingCartClassic(state, payload) {
+      state.currentShoppingCartClassic = payload;
     },
-    getCurrentNewProducts(state, payload) {
-      state.currentNewProducts = payload;
+    getCurrentShoppingCartNew(state, payload) {
+      state.currentShoppingCartNew = payload;
     }
   },
   actions: {
@@ -76,18 +76,18 @@ export default new Vuex.Store({
           context.commit("addCartNews", res.data.data);
         });
     },
-    getCurrentClassicProducts(context) {
+    getCurrentShoppingCartClassic(context) {
       axios
         .get("https://vue-course-api.hexschool.io/api/wine5/cart")
         .then(res => {
-          context.commit("getCurrentClassicProducts", res.data.data.carts);
+          context.commit("getCurrentShoppingCartClassic", res.data.data.carts);
         });
     },
-    getCurrentNewProducts(context) {
+    getCurrentShoppingCartNew(context) {
       axios
         .get("https://vue-course-api.hexschool.io/api/wine52/cart")
         .then(res => {
-          context.commit("getCurrentNewProducts", res.data.data.carts);
+          context.commit("getCurrentShoppingCartNew", res.data.data.carts);
         });
     },
     deleteProductsClassic(context, payload) {
