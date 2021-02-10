@@ -92,19 +92,17 @@ export default new Vuex.Store({
     },
     deleteProductsClassic(context, payload) {
       axios
-        .delete(`https://vue-course-api.hexschool.io/api/wine5/cart/${payload}`)
-        // .then(res => {
-        //   context.dispatch("currentClassicProducts");
-        // });
+        .delete(
+          `https://vue-course-api.hexschool.io/api/wine5/cart/${payload}`
+        )
+        .then(() => this.dispatch('getCurrentShoppingCartClassic'))
     },
     deleteProductsNew(context, payload) {
       axios
         .delete(
           `https://vue-course-api.hexschool.io/api/wine52/cart/${payload}`
         )
-        // .then(res => {
-        //   context.dispatch("currentNewProducts");
-        // });
+        .then(() => this.dispatch('getCurrentShoppingCartNew'))
     },
     signOutChange(context) {
       axios.post("https://vue-course-api.hexschool.io/logout").then(result => {

@@ -140,11 +140,9 @@ export default {
     },
     deleteClassicProduct (id) {
       this.$store.dispatch("deleteProductsClassic", id);
-      this.getCurrentShoppingCartClassic();
     },
     deleteNewProduct (id) {
       this.$store.dispatch("deleteProductsNew", id);
-      this.getCurrentShoppingCartNew();
     },
     signOut () {
       this.signOutChange();
