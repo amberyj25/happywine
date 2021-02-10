@@ -64,6 +64,7 @@ export default new Vuex.Store({
           data: payload
         })
         .then(res => {
+          this.dispatch('getCurrentShoppingCartClassic');
           context.commit("addCartClassic", res.data);
         });
     },
@@ -73,6 +74,7 @@ export default new Vuex.Store({
           data: payload
         })
         .then(res => {
+          this.dispatch('getCurrentShoppingCartNew');
           context.commit("addCartNews", res.data.data);
         });
     },

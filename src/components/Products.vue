@@ -178,21 +178,12 @@ export default {
       switch (titleSplit[0]) {
         case "A":
           this.$store.dispatch("addCartClassic", params);
-          setTimeout(() => {
-            this.getCurrentShoppingCartClassic();
-          }, 500)
           break;
         case "B":
           this.$store.dispatch("addCartClassic", params);
-          setTimeout(() => {
-            this.getCurrentShoppingCartClassic();
-          }, 500)
           break;
         case "V":
           this.$store.dispatch("addCartNews", params);
-          setTimeout(() => {
-            this.getCurrentShoppingCartNew();
-          }, 500)
           break;
       }
     },
