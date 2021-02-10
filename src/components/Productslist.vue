@@ -194,7 +194,7 @@ export default {
 }
 
 .filter {
-  width: 45%;
+  width: 15%;
   height: 400px;
   margin: 55px 20px 0 0;
   box-sizing: border-box;
@@ -218,6 +218,9 @@ export default {
 .category {
   background-color: #7f5c5c;
   color: white;
+}
+.products_outer {
+  width: 85%;
 }
 .products,
 .products_news {
@@ -340,7 +343,7 @@ h2 {
 }
 
 main {
-  width: 85%;
+  width: 90%;
 }
 
 main .products_news .top .page,
