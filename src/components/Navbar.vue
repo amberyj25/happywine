@@ -1,87 +1,85 @@
 <template>
-  <div>
-    <b-navbar class="navabar_root" toggleable="lg" type="dark" variant="info">
-      <!-- logo -->
-      <b-navbar-brand class="brand_name">
-        <h1>
-          <router-link to="/">Wine Space</router-link>
-        </h1>
-      </b-navbar-brand>
+  <b-navbar class="navabar_root" toggleable="lg">
+    <!-- logo -->
+    <b-navbar-brand class="brand_name">
+      <h1>
+        <router-link to="/">Wine Space</router-link>
+      </h1>
+    </b-navbar-brand>
 
-      <!-- rwd - 漢堡選單 -->
-      <b-navbar-toggle target="nav-collapse" class="navigation_btn_rwd">
-        <i class="fas fa-bars"></i>
-      </b-navbar-toggle>
+    <!-- rwd - 漢堡選單 -->
+    <b-navbar-toggle target="nav-collapse" class="navigation_btn_rwd">
+      <i class="fas fa-bars"></i>
+    </b-navbar-toggle>
 
-      <!-- 不是 rwd - 會呈現在navigation 各個選項 -->
-      <b-collapse id="nav-collapse" is-nav class="navigation_content">
-        <b-navbar-nav class="ml-auto navigation_content_right">
-          <b-nav-item right>
-            <router-link to="/">首頁</router-link>
-          </b-nav-item>
-          <b-nav-item right>
-            <router-link to="/productsList">商品</router-link>
-          </b-nav-item>
-          <b-nav-item right>
-            <router-link to="/login" v-if="checkLogIn === false">Login</router-link>
-            <p v-else @click="signOut">Logout</p>
-          </b-nav-item>
-        </b-navbar-nav>
-      </b-collapse>
+    <!-- 不是 rwd - 會呈現在navigation 各個選項 -->
+    <b-collapse id="nav-collapse" is-nav class="navigation_content">
+      <b-navbar-nav class="ml-auto navigation_content_right">
+        <b-nav-item right>
+          <router-link to="/">首頁</router-link>
+        </b-nav-item>
+        <b-nav-item right>
+          <router-link to="/productsList">商品</router-link>
+        </b-nav-item>
+        <b-nav-item right>
+          <router-link to="/login" v-if="checkLogIn === false">Login</router-link>
+          <p v-else @click="signOut">Logout</p>
+        </b-nav-item>
+      </b-navbar-nav>
+    </b-collapse>
 
-      <!-- shopping_cart -->
-      <div class="shopping_cart">
-        <b-dropdown
-          id="dropdown-right"
-          right
-          text="Right align"
-          size="lg"
-          variant="link"
-          toggle-class="text-decoration-none"
-          no-caret
+    <!-- shopping_cart -->
+    <div class="shopping_cart">
+      <b-dropdown
+        id="dropdown-right"
+        right
+        text="Right align"
+        size="lg"
+        variant="link"
+        toggle-class="text-decoration-none"
+        no-caret
+      >
+        <template v-slot:button-content>
+          <i class="fas fa-shopping-cart"></i>
+          <b-badge variant="primary">{{ shoppingItemsLength }}</b-badge>
+        </template>
+        <p class="title">已選購 Classic 商品</p>
+        <b-dropdown-item
+          href="#"
+          v-for="(item, index) in getClassicProducts"
+          :key="`classicProduct${index}`"
+          class="content"
         >
-          <template v-slot:button-content>
-            <i class="fas fa-shopping-cart"></i>
-            <b-badge variant="primary">{{ shoppingItemsLength }}</b-badge>
-          </template>
-          <p class="title">已選購 Classic 商品</p>
-          <b-dropdown-item
-            href="#"
-            v-for="(item, index) in getClassicProducts"
-            :key="`classicProduct${index}`"
-            class="content"
-          >
-            <div class="content_item">
-              <span>{{ item.product.title }}</span>
-              <span>{{ item.qty }}瓶</span>
-              <span>${{ item.qty*item.product.price }}</span>
-              <span @click.prevent="deleteClassicProduct(item.id)" class="deleteIcon">
-                <i class="far fa-trash-alt"></i>
-              </span>
-            </div>
-            <hr />
-          </b-dropdown-item>
-          <p class="title">已選購 New 商品</p>
-          <b-dropdown-item
-            href="#"
-            v-for="(item, index) in getNewProducts"
-            :key="`newProduct${index}`"
-            class="content"
-          >
-            <div class="content_item">
-              <span>{{ item.product.title }}</span>
-              <span>{{ item.qty }}瓶</span>
-              <span>${{ item.qty*item.product.price }}</span>
-              <span @click.prevent="deleteNewProduct(item.id)" class="deleteIcon">
-                <i class="far fa-trash-alt"></i>
-              </span>
-            </div>
-            <hr />
-          </b-dropdown-item>
-        </b-dropdown>
-      </div>
-    </b-navbar>
-  </div>
+          <div class="content_item">
+            <span>{{ item.product.title }}</span>
+            <span>{{ item.qty }}瓶</span>
+            <span>${{ item.qty*item.product.price }}</span>
+            <span @click.prevent="deleteClassicProduct(item.id)" class="deleteIcon">
+              <i class="far fa-trash-alt"></i>
+            </span>
+          </div>
+          <hr />
+        </b-dropdown-item>
+        <p class="title">已選購 New 商品</p>
+        <b-dropdown-item
+          href="#"
+          v-for="(item, index) in getNewProducts"
+          :key="`newProduct${index}`"
+          class="content"
+        >
+          <div class="content_item">
+            <span>{{ item.product.title }}</span>
+            <span>{{ item.qty }}瓶</span>
+            <span>${{ item.qty*item.product.price }}</span>
+            <span @click.prevent="deleteNewProduct(item.id)" class="deleteIcon">
+              <i class="far fa-trash-alt"></i>
+            </span>
+          </div>
+          <hr />
+        </b-dropdown-item>
+      </b-dropdown>
+    </div>
+  </b-navbar>
 </template>
 
 <script>
@@ -98,7 +96,11 @@ export default {
     };
   },
   computed: {
-    ...mapState([ "checkSignIn", "currentShoppingCartClassic", "currentShoppingCartNew"]),
+    ...mapState([
+      "checkSignIn",
+      "currentShoppingCartClassic",
+      "currentShoppingCartNew"
+    ]),
     checkLogIn () {
       return this.checkSignIn;
     },
@@ -128,7 +130,11 @@ export default {
     this.getTotalNumData();
   },
   methods: {
-    ...mapActions([ "getCurrentShoppingCartClassic", "getCurrentShoppingCartNew", "signOutChange"]),
+    ...mapActions([
+      "getCurrentShoppingCartClassic",
+      "getCurrentShoppingCartNew",
+      "signOutChange"
+    ]),
     getTotalNumData () {
       this.totalDataLength = this.classicProductData.length + this.newProductData.length;
     },
@@ -158,7 +164,7 @@ export default {
   top: 0;
   left: 0;
   z-index: 2;
-  background-color: #494b50 !important;
+  background-color: #7B7B7B !important;
   padding: 0 100px;
   opacity: 0.9;
 }
@@ -166,8 +172,13 @@ export default {
   color: white;
   text-decoration: none;
 }
+.navabar_root h1 {
+  margin: 0;
+  font-size: 0;
+  font-weight: normal;
+}
 .navabar_root h1 a {
-  font-size: 3rem;
+  font-size: 1.5rem;
 }
 .navabar_root button i {
   font-size: 25px;
@@ -175,8 +186,8 @@ export default {
 }
 
 .navabar_root .navigation_content_right a {
-  margin: 0 20px;
-  font-size: 1.4rem;
+  margin: 0 30px;
+  font-size: 1.2rem;
 }
 #header a:hover {
   font-weight: bold;

@@ -46,7 +46,7 @@ export default {
   position: relative;
 }
 .carousel_img {
-  height: 580px;
+  height: 590px;
 }
 @media (min-width: 992px) and (max-width: 1200px) {
   .carousel_img {

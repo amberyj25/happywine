@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import { mapState , mapActions } from 'vuex'
+import { mapState , mapActions } from 'vuex';
 import Navbar from "@/components/Navbar.vue";
 import Products from "@/components/Products.vue";
 import Footer from "@/components/Footer.vue";
@@ -105,16 +105,16 @@ export default {
   },
   watch: {
     orgProductsClassic () {
-      const tempClassicData = {}
+      const tempClassicData = {};
       tempClassicData['title'] = 'classic';
       tempClassicData['data'] = this.orgProductsClassic;
-      this.classicAndNewData.push(tempClassicData)
+      this.classicAndNewData.push(tempClassicData);
     },
     orgProductsNews () {
-      const tempNewData = {}
+      const tempNewData = {};
       tempNewData['title'] = 'new';
       tempNewData['data'] = this.orgProductsNews;
-      this.classicAndNewData.push(tempNewData)
+      this.classicAndNewData.push(tempNewData);
     }
   },
   mounted () {

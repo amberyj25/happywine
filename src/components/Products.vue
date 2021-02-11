@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="products_picks">
+    <div class="products_classic">
       <div
           class="products"
           v-for="(category, index) in categoryProducts"
@@ -195,8 +195,8 @@ export default {
 </script>
 
 <style scoped>
-.products_picks, .products_news {
-  margin: 55px 0;
+.products_classic, .products_news {
+  margin: 15px 0;
 }
 
 .wine {
@@ -319,13 +319,13 @@ h2 {
 }
 
 main .products_news .top .page,
-main .products_picks .top .page {
+main .products_classic .top .page {
   display: flex;
   box-sizing: border-box;
   padding-top: 25px;
 }
-main .products_picks .fa-angle-left,
-main .products_picks .fa-angle-right {
+main .products_classic .fa-angle-left,
+main .products_classic .fa-angle-right {
   font-size: 35px;
 }
 main .products_news .fa-angle-left,
@@ -334,7 +334,7 @@ main .products_news .fa-angle-right {
 }
 
 main .products_news .top .page div,
-main .products_picks .top .page div {
+main .products_classic .top .page div {
   width: 35px;
   height: 35px;
   border: 1px solid #b49782;
@@ -342,7 +342,7 @@ main .products_picks .top .page div {
 }
 
 main .products_news .top .page div + div,
-main .products_picks .top .page div + div {
+main .products_classic .top .page div + div {
   margin-left: 5px;
 }
 </style>
