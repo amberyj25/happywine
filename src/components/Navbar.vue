@@ -19,7 +19,7 @@
           <router-link to="/">首頁</router-link>
         </b-nav-item>
         <b-nav-item right>
-          <router-link to="/productsList">商品</router-link>
+          <router-link to="/productsPage">商品</router-link>
         </b-nav-item>
         <b-nav-item right>
           <router-link to="/login" v-if="checkLogIn === false">Login</router-link>

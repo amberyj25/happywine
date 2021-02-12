@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header></Header>
+    <HeaderNavbarAndCarousel></HeaderNavbarAndCarousel>
 
     <main>
       <div class="container">
@@ -14,17 +14,16 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import Header from "@/components/Header.vue"
-import Introduction from "@/components/Introduction.vue"
-import Products from "@/components/Products.vue"
-import Footer from "@/components/Footer.vue"
-
+import { mapActions } from "vuex";
+import HeaderNavbarAndCarousel from "@/layout/HeaderNavbarAndCarousel.vue";
+import Introduction from "@/components/Introduction.vue";
+import Products from "@/components/Products.vue";
+import Footer from "@/layout/Footer.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Header,
+    HeaderNavbarAndCarousel,
     Introduction,
     Products,
     Footer
