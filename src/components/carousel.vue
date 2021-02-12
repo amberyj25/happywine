@@ -1,52 +1,90 @@
 <template>
-  <b-carousel
-    id="carousel"
-    v-model="slide"
-    :interval="2000"
-    controls
-    indicators
-    background="#ababab"
-    img-width="1024"
-    img-height="480"
-    style="text-shadow: 1px 1px 2px #333;"
-    @sliding-start="onSlideStart"
-    @sliding-end="onSlideEnd"
-  >
-    <!-- Text slides with image -->
-    <b-carousel-slide img-src="https://i.imgur.com/6x0J234.jpg" class="carousel_img"></b-carousel-slide>
-
-    <!-- Slides with custom text -->
-    <b-carousel-slide img-src="https://i.imgur.com/TBHJmjv.jpg" class="carousel_img"></b-carousel-slide>
-
-    <!-- Slides with image only -->
-    <b-carousel-slide img-src="https://i.imgur.com/NCbpT18.jpg" class="carousel_img"></b-carousel-slide>
-  </b-carousel>
+  <div>
+    <div class="carousel_img" v-for="(item, index) in carouselContent" :key="index">
+      <img :src="item.img" class="carousel_img_content" alt="carousel_img" />
+      <div class="carousel_alltabs">
+        <i
+          v-for="item in carouselContentData.length"
+          :key="item"
+          class="fas fa-circle"
+          :class="{fa_circle_style:currentCarouselContentId === item}"
+        ></i>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   name: "carousel",
-  data () {
+  data() {
     return {
-      slide: 1
+      carouselContentData: [
+        {
+          id: 1,
+          img: "https://i.imgur.com/6x0J234.jpg"
+        },
+        {
+          id: 2,
+          img: "https://i.imgur.com/TBHJmjv.jpg"
+        },
+        {
+          id: 3,
+          img: "https://i.imgur.com/NCbpT18.jpg"
+        }
+      ],
+      currentCarouselContentId: 1
+    };
+  },
+  computed: {
+    carouselContent() {
+      return this.carouselContentData.filter(
+        item => item.id === this.currentCarouselContentId
+      );
     }
   },
+  mounted() {
+    this.timer();
+  },
   methods: {
-    onSlideStart (slide) {
-      this.sliding = true;
+    timer() {
+      return setInterval(() => {
+        this.getData();
+      }, 3000);
     },
-    onSlideEnd(slide) {
-      this.sliding = false;
+    getData() {
+      if (this.currentCarouselContentId === this.carouselContentData.length) {
+        this.currentCarouselContentId = 1;
+        return;
+      }
+
+      this.currentCarouselContentId += 1;
     }
   }
-}
+};
 </script>
 <style scoped>
-#carousel {
+.carousel_img {
   position: relative;
 }
-.carousel_img {
+.carousel_img_content {
+  width: 100%;
   height: 590px;
+}
+.carousel_alltabs {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 25px;
+}
+.fa-circle {
+  margin: 0 25px;
+  font-size: 0.7rem;
+  color: white;
+}
+.fa_circle_style {
+  color: #0080ff;
 }
 @media (min-width: 992px) and (max-width: 1200px) {
   .carousel_img {
