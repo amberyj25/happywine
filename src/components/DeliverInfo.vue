@@ -2,7 +2,7 @@
   <div class="deliver_info">
     <b-row>
       <b-col
-        v-for="(item, index) in deliverContent"
+        v-for="(deliver, index) in deliverContent"
         :key="index"
         class="content"
         cols="12 mb-5"
@@ -10,10 +10,10 @@
         md="6 mb-0"
         sm="12"
       >
-        <img :src="item.img" alt="image" />
+        <img :src="deliver.img" alt="image" />
         <div>
-          <h5>{{ item.title }}</h5>
-          <p>{{ item.description }}</p>
+          <h5>{{ deliver.title }}</h5>
+          <p>{{ deliver.description }}</p>
         </div>
       </b-col>
     </b-row>
