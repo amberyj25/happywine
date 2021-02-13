@@ -6,8 +6,7 @@
         <i
           v-for="item in carouselContentData.length"
           :key="item"
-          class="fas fa-circle"
-          :class="{fa_circle_style:currentCarouselContentId === item}"
+          :class="{fas: true, 'fa-circle': true, fa_circle_style:currentCarouselContentId === item}"
           @click="changeTab(item)"
         ></i>
       </div>
