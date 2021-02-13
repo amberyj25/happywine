@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div class="carousel_img" v-for="(item, index) in carouselContent" :key="index">
-      <img :src="item.img" class="carousel_img_content" alt="carousel_img" />
+    <div class="carousel_img" v-for="(carousel, index) in carouselContent" :key="index">
+      <img :src="carousel.img" class="carousel_img_content" alt="carousel_img" />
       <div class="carousel_alltabs">
         <i
-          v-for="item in carouselContentData.length"
-          :key="item"
-          :class="{fas: true, 'fa-circle': true, fa_circle_style:currentCarouselContentId === item}"
-          @click="changeTab(item)"
+          v-for="carouselNum in carouselContentData.length"
+          :key="carouselNum"
+          :class="{fas: true, 'fa-circle': true, fa_circle_style:currentCarouselContentId === carouselNum}"
+          @click="changeTab(carouselNum)"
         ></i>
       </div>
     </div>
@@ -60,8 +60,8 @@ export default {
 
       this.currentCarouselContentId += 1;
     },
-    changeTab(item) {
-      this.currentCarouselContentId = item;
+    changeTab(carouselNum) {
+      this.currentCarouselContentId = carouselNum;
     }
   }
 };
