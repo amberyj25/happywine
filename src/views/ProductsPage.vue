@@ -26,14 +26,14 @@
               cols="12 mb-5"
               md="6"
               lg="3"
-              v-for="(item, index) in category.data"
+              v-for="(product, index) in category.data"
               :key="index"
             >
               <div class="wine">
                 <div class="product_top">
                   <div class="product_left">
-                    <h5>{{ item.title }}</h5>
-                    <p>{{ item.category }}</p>
+                    <h5>{{ product.title }}</h5>
+                    <p>{{ product.category }}</p>
                     <div class="year">
                       <div class="am">
                         <p class="title">AM</p>
@@ -45,20 +45,20 @@
                       </div>
                     </div>
                     <div class="sale_price">
-                      <div class="sale">＄{{ item.price }}</div>
-                      <div class="price">＄{{ item.origin_price }}</div>
+                      <div class="sale">＄{{ product.price }}</div>
+                      <div class="price">＄{{ product.origin_price }}</div>
                     </div>
                   </div>
                   <div class="product_right">
-                    <img :src="item.image" alt="product" />
+                    <img :src="product.image" alt="product" />
                   </div>
                 </div>
                 <div class="product_bottom">
                   <div class="cart_num_out">
-                    <select class="cart_num" v-model="item.productNum">
+                    <select class="cart_num" v-model="product.productNum">
                       <option :value="num" v-for="(num, index) in 10" :key="index">{{ num }}</option>
                     </select>
-                    <button @click="addCart(item.title, item.id, item.productNum)">Add to cart</button>
+                    <button @click="addCart(product.title, product.id, product.productNum)">Add to cart</button>
                   </div>
                 </div>
               </div>

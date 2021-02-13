@@ -2,15 +2,15 @@
   <div class="service">
     <b-row>
       <b-col
-        v-for="(item, index) in serviceContent"
+        v-for="(service, index) in serviceContent"
         :key="index"
         cols="12"
         lg="4"
       >
-        <i :class="item.style"></i>
+        <i :class="service.style"></i>
         <div class="detail">
-          <h4>{{ item.title }}</h4>
-          <p>{{ item.description }}</p>
+          <h4>{{ service.title }}</h4>
+          <p>{{ service.description }}</p>
         </div>
       </b-col>
     </b-row>
