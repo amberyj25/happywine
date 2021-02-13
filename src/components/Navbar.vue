@@ -46,15 +46,15 @@
         <p class="title">已選購 Classic 商品</p>
         <b-dropdown-item
           href="#"
-          v-for="(item, index) in getClassicProducts"
+          v-for="(classicProduct, index) in getClassicProducts"
           :key="`classicProduct${index}`"
           class="content"
         >
           <div class="content_item">
-            <span>{{ item.product.title }}</span>
-            <span>{{ item.qty }}瓶</span>
-            <span>${{ item.qty*item.product.price }}</span>
-            <span @click.prevent="deleteClassicProduct(item.id)" class="deleteIcon">
+            <span>{{ classicProduct.product.title }}</span>
+            <span>{{ classicProduct.qty }}瓶</span>
+            <span>${{ classicProduct.qty*classicProduct.product.price }}</span>
+            <span @click.prevent="deleteClassicProduct(classicProduct.id)" class="deleteIcon">
               <i class="far fa-trash-alt"></i>
             </span>
           </div>
@@ -63,15 +63,15 @@
         <p class="title">已選購 New 商品</p>
         <b-dropdown-item
           href="#"
-          v-for="(item, index) in getNewProducts"
+          v-for="(newProduct, index) in getNewProducts"
           :key="`newProduct${index}`"
           class="content"
         >
           <div class="content_item">
-            <span>{{ item.product.title }}</span>
-            <span>{{ item.qty }}瓶</span>
-            <span>${{ item.qty*item.product.price }}</span>
-            <span @click.prevent="deleteNewProduct(item.id)" class="deleteIcon">
+            <span>{{ newProduct.product.title }}</span>
+            <span>{{ newProduct.qty }}瓶</span>
+            <span>${{ newProduct.qty*newProduct.product.price }}</span>
+            <span @click.prevent="deleteNewProduct(newProduct.id)" class="deleteIcon">
               <i class="far fa-trash-alt"></i>
             </span>
           </div>
