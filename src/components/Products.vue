@@ -74,11 +74,11 @@
 </template>
 
 <script>
-import { mapState , mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
-  name: "Products",
-  data() {
+  name: 'Products',
+  data () {
     return {
       currentClassicPage: 1,
       currentNewPage: 1,
@@ -90,54 +90,60 @@ export default {
   computed: {
     ...mapState(['orgProductsClassic', 'orgProductsNews']),
     categoryProducts () {
-      return this.getCategoryProducts();
+      return this.getCategoryProducts()
     }
   },
   watch: {
     orgProductsClassic () {
-      const tempClassicData = {}
-      this.classicData['title'] = 'classic';
-      this.classicData['data'] = this.orgProductsClassic.filter(item => item.num < 5);
+      // eslint-disable-next-line dot-notation
+      this.classicData['title'] = 'classic'
+      // eslint-disable-next-line dot-notation
+      this.classicData['data'] = this.orgProductsClassic.filter(item => item.num < 5)
       this.classicAndNewData.push(this.classicData)
     },
     orgProductsNews () {
-      const tempNewData = {}
-      this.newData['title'] = 'new';
-      this.newData['data'] = this.orgProductsNews.filter(item => item.num < 5);
+      // eslint-disable-next-line dot-notation
+      this.newData['title'] = 'new'
+      // eslint-disable-next-line dot-notation
+      this.newData['data'] = this.orgProductsNews.filter(item => item.num < 5)
       this.classicAndNewData.push(this.newData)
     },
     currentClassicPage () {
-      this.classicAndNewData = [];
+      this.classicAndNewData = []
       switch (this.currentClassicPage) {
         case 1:
-          this.classicData['data'] = this.orgProductsClassic.filter(item => item.num < 5);
+          // eslint-disable-next-line dot-notation
+          this.classicData['data'] = this.orgProductsClassic.filter(item => item.num < 5)
           break
         case 2:
-          this.classicData['data'] = this.orgProductsClassic.filter(item => 4 < item.num && item.num < 9);
+          // eslint-disable-next-line dot-notation
+          this.classicData['data'] = this.orgProductsClassic.filter(item => item.num > 4 && item.num < 9)
           break
       }
-      this.classicAndNewData.push(this.classicData);
-      this.classicAndNewData.push(this.newData);
+      this.classicAndNewData.push(this.classicData)
+      this.classicAndNewData.push(this.newData)
     },
     currentNewPage () {
-      this.classicAndNewData = [];
+      this.classicAndNewData = []
       switch (this.currentNewPage) {
         case 1:
-          this.newData['data'] = this.orgProductsNews.filter(item => item.num < 5);
-          break;
+          // eslint-disable-next-line dot-notation
+          this.newData['data'] = this.orgProductsNews.filter(item => item.num < 5)
+          break
         case 2:
-          this.newData['data'] = this.orgProductsNews.filter(item => 4 < item.num && item.num < 9);
-          break;
+          // eslint-disable-next-line dot-notation
+          this.newData['data'] = this.orgProductsNews.filter(item => item.num > 4 && item.num < 9)
+          break
       }
-      this.classicAndNewData.push(this.classicData);
-      this.classicAndNewData.push(this.newData);
+      this.classicAndNewData.push(this.classicData)
+      this.classicAndNewData.push(this.newData)
     }
   },
   mounted () {
-    this.getOrgProductsClassic();
-    this.getOrgProductsNews();
-    this.getCurrentShoppingCartClassic();
-    this.getCurrentShoppingCartNew();
+    this.getOrgProductsClassic()
+    this.getOrgProductsNews()
+    this.getCurrentShoppingCartClassic()
+    this.getCurrentShoppingCartNew()
   },
   methods: {
     ...mapActions(['getOrgProductsClassic', 'getOrgProductsNews', 'getCurrentShoppingCartClassic', 'getCurrentShoppingCartNew']),
@@ -146,13 +152,13 @@ export default {
         case 'classic':
           if (this.currentClassicPage === 1) return
 
-          this.currentClassicPage -= 1;
-          break;
+          this.currentClassicPage -= 1
+          break
         case 'new':
           if (this.currentNewPage === 1) return
 
-          this.currentNewPage -= 1;
-          break;
+          this.currentNewPage -= 1
+          break
       }
     },
     getNextPage (category) {
@@ -160,35 +166,35 @@ export default {
         case 'classic':
           if (this.currentClassicPage === 2) return
 
-          this.currentClassicPage += 1;
-          break;
+          this.currentClassicPage += 1
+          break
         case 'new':
           if (this.currentNewPage === 2) return
 
-          this.currentNewPage += 1;
-          break;
+          this.currentNewPage += 1
+          break
       }
     },
-    addCart(title, id, qty) {
+    addCart (title, id, qty) {
       const params = {
         product_id: id,
         qty: qty
-      };
+      }
       const titleSplit = title.split('')
       switch (titleSplit[0]) {
-        case "A":
-          this.$store.dispatch("addCartClassic", params);
-          break;
-        case "B":
-          this.$store.dispatch("addCartClassic", params);
-          break;
-        case "V":
-          this.$store.dispatch("addCartNews", params);
-          break;
+        case 'A':
+          this.$store.dispatch('addCartClassic', params)
+          break
+        case 'B':
+          this.$store.dispatch('addCartClassic', params)
+          break
+        case 'V':
+          this.$store.dispatch('addCartNews', params)
+          break
       }
     },
     getCategoryProducts () {
-      return this.classicAndNewData;
+      return this.classicAndNewData
     }
   }
 }

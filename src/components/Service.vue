@@ -19,27 +19,27 @@
 
 <script>
 export default {
-  name: "Service",
+  name: 'Service',
   data () {
     return {
       serviceContent: [
         {
-          title: "酒品",
-          description: "最棒的酒款",
+          title: '酒品',
+          description: '最棒的酒款',
           style: 'fas fa-wine-glass-alt'
-        },{
-          title: "滿額",
-          description: "購滿$2,000就可免運",
+        }, {
+          title: '滿額',
+          description: '購滿$2,000就可免運',
           style: 'fas fa-comment-dollar'
-        },{
-          title: "寄送服務",
-          description: "恆溫的寄送服務",
+        }, {
+          title: '寄送服務',
+          description: '恆溫的寄送服務',
           style: 'fas fa-truck'
         }
       ]
-    };
+    }
   }
-};
+}
 </script>
 <style scoped>
 /* .service {
@@ -79,4 +79,3 @@ export default {
   font-weight: bold;
 }
 </style>
-

@@ -83,78 +83,78 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex'
 
 export default {
-  name: "Navbar",
+  name: 'Navbar',
   data () {
     return {
       classicProductData: [],
       newProductData: [],
-      totalDataLength: "",
+      totalDataLength: '',
       checkSignInData: false
-    };
+    }
   },
   computed: {
     ...mapState([
-      "checkSignIn",
-      "currentShoppingCartClassic",
-      "currentShoppingCartNew"
+      'checkSignIn',
+      'currentShoppingCartClassic',
+      'currentShoppingCartNew'
     ]),
     checkLogIn () {
-      return this.checkSignIn;
+      return this.checkSignIn
     },
     getClassicProducts () {
-      return this.currentShoppingCartClassic;
+      return this.currentShoppingCartClassic
     },
     getNewProducts () {
-      return this.currentShoppingCartNew;
+      return this.currentShoppingCartNew
     },
     shoppingItemsLength () {
-      return this.totalDataLength;
+      return this.totalDataLength
     }
   },
   watch: {
     currentShoppingCartClassic () {
-      this.getShoppingCartClassic();
-      this.getTotalNumData();
+      this.getShoppingCartClassic()
+      this.getTotalNumData()
     },
     currentShoppingCartNew () {
-      this.getShoppingCartNew();
-      this.getTotalNumData();
+      this.getShoppingCartNew()
+      this.getTotalNumData()
     }
   },
-  mounted() {
-    this.getShoppingCartClassic();
-    this.getShoppingCartNew();
-    this.getTotalNumData();
+  mounted () {
+    this.getShoppingCartClassic()
+    this.getShoppingCartNew()
+    this.getTotalNumData()
   },
   methods: {
     ...mapActions([
-      "getCurrentShoppingCartClassic",
-      "getCurrentShoppingCartNew",
-      "signOutChange"
+      'getCurrentShoppingCartClassic',
+      'getCurrentShoppingCartNew',
+      'signOutChange'
     ]),
     getTotalNumData () {
-      this.totalDataLength = this.classicProductData.length + this.newProductData.length;
+      this.totalDataLength = this.classicProductData.length + this.newProductData.length
     },
     getShoppingCartClassic () {
-      this.classicProductData = this.currentShoppingCartClassic;
+      this.classicProductData = this.currentShoppingCartClassic
     },
     getShoppingCartNew () {
-      this.newProductData = this.currentShoppingCartNew;
+      this.newProductData = this.currentShoppingCartNew
     },
     deleteClassicProduct (id) {
-      this.$store.dispatch("deleteProductsClassic", id);
+      this.$store.dispatch('deleteProductsClassic', id)
     },
     deleteNewProduct (id) {
-      this.$store.dispatch("deleteProductsNew", id);
+      this.$store.dispatch('deleteProductsNew', id)
     },
     signOut () {
-      this.signOutChange();
+      this.signOutChange()
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -244,8 +244,4 @@ hr {
     font-size: 1.5rem;
   }
 }
-/* 
-@media (max-width: 992px) {
-  }
-  */
 </style>

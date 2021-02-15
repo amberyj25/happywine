@@ -16,55 +16,55 @@
 
 <script>
 export default {
-  name: "carousel",
-  data() {
+  name: 'carousel',
+  data () {
     return {
       carouselContentData: [
         {
           id: 1,
-          img: "https://i.imgur.com/6x0J234.jpg"
+          img: 'https://i.imgur.com/6x0J234.jpg'
         },
         {
           id: 2,
-          img: "https://i.imgur.com/TBHJmjv.jpg"
+          img: 'https://i.imgur.com/TBHJmjv.jpg'
         },
         {
           id: 3,
-          img: "https://i.imgur.com/NCbpT18.jpg"
+          img: 'https://i.imgur.com/NCbpT18.jpg'
         }
       ],
       currentCarouselContentId: 1
-    };
+    }
   },
   computed: {
-    carouselContent() {
+    carouselContent () {
       return this.carouselContentData.filter(
         item => item.id === this.currentCarouselContentId
-      );
+      )
     }
   },
-  mounted() {
-    this.timer();
+  mounted () {
+    this.timer()
   },
   methods: {
-    timer() {
+    timer () {
       return setInterval(() => {
-        this.getData();
-      }, 3000);
+        this.getData()
+      }, 3000)
     },
-    getData() {
+    getData () {
       if (this.currentCarouselContentId === this.carouselContentData.length) {
-        this.currentCarouselContentId = 1;
-        return;
+        this.currentCarouselContentId = 1
+        return
       }
 
-      this.currentCarouselContentId += 1;
+      this.currentCarouselContentId += 1
     },
-    changeTab(carouselNum) {
-      this.currentCarouselContentId = carouselNum;
+    changeTab (carouselNum) {
+      this.currentCarouselContentId = carouselNum
     }
   }
-};
+}
 </script>
 <style scoped>
 .carousel_img {

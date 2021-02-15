@@ -27,33 +27,35 @@ import deliverImg3 from '../assets/introduction3.jpg'
 import deliverImg4 from '../assets/introduction4.jpg'
 
 export default {
-  name: "DeliverInfo",
+  name: 'DeliverInfo',
   data () {
     return {
       deliverContent: [
         {
-          title: "Lorem",
-          description: "恆溫的寄送服務",
+          title: 'Lorem',
+          description: '恆溫的寄送服務',
           img: deliverImg1
-        },{
-          title: "滿額",
-          description: "購滿$2,000就可免運",
+        },
+        {
+          title: '滿額',
+          description: '購滿$2,000就可免運',
           img: deliverImg2
-        },{
-          title: "寄送服務",
-          description: "恆溫的寄送服務",
+        },
+        {
+          title: '寄送服務',
+          description: '恆溫的寄送服務',
           img: deliverImg3
-        },{
-          title: "寄送服務",
-          description: "恆溫的寄送服務",
+        },
+        {
+          title: '寄送服務',
+          description: '恆溫的寄送服務',
           img: deliverImg4
         }
       ]
     }
   }
-};
+}
 </script>
-
 
 <style scoped>
 .deliver_info div {

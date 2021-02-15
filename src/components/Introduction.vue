@@ -11,18 +11,17 @@
 </template>
 
 <script>
-import Service from "@/components/Service.vue";
-import DeliverInfo from "@/components/DeliverInfo.vue";
+import Service from '@/components/Service.vue'
+import DeliverInfo from '@/components/DeliverInfo.vue'
 
 export default {
-  name: "Introduction",
+  name: 'Introduction',
   components: {
     Service,
     DeliverInfo
   }
-};
+}
 </script>
-
 
 <style scoped>
 main .introduction hr {
@@ -36,4 +35,3 @@ main .introduction hr {
   }
 }
 </style>
-

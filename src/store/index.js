@@ -1,10 +1,10 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import axios from "axios";
-import VueAxios from "vue-axios";
+import Vue from 'vue'
+import Vuex from 'vuex'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
-Vue.use(Vuex);
-Vue.use(VueAxios, axios);
+Vue.use(Vuex)
+Vue.use(VueAxios, axios)
 
 export default new Vuex.Store({
   state: {
@@ -17,98 +17,104 @@ export default new Vuex.Store({
     currentShoppingCartNew: []
   },
   mutations: {
-    getOrgProductsClassic(state, payload) {
-      payload.forEach(item => item.productNum = 1)
+    getOrgProductsClassic (state, payload) {
+      payload.map(item => {
+        item.productNum = 1
+        return item
+      })
 
       state.orgProductsClassic = payload
     },
-    getOrgProductsNews(state, payload) {
-      payload.forEach(item => item['productNum'] = 1)
+    getOrgProductsNews (state, payload) {
+      payload.map(item => {
+        item.productNum = 1
+        return item
+      })
 
       state.orgProductsNews = payload
     },
-    checkSignIn(state, payload) {
-      state.checkSignIn = payload;
+    checkSignIn (state, payload) {
+      state.checkSignIn = payload
     },
-    addCartClassic(state, payload) {
-      state.addCartClassic = payload;
+    addCartClassic (state, payload) {
+      state.addCartClassic = payload
     },
-    addCartNews(state, payload) {
-      state.addCartNews = payload;
+    addCartNews (state, payload) {
+      state.addCartNews = payload
     },
-    getCurrentShoppingCartClassic(state, payload) {
-      state.currentShoppingCartClassic = payload;
+    getCurrentShoppingCartClassic (state, payload) {
+      state.currentShoppingCartClassic = payload
     },
-    getCurrentShoppingCartNew(state, payload) {
-      state.currentShoppingCartNew = payload;
+    getCurrentShoppingCartNew (state, payload) {
+      state.currentShoppingCartNew = payload
     }
   },
   actions: {
-    getOrgProductsClassic(context) {
+    getOrgProductsClassic (context) {
       axios
-        .get("https://vue-course-api.hexschool.io/api/wine5/products")
+        .get('https://vue-course-api.hexschool.io/api/wine5/products')
         .then(res => {
-          context.commit("getOrgProductsClassic", res.data.products);
-        });
+          context.commit('getOrgProductsClassic', res.data.products)
+        })
     },
-    getOrgProductsNews(context) {
+    getOrgProductsNews (context) {
       axios
-        .get("https://vue-course-api.hexschool.io/api/wine52/products")
+        .get('https://vue-course-api.hexschool.io/api/wine52/products')
         .then(res => {
-          context.commit("getOrgProductsNews", res.data.products);
-        });
+          context.commit('getOrgProductsNews', res.data.products)
+        })
     },
-    addCartClassic(context, payload) {
+    addCartClassic (context, payload) {
       axios
-        .post("https://vue-course-api.hexschool.io/api/wine5/cart", {
+        .post('https://vue-course-api.hexschool.io/api/wine5/cart', {
           data: payload
         })
         .then(res => {
-          this.dispatch('getCurrentShoppingCartClassic');
-          context.commit("addCartClassic", res.data);
-        });
+          this.dispatch('getCurrentShoppingCartClassic')
+          context.commit('addCartClassic', res.data)
+        })
     },
-    addCartNews(context, payload) {
+    addCartNews (context, payload) {
       axios
-        .post("https://vue-course-api.hexschool.io/api/wine52/cart", {
+        .post('https://vue-course-api.hexschool.io/api/wine52/cart', {
           data: payload
         })
         .then(res => {
-          this.dispatch('getCurrentShoppingCartNew');
-          context.commit("addCartNews", res.data.data);
-        });
+          this.dispatch('getCurrentShoppingCartNew')
+          context.commit('addCartNews', res.data.data)
+        })
     },
-    getCurrentShoppingCartClassic(context) {
+    getCurrentShoppingCartClassic (context) {
       axios
-        .get("https://vue-course-api.hexschool.io/api/wine5/cart")
+        .get('https://vue-course-api.hexschool.io/api/wine5/cart')
         .then(res => {
-          context.commit("getCurrentShoppingCartClassic", res.data.data.carts);
-        });
+          context.commit('getCurrentShoppingCartClassic', res.data.data.carts)
+        })
     },
-    getCurrentShoppingCartNew(context) {
+    getCurrentShoppingCartNew (context) {
       axios
-        .get("https://vue-course-api.hexschool.io/api/wine52/cart")
+        .get('https://vue-course-api.hexschool.io/api/wine52/cart')
         .then(res => {
-          context.commit("getCurrentShoppingCartNew", res.data.data.carts);
-        });
+          context.commit('getCurrentShoppingCartNew', res.data.data.carts)
+        })
     },
-    deleteProductsClassic(context, payload) {
+    deleteProductsClassic (context, payload) {
       axios
         .delete(
           `https://vue-course-api.hexschool.io/api/wine5/cart/${payload}`
         )
         .then(() => this.dispatch('getCurrentShoppingCartClassic'))
     },
-    deleteProductsNew(context, payload) {
+    deleteProductsNew (context, payload) {
       axios
         .delete(
           `https://vue-course-api.hexschool.io/api/wine52/cart/${payload}`
         )
         .then(() => this.dispatch('getCurrentShoppingCartNew'))
     },
-    signOutChange(context) {
-      axios.post("https://vue-course-api.hexschool.io/logout").then(result => {
-        context.commit("checkSignIn", false);
+    signOutChange (context) {
+      axios.post('https://vue-course-api.hexschool.io/logout').then(result => {
+        context.commit('checkSignIn', false)
       })
     }
   }
