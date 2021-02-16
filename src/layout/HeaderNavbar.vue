@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
+import Navbar from '@/components/Navbar.vue'
 
 export default {
-  name: "HeaderNavbar",
+  name: 'HeaderNavbar',
   components: {
     Navbar
   }
-};
+}
 </script>
 <style scoped>
 </style>

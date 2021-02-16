@@ -3,7 +3,7 @@
     <div class="content">
       <div class="content_left">
         <a href="##">Wine Space</a>
-        <p class="copyright">&copy 2020 Happy Wine</p>
+        <p class="copyright">Copyright &copy; 2020 Happy Wine</p>
       </div>
       <div class="content_right">
         <p>contact</p>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "Footer"
+  name: 'Footer'
 }
 </script>
 

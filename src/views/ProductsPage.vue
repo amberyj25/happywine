@@ -73,101 +73,101 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-import HeaderNavbar from "@/layout/HeaderNavbar.vue";
-import Navbar from "@/components/Navbar.vue";
-import Products from "@/components/Products.vue";
-import Footer from "@/layout/Footer.vue";
+import { mapState, mapActions } from 'vuex'
+import HeaderNavbar from '@/layout/HeaderNavbar.vue'
+import Footer from '@/layout/Footer.vue'
 
 export default {
-  name: "ProductsPage",
+  name: 'ProductsPage',
   components: {
     HeaderNavbar,
-    Navbar,
-    Products,
     Footer
   },
   data () {
     return {
-      wineCategory: ["New酒品", "Classic酒品", "全部酒品"],
-      categoryRender: "New酒品",
+      wineCategory: ['New酒品', 'Classic酒品', '全部酒品'],
+      categoryRender: 'New酒品',
       classicAndNewData: []
-    };
+    }
   },
   computed: {
-    ...mapState(["orgProductsClassic", "orgProductsNews"]),
-    categoryProducts() {
-      return this.getCategoryProducts();
+    ...mapState(['orgProductsClassic', 'orgProductsNews']),
+    categoryProducts () {
+      return this.getCategoryProducts()
     }
   },
   watch: {
     orgProductsClassic () {
-      const tempClassicData = {};
-      tempClassicData["title"] = "classic";
-      tempClassicData["data"] = this.orgProductsClassic;
-      this.classicAndNewData.push(tempClassicData);
+      const tempClassicData = {}
+      // eslint-disable-next-line dot-notation
+      tempClassicData['title'] = 'classic'
+      // eslint-disable-next-line dot-notation
+      tempClassicData['data'] = this.orgProductsClassic
+      this.classicAndNewData.push(tempClassicData)
     },
     orgProductsNews () {
-      const tempNewData = {};
-      tempNewData["title"] = "new";
-      tempNewData["data"] = this.orgProductsNews;
-      this.classicAndNewData.push(tempNewData);
+      const tempNewData = {}
+      // eslint-disable-next-line dot-notation
+      tempNewData['title'] = 'new'
+      // eslint-disable-next-line dot-notation
+      tempNewData['data'] = this.orgProductsNews
+      this.classicAndNewData.push(tempNewData)
     }
   },
   mounted () {
-    this.getOrgProductsClassic();
-    this.getOrgProductsNews();
-    this.getCurrentShoppingCartClassic();
-    this.getCurrentShoppingCartNew();
+    this.getOrgProductsClassic()
+    this.getOrgProductsNews()
+    this.getCurrentShoppingCartClassic()
+    this.getCurrentShoppingCartNew()
   },
   methods: {
     ...mapActions([
-      "getOrgProductsClassic",
-      "getOrgProductsNews",
-      "getCurrentShoppingCartClassic",
-      "getCurrentShoppingCartNew"
+      'getOrgProductsClassic',
+      'getOrgProductsNews',
+      'getCurrentShoppingCartClassic',
+      'getCurrentShoppingCartNew'
     ]),
     addCart (title, id, qty) {
       const params = {
         product_id: id,
         qty: qty
-      };
-      const titleSplit = title.split("");
+      }
+      const titleSplit = title.split('')
       switch (titleSplit[0]) {
-        case "A":
-          this.$store.dispatch("addCartClassic", params);
-          break;
-        case "B":
-          this.$store.dispatch("addCartClassic", params);
-          break;
-        case "V":
-          this.$store.dispatch("addCartNews", params);
-          break;
+        case 'A':
+          this.$store.dispatch('addCartClassic', params)
+          break
+        case 'B':
+          this.$store.dispatch('addCartClassic', params)
+          break
+        case 'V':
+          this.$store.dispatch('addCartNews', params)
+          break
       }
     },
     getCategory (category) {
       switch (category) {
-        case "New酒品":
-          this.categoryRender = "New酒品";
-          break;
-        case "Classic酒品":
-          this.categoryRender = "Classic酒品";
-          break;
-        case "全部酒品":
-          this.categoryRender = "全部酒品";
-          break;
+        case 'New酒品':
+          this.categoryRender = 'New酒品'
+          break
+        case 'Classic酒品':
+          this.categoryRender = 'Classic酒品'
+          break
+        case '全部酒品':
+          this.categoryRender = '全部酒品'
+          break
       }
     },
     getCategoryProducts () {
       switch (this.categoryRender) {
-        case "New酒品":
-          return this.classicAndNewData.filter(item => item.title === "new");
-        case "Classic酒品":
+        case 'New酒品':
+          return this.classicAndNewData.filter(item => item.title === 'new')
+        case 'Classic酒品':
           return this.classicAndNewData.filter(
-            item => item.title === "classic"
-          );
-        case "全部酒品":
-          return this.classicAndNewData;
+            item => item.title === 'classic'
+          )
+        case '全部酒品':
+          return this.classicAndNewData
       }
     }
   }

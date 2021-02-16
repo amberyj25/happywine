@@ -24,43 +24,41 @@
 </template>
 
 <script>
-import HeaderNavbar from "@/layout/HeaderNavbar.vue";
-import Navbar from "@/components/Navbar.vue";
+import HeaderNavbar from '@/layout/HeaderNavbar.vue'
 
 export default {
-  name: "Login",
+  name: 'Login',
   components: {
-    HeaderNavbar,
-    Navbar
+    HeaderNavbar
   },
   data () {
     return {
       user: {
-        username: "",
-        password: ""
+        username: '',
+        password: ''
       },
-      notSuccess: ""
-    };
+      notSuccess: ''
+    }
   },
   methods: {
     signin () {
       this.axios
-        .post("https://vue-course-api.hexschool.io/signin", this.user)
+        .post('https://vue-course-api.hexschool.io/signin', this.user)
         .then(result => {
-          const isResultSuccess = result.data.success;
+          const isResultSuccess = result.data.success
           switch (isResultSuccess) {
             case true:
-              this.$router.push("/");
-              this.$store.commit("checkSignIn", true);
-              break;
+              this.$router.push('/')
+              this.$store.commit('checkSignIn', true)
+              break
             case false:
-              this.notSuccess = "沒有登入成功";
-              break;
+              this.notSuccess = '沒有登入成功'
+              break
           }
         })
     }
   }
-};
+}
 </script>
 <style scoped>
 .outer {

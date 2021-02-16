@@ -14,14 +14,13 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import HeaderNavbarAndCarousel from "@/layout/HeaderNavbarAndCarousel.vue";
-import Introduction from "@/components/Introduction.vue";
-import Products from "@/components/Products.vue";
-import Footer from "@/layout/Footer.vue";
+import HeaderNavbarAndCarousel from '@/layout/HeaderNavbarAndCarousel.vue'
+import Introduction from '@/components/Introduction.vue'
+import Products from '@/components/Products.vue'
+import Footer from '@/layout/Footer.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     HeaderNavbarAndCarousel,
     Introduction,
