@@ -29,127 +29,36 @@
     </b-collapse>
 
     <!-- shopping_cart -->
-    <div class="shopping_cart">
-      <b-dropdown
-        id="dropdown-right"
-        right
-        text="Right align"
-        size="lg"
-        variant="link"
-        toggle-class="text-decoration-none"
-        no-caret
-      >
-        <template v-slot:button-content>
-          <i class="fas fa-shopping-cart"></i>
-          <b-badge variant="primary">{{ shoppingItemsLength }}</b-badge>
-        </template>
-        <p class="title">已選購 Classic 商品</p>
-        <b-dropdown-item
-          href="#"
-          v-for="(classicProduct, index) in getClassicProducts"
-          :key="`classicProduct${index}`"
-          class="content"
-        >
-          <div class="content_item">
-            <span>{{ classicProduct.product.title }}</span>
-            <span>{{ classicProduct.qty }}瓶</span>
-            <span>${{ classicProduct.qty*classicProduct.product.price }}</span>
-            <span @click.prevent="deleteClassicProduct(classicProduct.id)" class="deleteIcon">
-              <i class="far fa-trash-alt"></i>
-            </span>
-          </div>
-          <hr />
-        </b-dropdown-item>
-        <p class="title">已選購 New 商品</p>
-        <b-dropdown-item
-          href="#"
-          v-for="(newProduct, index) in getNewProducts"
-          :key="`newProduct${index}`"
-          class="content"
-        >
-          <div class="content_item">
-            <span>{{ newProduct.product.title }}</span>
-            <span>{{ newProduct.qty }}瓶</span>
-            <span>${{ newProduct.qty*newProduct.product.price }}</span>
-            <span @click.prevent="deleteNewProduct(newProduct.id)" class="deleteIcon">
-              <i class="far fa-trash-alt"></i>
-            </span>
-          </div>
-          <hr />
-        </b-dropdown-item>
-      </b-dropdown>
-    </div>
+    <ShoppingCart></ShoppingCart>
   </b-navbar>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import ShoppingCart from '@/components/ShoppingCart.vue'
 
 export default {
   name: 'Navbar',
+  components: {
+    ShoppingCart
+  },
   data () {
     return {
-      classicProductData: [],
-      newProductData: [],
-      totalDataLength: '',
       checkSignInData: false
     }
   },
   computed: {
     ...mapState([
-      'checkSignIn',
-      'currentShoppingCartClassic',
-      'currentShoppingCartNew'
+      'checkSignIn'
     ]),
     checkLogIn () {
       return this.checkSignIn
-    },
-    getClassicProducts () {
-      return this.currentShoppingCartClassic
-    },
-    getNewProducts () {
-      return this.currentShoppingCartNew
-    },
-    shoppingItemsLength () {
-      return this.totalDataLength
     }
-  },
-  watch: {
-    currentShoppingCartClassic () {
-      this.getShoppingCartClassic()
-      this.getTotalNumData()
-    },
-    currentShoppingCartNew () {
-      this.getShoppingCartNew()
-      this.getTotalNumData()
-    }
-  },
-  mounted () {
-    this.getShoppingCartClassic()
-    this.getShoppingCartNew()
-    this.getTotalNumData()
   },
   methods: {
     ...mapActions([
-      'getCurrentShoppingCartClassic',
-      'getCurrentShoppingCartNew',
       'signOutChange'
     ]),
-    getTotalNumData () {
-      this.totalDataLength = this.classicProductData.length + this.newProductData.length
-    },
-    getShoppingCartClassic () {
-      this.classicProductData = this.currentShoppingCartClassic
-    },
-    getShoppingCartNew () {
-      this.newProductData = this.currentShoppingCartNew
-    },
-    deleteClassicProduct (id) {
-      this.$store.dispatch('deleteProductsClassic', id)
-    },
-    deleteNewProduct (id) {
-      this.$store.dispatch('deleteProductsNew', id)
-    },
     signOut () {
       this.signOutChange()
     }
@@ -180,11 +89,6 @@ export default {
 .navabar_root h1 a {
   font-size: 1.5rem;
 }
-.navabar_root button i {
-  font-size: 25px;
-  color: white;
-}
-
 .navabar_root .navigation_content_right a {
   margin: 0 30px;
   font-size: 1.2rem;
@@ -192,27 +96,7 @@ export default {
 #header a:hover {
   font-weight: bold;
 }
-.title {
-  text-align: center;
-  font-size: 1.3rem;
-  color: #8c6e55;
-}
-.content {
-  width: 250px;
-}
-.content_item {
-  display: flex;
-  justify-content: space-between;
-}
-hr {
-  border: 1px solid black;
-}
-.deleteIcon {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-}
+
 /* media query*/
 @media (max-width: 1200px) {
   .navabar_root {
@@ -229,7 +113,8 @@ hr {
   .brand_name {
     order: 1;
   }
-  .shopping_cart {
+  /* style 使用 shopping_cart_root 吃到 component ShoppingCart 內的 class shopping_cart_root */
+  .shopping_cart_root {
     order: 2;
   }
   .navigation_btn_rwd {
