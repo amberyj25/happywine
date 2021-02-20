@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import App from '@/App.vue'
 import Login from '@/views/Login.vue'
 import ProductsPage from '@/views/ProductsPage.vue'
+import Checkout from '@/views/Checkout.vue'
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,10 @@ export default new VueRouter({
       path: '/login',
       name: 'Login',
       component: Login
+    },{
+      path: '/checkout',
+      name: 'Checkout',
+      component: Checkout
     }
   ]
 })
