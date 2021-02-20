@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container {
   max-width: 1400px !important;
   padding: 35px;
