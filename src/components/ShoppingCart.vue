@@ -47,6 +47,9 @@
         </div>
         <hr />
       </b-dropdown-item>
+      <div class="checkout">
+        <a href="">結帳</a>
+      </div>
     </b-dropdown>
   </div>
 </template>
@@ -141,5 +144,20 @@ hr {
   width: 25px;
   height: 25px;
   text-align: center;
+}
+.checkout {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.checkout a {
+  display: inline-block;
+  padding: 5px 25px;
+  border: 1px solid#00aedd;
+  color: #fe5050;
+  text-decoration: none;
+}
+.checkout a:hover {
+  background-color: #fe5050;
+  color: white;
 }
 </style>
