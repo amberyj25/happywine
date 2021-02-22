@@ -30,6 +30,14 @@
         <span>{{ totalPrice }}</span>
       </div>
     </div>
+    <div class="submit">
+      <div
+        v-for="(btn, btnNum) in submitBtn"
+        :key="btnNum"
+        :class="btn.class"
+        @click="changePage(btn)"
+      >{{ btn.title }}</div>
+    </div>
   </div>
 </template>
 
@@ -41,7 +49,15 @@ export default {
     return {
       classicData: {},
       newData: {},
-      classicAndNewData: []
+      classicAndNewData: [],
+      submitBtn: [
+        {
+          title: '繼續購物',
+          class: 'btn_shopping'
+        }, {
+          title: '確認訂購',
+          class: 'btn_submit'
+        }]
     }
   },
   computed: {
@@ -55,14 +71,14 @@ export default {
   watch: {
     classicProductData () {
       // eslint-disable-next-line dot-notation
-      this.classicData['title'] = 'classic(經典款)'
+      this.classicData['title'] = 'classic (經典款)'
       // eslint-disable-next-line dot-notation
       this.classicData['data'] = this.classicProductData
       this.classicAndNewData.push(this.classicData)
     },
     newProductData () {
       // eslint-disable-next-line dot-notation
-      this.newData['title'] = 'new(新款)'
+      this.newData['title'] = 'new (新款)'
       // eslint-disable-next-line dot-notation
       this.newData['data'] = this.newProductData
       this.classicAndNewData.push(this.newData)
@@ -78,6 +94,16 @@ export default {
       this.newProductData.forEach(item => tempArray.push(item.total))
       const total = tempArray.reduce((prev, currentItem, currentItemIndex, array) => { return prev + currentItem }, 0)
       return total
+    },
+    changePage (btn) {
+      switch (btn.title) {
+        case '繼續購物':
+          this.$router.push('/')
+          break
+        case '確認訂購':
+          this.$emit('changeComponent', 'CheckoutCustomerForm')
+          break
+      }
     }
   }
 }
@@ -118,6 +144,30 @@ td {
   margin: 0;
 }
 .totalContent span{
-  font-size: 1rem;
+  font-size: 1.2rem;
+}
+.submit {
+  display: flex;
+  justify-content: center;
+}
+.submit .btn_shopping, .btn_submit {
+  padding: 5px 25px;
+  border-radius: 5px;
+  margin: 0 25px;
+  text-align: center;
+}
+.submit .btn_shopping {
+  border: 2px solid blueviolet;
+}
+.submit .btn_submit {
+  border: 2px solid red;
+}
+.submit .btn_shopping:hover{
+  color: white;
+  background-color:#FF3EFF;
+}
+.submit .btn_submit:hover{
+  color: white;
+  background-color: #fe5050;
 }
 </style>

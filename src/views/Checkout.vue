@@ -10,17 +10,18 @@
           v-for="(item, index) in checkoutSop"
           :key="index"
           class="checkout_sop_item"
-          :class="{bgColor: changeTab === item.component}"
+          :class="{ bgColor: changeTab === item.component }"
         >
           <h2> {{item.title}} </h2>
         </div>
       </div>
       <div class="checkout_sop_content">
         <component
-            :is="changeTab"
-            :classicProductData = classicProductData
-            :newProductData = newProductData
-          ></component>
+          :is="changeTab"
+          :classicProductData="classicProductData"
+          :newProductData="newProductData"
+          @changeComponent="changeComponent"
+        ></component>
       </div>
 
     </div>
@@ -47,10 +48,6 @@ export default {
         },
         {
           title: '2.輸入收件人資料'
-          // component: 'CheckoutShoppingCartContent'
-        },
-        {
-          title: '3.訂單完成'
           // component: 'CheckoutShoppingCartContent'
         }
       ]
@@ -82,7 +79,10 @@ export default {
     ...mapActions([
       'getCurrentShoppingCartClassic',
       'getCurrentShoppingCartNew'
-    ])
+    ]),
+    changeComponent (component) {
+      this.componentTab = component
+    }
   }
 }
 </script>
@@ -118,9 +118,20 @@ h1 {
 .checkout_sop_item h2{
   font-size: 1rem;
   font-weight: 400;
+  text-align: center;
 }
 .bgColor {
-  background-color:bisque;
+  background-color:#00FFFF;
   border-radius: 5px;
+}
+@media (max-width: 1100px) {
+  .checkout_sop_item {
+    padding: 15px 25px;
+  }
+}
+@media (max-width: 700px) {
+  .checkout_sop_item {
+    padding: 15px 10px;
+  }
 }
 </style>
