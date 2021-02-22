@@ -93,9 +93,6 @@ export default {
   margin: 0 30px;
   font-size: 1.2rem;
 }
-#header a:hover {
-  font-weight: bold;
-}
 
 /* media query*/
 @media (max-width: 1200px) {
