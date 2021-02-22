@@ -57,7 +57,8 @@ export default {
         }, {
           title: '確認訂購',
           class: 'btn_submit'
-        }]
+        }
+      ]
     }
   },
   computed: {

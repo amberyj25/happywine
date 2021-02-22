@@ -30,13 +30,15 @@
 <script>
 import Navbar from '@/components/Navbar.vue'
 import CheckoutShoppingCartContent from '@/components/CheckoutShoppingCartContent.vue'
+import CheckoutCustomerForm from '@/components/CheckoutCustomerForm.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Checkout',
   components: {
     Navbar,
-    CheckoutShoppingCartContent
+    CheckoutShoppingCartContent,
+    CheckoutCustomerForm
   },
   data () {
     return {
@@ -47,8 +49,8 @@ export default {
           component: 'CheckoutShoppingCartContent'
         },
         {
-          title: '2.輸入收件人資料'
-          // component: 'CheckoutShoppingCartContent'
+          title: '2.輸入收件人資料',
+          component: 'CheckoutCustomerForm'
         }
       ]
     }
@@ -69,6 +71,12 @@ export default {
     },
     checkoutSop () {
       return this.checkoutSopItem
+    }
+  },
+  watch: {
+    componentTab () {
+      this.getCurrentShoppingCartClassic()
+      this.getCurrentShoppingCartNew()
     }
   },
   mounted () {
