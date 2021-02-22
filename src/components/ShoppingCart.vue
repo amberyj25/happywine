@@ -48,7 +48,7 @@
         <hr />
       </b-dropdown-item>
       <div class="checkout">
-        <a href="">結帳</a>
+        <div class="btn" @click="changePageToCheckout">結帳</div>
       </div>
     </b-dropdown>
   </div>
@@ -114,6 +114,9 @@ export default {
     },
     deleteNewProduct (id) {
       this.$store.dispatch('deleteProductsNew', id)
+    },
+    changePageToCheckout () {
+      this.$router.push('/checkout')
     }
   }
 }
@@ -149,14 +152,14 @@ hr {
   text-align: center;
   margin-bottom: 10px;
 }
-.checkout a {
+.checkout .btn {
   display: inline-block;
   padding: 5px 25px;
   border: 1px solid#00aedd;
   color: #fe5050;
   text-decoration: none;
 }
-.checkout a:hover {
+.checkout .btn:hover {
   background-color: #fe5050;
   color: white;
 }
