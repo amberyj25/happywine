@@ -91,7 +91,12 @@ export default {
     }
   },
   computed: {
-    ...mapState(['orgProductsClassic', 'orgProductsNews']),
+    ...mapState([
+      'orgProductsClassic',
+      'orgProductsNews',
+      'currentShoppingCartClassic',
+      'currentShoppingCartNew'
+    ]),
     categoryProducts () {
       return this.getCategoryProducts()
     }
@@ -128,11 +133,44 @@ export default {
       'getCurrentShoppingCartNew'
     ]),
     addCart (title, id, qty) {
+      const titleSplit = title.split('')
+      const checkClassicItemIsDoubleOrNot = this.currentShoppingCartClassic.filter(item => item.product.id === id)
+      const checkNewItemIsDoubleOrNot = this.currentShoppingCartNew.filter(item => item.product.id === id)
       const params = {
         product_id: id,
         qty: qty
       }
-      const titleSplit = title.split('')
+      // 判斷 是否與現有的 shoppingCart 的 item有相同, 有相同去打API 修改
+      if (checkClassicItemIsDoubleOrNot.length !== 0) {
+        const doubleItemIdClassic = checkClassicItemIsDoubleOrNot[0].id
+        const doubleItemOrgQtyClassic = checkClassicItemIsDoubleOrNot[0].qty
+        params.qty = doubleItemOrgQtyClassic + qty
+
+        switch (titleSplit[0]) {
+          case 'A':
+            this.$store.dispatch('deleteProductsClassic', doubleItemIdClassic)
+            this.$store.dispatch('addCartClassic', params)
+            return
+          case 'B':
+            this.$store.dispatch('deleteProductsClassic', doubleItemIdClassic)
+            this.$store.dispatch('addCartClassic', params)
+            return
+        }
+      }
+
+      if (checkNewItemIsDoubleOrNot.length !== 0) {
+        const doubleItemIdNew = checkNewItemIsDoubleOrNot[0].id
+        const doubleItemOrgQtyNew = checkNewItemIsDoubleOrNot[0].qty
+        params.qty = doubleItemOrgQtyNew + qty
+        switch (titleSplit[0]) {
+          case 'V':
+            this.$store.dispatch('deleteProductsNew', doubleItemIdNew)
+            this.$store.dispatch('addCartNews', params)
+            return
+        }
+      }
+
+      // 經過 上面 判斷是否有與shoppingCart 的 item有相同, 沒有才會繼續從這邊往下跑
       switch (titleSplit[0]) {
         case 'A':
           this.$store.dispatch('addCartClassic', params)
