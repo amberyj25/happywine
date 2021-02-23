@@ -1,10 +1,14 @@
 <template>
   <div id="app">
+    <loading :active.sync="isLoading"></loading>
+
     <HeaderNavbarAndCarousel></HeaderNavbarAndCarousel>
 
     <main>
       <div class="container">
-        <Products></Products>
+        <Products
+          @getLoadingData="getLoadingData"
+        ></Products>
         <Introduction></Introduction>
       </div>
     </main>
@@ -26,6 +30,16 @@ export default {
     Introduction,
     Products,
     Footer
+  },
+  data () {
+    return {
+      isLoading: true
+    }
+  },
+  methods: {
+    getLoadingData (isLoadingData) {
+      this.isLoading = isLoadingData
+    }
   }
 }
 </script>

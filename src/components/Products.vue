@@ -107,6 +107,7 @@ export default {
       // eslint-disable-next-line dot-notation
       this.newData['data'] = this.orgProductsNews.filter(item => item.num < 5)
       this.classicAndNewData.push(this.newData)
+      this.$emit('getLoadingData', false)
     },
     currentClassicPage () {
       this.classicAndNewData = []
