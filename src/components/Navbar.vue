@@ -25,6 +25,9 @@
           <router-link to="/login" v-if="checkLogIn === false">Login</router-link>
           <p v-else @click="signOut">Logout</p>
         </b-nav-item>
+        <b-nav-item right>
+          <router-link to="/checkout">結帳</router-link>
+        </b-nav-item>
       </b-navbar-nav>
     </b-collapse>
 
