@@ -1,16 +1,27 @@
 <template>
   <div class="container">
     <form>
-      <label for="name">姓名 :</label>
-      <input type="text" id="name" placeholder="請輸入姓名" v-model="user.name">
-      <label for="email">信箱 :</label>
-      <input type="text" id="email" placeholder="ex.amber@gmail.com" v-model="user.phone">
-      <label for="phone_number">手機號碼 :</label>
-      <input type="text" id="phone_number" placeholder="ex.0989-768-701" v-model="user.phoneNumber">
-      <label for="address">地址 :</label>
-      <input type="text" id="address" placeholder="ex.台中市....." v-model="user.address">
-      <label for="message">備註 :</label>
-      <textarea rows="5" cols="50" id="message" v-model="user.message"></textarea>
+      <div
+        v-for="(formItem, formItemNum) in formGroup" 
+        :key="formItemNum"
+      >
+        <label :for="formItem.for">{{ formItem.title }}</label>
+        <input
+          type="text"
+          :id="formItem.id"
+          :placeholder="formItem.placeholder"
+          v-model="customerInfo[formItem.id]"
+        >
+      </div>
+      <div>
+        <label for="message">備註 :</label>
+        <textarea
+          rows="5"
+          cols="50"
+          id="message"
+          v-model="customerInfo.message"
+        ></textarea>
+      </div>
     </form>
     <div class="submit">
       <div
@@ -28,10 +39,33 @@ export default {
   name: 'CheckoutCustomerForm',
   data () {
     return {
-      user: {
+      formGroup: [
+        {
+          title: '姓名 :',
+          for: 'name',
+          id: 'name',
+          placeholder: '請輸入姓名'
+        }, {
+          title: '信箱 :',
+          for: 'email',
+          id: 'email',
+          placeholder: 'ex.amber@gmail.com'
+        }, {
+          title: '手機號碼 :',
+          for: 'phone',
+          id: 'phone',
+          placeholder: 'ex.0989-768-701'
+        }, {
+          title: '地址 :',
+          for: 'address',
+          id: 'address',
+          placeholder: 'ex.台中市.....'
+        }
+      ],
+      customerInfo: {
         name: '',
         email: '',
-        phoneNumber: '',
+        phone: '',
         address: '',
         message: ''
       },

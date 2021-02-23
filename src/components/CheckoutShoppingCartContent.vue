@@ -163,12 +163,12 @@ td {
 .submit .btn_submit {
   border: 2px solid red;
 }
-.submit .btn_shopping:hover{
+.submit .btn_shopping:hover {
   color: white;
   background-color:#FF3EFF;
   cursor: pointer;
 }
-.submit .btn_submit:hover{
+.submit .btn_submit:hover {
   color: white;
   background-color: #fe5050;
   cursor: pointer;
