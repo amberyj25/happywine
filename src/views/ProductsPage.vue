@@ -134,54 +134,13 @@ export default {
     ]),
     addCart (title, id, qty) {
       const titleSplit = title.split('')
-      const checkClassicItemIsDoubleOrNot = this.currentShoppingCartClassic.filter(item => item.product.id === id)
-      const checkNewItemIsDoubleOrNot = this.currentShoppingCartNew.filter(item => item.product.id === id)
       const params = {
         product_id: id,
         qty: qty
       }
-      // 判斷 是否與現有的 shoppingCart 的 item有相同, 有相同去打API 修改
-      if (checkClassicItemIsDoubleOrNot.length !== 0) {
-        const doubleItemIdClassic = checkClassicItemIsDoubleOrNot[0].id
-        const doubleItemOrgQtyClassic = checkClassicItemIsDoubleOrNot[0].qty
-        params.qty = doubleItemOrgQtyClassic + qty
-
-        switch (titleSplit[0]) {
-          case 'A':
-            this.$store.dispatch('deleteProductsClassic', doubleItemIdClassic)
-            this.$store.dispatch('addCartClassic', params)
-            return
-          case 'B':
-            this.$store.dispatch('deleteProductsClassic', doubleItemIdClassic)
-            this.$store.dispatch('addCartClassic', params)
-            return
-        }
-      }
-
-      if (checkNewItemIsDoubleOrNot.length !== 0) {
-        const doubleItemIdNew = checkNewItemIsDoubleOrNot[0].id
-        const doubleItemOrgQtyNew = checkNewItemIsDoubleOrNot[0].qty
-        params.qty = doubleItemOrgQtyNew + qty
-        switch (titleSplit[0]) {
-          case 'V':
-            this.$store.dispatch('deleteProductsNew', doubleItemIdNew)
-            this.$store.dispatch('addCartNews', params)
-            return
-        }
-      }
-
-      // 經過 上面 判斷是否有與shoppingCart 的 item有相同, 沒有才會繼續從這邊往下跑
-      switch (titleSplit[0]) {
-        case 'A':
-          this.$store.dispatch('addCartClassic', params)
-          break
-        case 'B':
-          this.$store.dispatch('addCartClassic', params)
-          break
-        case 'V':
-          this.$store.dispatch('addCartNews', params)
-          break
-      }
+      console.log(190, params)
+      // 判斷 新增加的product是否與當前 shoppingCart 內的 item 有相同
+      this.checkItemIsDoubleOrNot(titleSplit, params, qty, id)
     },
     getCategory (category) {
       switch (category) {
@@ -207,6 +166,57 @@ export default {
         case '全部酒品':
           return this.classicAndNewData
       }
+    },
+        checkItemIsDoubleOrNot (titleSplit, params, qty, id) {
+      const checkClassicItemIsDoubleOrNotArray = this.currentShoppingCartClassic.filter(item => item.product.id === id)
+      const checkNewItemIsDoubleOrNotArray = this.currentShoppingCartNew.filter(item => item.product.id === id)
+      if (checkClassicItemIsDoubleOrNotArray.length !== 0 || checkNewItemIsDoubleOrNotArray.length !== 0) {
+        this.checkDoubleItemCategory(titleSplit, checkClassicItemIsDoubleOrNotArray, checkNewItemIsDoubleOrNotArray, params, qty)
+        return
+      }
+      // 經過 上面 判斷新增加的product是否有與當前 shoppingCart 的 item有相同, 沒有才會繼續從這邊往下跑
+      switch (titleSplit[0]) {
+        case 'A':
+          this.$store.dispatch('addCartClassic', params)
+          break
+        case 'B':
+          this.$store.dispatch('addCartClassic', params)
+          break
+        case 'V':
+          this.$store.dispatch('addCartNews', params)
+          break
+      }
+    },
+    checkDoubleItemCategory (titleSplit, checkClassicItemIsDoubleOrNot, checkNewItemIsDoubleOrNot, params, qty) {
+      switch (titleSplit[0]) {
+        case 'A':
+          this.updateClassicDoubleItemQty(checkClassicItemIsDoubleOrNot, params, qty)
+          break
+        case 'B':
+          this.updateClassicDoubleItemQty(checkClassicItemIsDoubleOrNot, params, qty)
+          break
+        case 'V':
+          this.updateNewDoubleItemQty(checkNewItemIsDoubleOrNot, params, qty)
+          break
+      }
+    },
+    updateClassicDoubleItemQty (checkClassicItemIsDoubleOrNot, params, qty) {
+      const classicDoubleItemId = checkClassicItemIsDoubleOrNot[0].id
+      const classicDoubleItemOrgQty = checkClassicItemIsDoubleOrNot[0].qty
+
+      params.qty = classicDoubleItemOrgQty + qty
+
+      this.$store.dispatch('deleteProductsClassic', classicDoubleItemId)
+      this.$store.dispatch('addCartClassic', params)
+    },
+    updateNewDoubleItemQty (checkNewItemIsDoubleOrNot, params, qty) {
+      const newDoubleItemId = checkNewItemIsDoubleOrNot[0].id
+      const newDoubleItemOrgQty = checkNewItemIsDoubleOrNot[0].qty
+
+      params.qty = newDoubleItemOrgQty + qty
+
+      this.$store.dispatch('deleteProductsNew', newDoubleItemId)
+      this.$store.dispatch('addCartNews', params)
     }
   }
 }
