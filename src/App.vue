@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style  lang="scss" scoped>
 .container {
   max-width: 1400px !important;
   padding: 35px;
