@@ -167,7 +167,7 @@ export default {
           return this.classicAndNewData
       }
     },
-        checkItemIsDoubleOrNot (titleSplit, params, qty, id) {
+    checkItemIsDoubleOrNot (titleSplit, params, qty, id) {
       const checkClassicItemIsDoubleOrNotArray = this.currentShoppingCartClassic.filter(item => item.product.id === id)
       const checkNewItemIsDoubleOrNotArray = this.currentShoppingCartNew.filter(item => item.product.id === id)
       if (checkClassicItemIsDoubleOrNotArray.length !== 0 || checkNewItemIsDoubleOrNotArray.length !== 0) {
