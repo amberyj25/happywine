@@ -10,7 +10,7 @@
           v-for="(item, index) in checkoutSop"
           :key="index"
           class="checkout_sop_item"
-          :class="{ bgColor: changeTab === item.component }"
+          :class="{ 'checkout_sop_item': true, bgColor: changeTab === item.component }"
         >
           <h2> {{item.title}} </h2>
         </div>
@@ -95,42 +95,42 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 * {
   margin-bottom: 0;
-}
-.container {
-  max-width: 1140px;
-  padding: 0 48px;
 }
 .nav_bar_root {
   height: 48px;
 }
-h1 {
-  color: #7c757d;
-  font-size: 1.5rem;
-  text-align: center;
-  margin: 25px 0;
-}
-.checkout_sop {
-  display: flex;
-  justify-content: center;
-  margin: 25px 0;
-}
-.checkout_sop div+div {
-  margin-left: 35px;
-}
-.checkout_sop_item {
-  padding: 15px 100px;
-}
-.checkout_sop_item h2{
-  font-size: 1rem;
-  font-weight: 400;
-  text-align: center;
-}
-.bgColor {
-  background-color:#00FFFF;
-  border-radius: 5px;
+.container {
+  max-width: 1140px;
+  padding: 0 48px;
+  h1 {
+    color: #7c757d;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 25px 0;
+  }
+  .checkout_sop {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+    div+div {
+      margin-left: 35px;
+    }
+    .checkout_sop_item {
+      padding: 15px 100px;
+      h2{
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: center;
+      }
+    }
+    .bgColor {
+      background-color:#00FFFF;
+      border-radius: 5px;
+    }
+  }
 }
 @media (max-width: 1100px) {
   .checkout_sop_item {

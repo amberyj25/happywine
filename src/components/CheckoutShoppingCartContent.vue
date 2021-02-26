@@ -110,67 +110,69 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .container {
   width: 85%;
   margin: auto;
-}
-table {
-  width: 100%;
-}
-h1 {
-  font-size: 1.5rem;
-  margin: 25px 0;
-}
-th, td {
-  width: 25%;
-  text-align: center;
-}
-tr {
-  line-height: 2.5;
-}
-th {
-  background-color: bisque;
-}
-td {
-  border-bottom: 1px solid #7B7B7B ;
-}
-.total {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 25px 0;
-}
-.total h1 {
-  margin: 0;
-}
-.totalContent span{
-  font-size: 1.2rem;
-}
-.submit {
-  display: flex;
-  justify-content: center;
-}
-.submit .btn_shopping, .btn_submit {
-  padding: 5px 25px;
-  border-radius: 5px;
-  margin: 0 25px;
-  text-align: center;
-}
-.submit .btn_shopping {
-  border: 2px solid blueviolet;
-}
-.submit .btn_submit {
-  border: 2px solid red;
-}
-.submit .btn_shopping:hover {
-  color: white;
-  background-color:#FF3EFF;
-  cursor: pointer;
-}
-.submit .btn_submit:hover {
-  color: white;
-  background-color: #fe5050;
-  cursor: pointer;
+  h1 {
+    font-size: 1.5rem;
+    margin: 25px 0;
+  }
+  table {
+    width: 100%;
+    tr {
+      line-height: 2.5;
+      th, td {
+        width: 25%;
+        text-align: center;
+      }
+      th {
+        background-color: bisque;
+      }
+      td {
+        border-bottom: 1px solid #7B7B7B ;
+      }
+    }
+  }
+  .total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0;
+    h1 {
+      margin: 0;
+    }
+    .totalContent {
+      span{
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .submit {
+    display: flex;
+    justify-content: center;
+    .btn_shopping, .btn_submit {
+      padding: 5px 25px;
+      border-radius: 5px;
+      margin: 0 25px;
+      text-align: center;
+    }
+    .btn_shopping {
+      border: 2px solid blueviolet;
+      &:hover {
+        color: white;
+        background-color:#FF3EFF;
+        cursor: pointer;
+      }
+    }
+    .btn_submit {
+      border: 2px solid red;
+      &:hover {
+        color: white;
+        background-color: #fe5050;
+        cursor: pointer;
+      }
+    }
+  }
 }
 </style>

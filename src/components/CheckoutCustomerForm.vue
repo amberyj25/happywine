@@ -2,7 +2,7 @@
   <div class="container">
     <form>
       <div
-        v-for="(formItem, formItemNum) in formGroup" 
+        v-for="(formItem, formItemNum) in formGroup"
         :key="formItemNum"
       >
         <label :for="formItem.for">{{ formItem.title }}</label>
@@ -33,7 +33,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: 'CheckoutCustomerForm',
@@ -72,7 +71,7 @@ export default {
       submitBtn: [
         {
           title: '上一步',
-          class: 'btn_Previous'
+          class: 'btn_Previous_page'
         }, {
           title: '送出訂單',
           class: 'btn_submit'
@@ -93,48 +92,49 @@ export default {
   }
 }
 </script>
-
-<style scoped>
+<style lang="scss" scoped>
 .container {
   width: 85%;
   margin: auto;
-}
-form label, input, textarea {
-  margin: 5px 0;
-}
-form label {
-  display: block;
-}
-form input, textarea {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid gray;
-  border-radius: 5px;
-}
-.submit {
-  display: flex;
-  justify-content: center;
-}
-.submit .btn_Previous, .btn_submit {
-  padding: 5px 25px;
-  border-radius: 5px;
-  margin: 0 25px;
-  text-align: center;
-}
-.submit .btn_Previous {
-  border: 2px solid blueviolet;
-}
-.submit .btn_submit {
-  border: 2px solid red;
-}
-.submit .btn_Previous:hover{
-  color: white;
-  background-color:#FF3EFF;
-  cursor: pointer;
-}
-.submit .btn_submit:hover{
-  color: white;
-  background-color: #fe5050;
-  cursor: pointer;
+  form {
+    label, input, textarea {
+      margin: 5px 0;
+    }
+    label {
+      display: block;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid gray;
+      border-radius: 5px;
+    }
+  }
+  .submit {
+    display: flex;
+    justify-content: center;
+    .btn_Previous_page, .btn_submit {
+      padding: 5px 25px;
+      border-radius: 5px;
+      margin: 0 25px;
+      text-align: center;
+    }
+    .btn_Previous_page {
+      border: 2px solid blueviolet;
+      &:hover {
+        color: white;
+        background-color:#FF3EFF;
+        cursor: pointer;
+      }
+    }
+    .btn_submit {
+      border: 2px solid red;
+      &:hover {
+        color: white;
+        background-color: #fe5050;
+        cursor: pointer;
+      }
+    }
+  }
 }
 </style>
