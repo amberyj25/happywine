@@ -20,7 +20,7 @@
         :key="`classicProduct${index}`"
         class="content"
       >
-        <div class="content_item">
+        <div class="item">
           <span>{{ classicProduct.product.title }}</span>
           <span>{{ classicProduct.qty }}瓶</span>
           <span>${{ classicProduct.qty*classicProduct.product.price }}</span>
@@ -37,7 +37,7 @@
         :key="`newProduct${index}`"
         class="content"
       >
-        <div class="content_item">
+        <div class="item">
           <span>{{ newProduct.product.title }}</span>
           <span>{{ newProduct.qty }}瓶</span>
           <span>${{ newProduct.qty*newProduct.product.price }}</span>
@@ -122,45 +122,47 @@ export default {
 }
 </script>
 
-<style scoped>
-.fa-shopping-cart {
-  font-size: 25px;
-  color: white;
-}
-.title {
-  text-align: center;
-  font-size: 1.3rem;
-  color: #8c6e55;
-}
-.content {
-  width: 250px;
-}
-.content_item {
-  display: flex;
-  justify-content: space-between;
-}
-hr {
-  border: 1px solid black;
-}
-.deleteIcon {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-}
-.checkout {
-  text-align: center;
-  margin-bottom: 10px;
-}
-.checkout .btn {
-  display: inline-block;
-  padding: 5px 25px;
-  border: 1px solid#00aedd;
-  color: #fe5050;
-  text-decoration: none;
-}
-.checkout .btn:hover {
-  background-color: #fe5050;
-  color: white;
+<style lang="scss" scoped>
+.shopping_cart_root {
+  .fa-shopping-cart {
+    font-size: 25px;
+    color: white;
+  }
+  .title {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #8c6e55;
+  }
+  .content {
+    width: 250px;
+    .item {
+      display: flex;
+      justify-content: space-between;
+      .deleteIcon {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        text-align: center;
+      }
+    }
+    hr {
+      border: 1px solid black;
+    }
+  }
+  .checkout {
+    text-align: center;
+    margin-bottom: 10px;
+    .btn {
+      display: inline-block;
+      padding: 5px 25px;
+      border: 1px solid#00aedd;
+      color: #fe5050;
+      text-decoration: none;
+      &:hover {
+        background-color: #fe5050;
+        color: white;
+      }
+    }
+  }
 }
 </style>
