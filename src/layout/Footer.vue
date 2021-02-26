@@ -1,11 +1,11 @@
 <template>
   <footer>
     <div class="content">
-      <div class="content_left">
+      <div class="left">
         <a href="##">Wine Space</a>
         <p class="copyright">Copyright &copy; 2020 Happy Wine</p>
       </div>
-      <div class="content_right">
+      <div class="right">
         <p>contact</p>
         <p>Email : XXX@gmail.com</p>
         <p>mobile : 09XX-XXX-XXX</p>
@@ -20,24 +20,26 @@ export default {
 }
 </script>
 
-<style scoped>
-footer .content {
-  background: #f2f0ea;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 25px;
-}
-footer .content_left {
-  font-size: 15px;
-  color: #55381d;
-}
-footer .content_left a {
-  font-size: 25px;
-  display: block;
-  color: #55381d;
-}
-footer .content_right {
-  color: #55381d;
+<style lang="scss" scoped>
+footer {
+  .content {
+    background: #f2f0ea;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 25px;
+    .left {
+      font-size: 15px;
+      color: #55381d;
+      a {
+        font-size: 25px;
+        display: block;
+        color: #55381d;
+      }
+    }
+    .right {
+      color: #55381d;
+    }
+  }
 }
 </style>
