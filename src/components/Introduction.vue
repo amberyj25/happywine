@@ -23,15 +23,19 @@ export default {
 }
 </script>
 
-<style scoped>
-main .introduction hr {
-  background-color: #4f3608;
-  height: 2px;
-  margin: 50px auto;
+<style lang="scss" scoped>
+.introduction {
+  hr {
+    background-color: #4f3608;
+    height: 2px;
+    margin: 50px auto;
+  }
 }
 @media (min-width: 576px) and (max-width: 767px) {
-  main .introduction hr {
-    margin: 25px auto;
+  .introduction {
+    hr {
+      margin: 25px auto;
+    }
   }
 }
 </style>
