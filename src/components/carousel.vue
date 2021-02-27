@@ -90,23 +90,31 @@ export default {
   }
 }
 @media (min-width: 992px) and (max-width: 1200px) {
-  .carousel_img_content {
-    height: 450px;
+  .carousel {
+    .img {
+      height: 450px;
+    }
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .carousel_img_content {
-    height: 400px;
+  .carousel {
+    .img {
+      height: 400px;
+    }
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
-  .carousel_img_content {
-    height: 300px;
+  .carousel {
+    .img {
+      height: 300px;
+    }
   }
 }
 @media (max-width: 575px) {
-  .carousel_img_content {
-    height: 250px;
+  .carousel {
+    .img {
+      height: 250px;
+    }
   }
 }
 </style>
