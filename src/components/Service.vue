@@ -41,41 +41,29 @@ export default {
   }
 }
 </script>
-<style scoped>
-/* .service {
-  width: 300px;
-  flex-direction: column;
-  align-items: center;
-} */
 
+<style lang="scss" scoped>
 .service {
   text-align: center;
-}
-.service i {
-  display: block;
-  margin: auto;
-  font-size: 150px;
-  color: gray;
-}
-.service .detail {
-  margin: 25px;
-}
 
-.service h4,
-.service p {
-  text-align: center;
-}
+  i {
+    display: block;
+    margin: auto;
+    font-size: 150px;
+    color: gray;
+  }
 
-.service h4,
-.service h4 {
-  font-size: 20px;
-}
-
-.service p {
-  font-size: 15px;
-}
-
-.service span {
-  font-weight: bold;
+  .detail {
+    margin: 25px;
+    h4, p {
+      text-align: center;
+    }
+    h4 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
 }
 </style>
