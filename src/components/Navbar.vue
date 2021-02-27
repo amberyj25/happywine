@@ -69,7 +69,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .navabar_root {
   width: 100%;
   position: absolute;
@@ -79,54 +79,60 @@ export default {
   background-color: #7B7B7B !important;
   padding: 0 100px;
   opacity: 0.9;
+  h1 {
+    margin: 0;
+    font-size: 0;
+    font-weight: normal;
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+  }
 }
-.navabar_root a {
-  color: white;
-  text-decoration: none;
+.navabar_root {
+  .navigation_content_right {
+    a {
+      color: white;
+      text-decoration: none;
+      margin: 0 30px;
+      font-size: 1.2rem;
+    }
+  }
 }
-.navabar_root h1 {
-  margin: 0;
-  font-size: 0;
-  font-weight: normal;
-}
-.navabar_root h1 a {
-  font-size: 1.5rem;
-}
-.navabar_root .navigation_content_right a {
-  margin: 0 30px;
-  font-size: 1.2rem;
-}
-
-/* media query*/
 @media (max-width: 1200px) {
   .navabar_root {
     padding: 0 50px;
   }
-  .carousel_img {
-    height: 50%;
-  }
 }
 @media (max-width: 992px) {
-  .navabar_root h1 a {
-    font-size: 2rem;
-  }
-  .brand_name {
-    order: 1;
-  }
-  /* style 使用 shopping_cart_root 吃到 component ShoppingCart 內的 class shopping_cart_root */
-  .shopping_cart_root {
-    order: 2;
-  }
-  .navigation_btn_rwd {
-    order: 3;
-  }
-  .navigation_content {
-    order: 4;
+  .navabar_root {
+    .brand_name {
+      order: 1;
+      h1 {
+        a {
+          font-size: 2rem;
+        }
+      }
+    }
+    .navigation_btn_rwd {
+      order: 3;
+    }
+    .navigation_content {
+      order: 4;
+    }
+    .shopping_cart_root {
+      order: 2;
+    }
   }
 }
 @media (max-width: 576px) {
-  .navabar_root h1 a {
-    font-size: 1.5rem;
+  .navabar_root {
+    h1 {
+      a {
+        font-size: 1.5rem;
+      }
+    }
   }
 }
 </style>
