@@ -103,7 +103,8 @@ export default {
       'orgProductsClassic',
       'orgProductsNews',
       'currentShoppingCartClassic',
-      'currentShoppingCartNew'
+      'currentShoppingCartNew',
+      'searchProductCategory'
     ]),
     categoryProducts () {
       return this.getCategoryProducts()
@@ -119,6 +120,7 @@ export default {
       this.classicAndNewData.push(tempClassicData)
     },
     orgProductsNews () {
+      console.log(130)
       const tempNewData = {}
       // eslint-disable-next-line dot-notation
       tempNewData['title'] = 'new'
@@ -164,6 +166,15 @@ export default {
       }
     },
     getCategoryProducts () {
+      switch (this.searchProductCategory) {
+        case 'new':
+          this.categoryRender = 'New酒品'
+          break
+        case 'classic':
+          this.categoryRender = 'Classic酒品'
+          break
+      }
+
       switch (this.categoryRender) {
         case 'New酒品':
           return this.classicAndNewData.filter(item => item.title === 'new')

@@ -14,7 +14,8 @@ export default new Vuex.Store({
     addCartClassic: [],
     addCartNews: [],
     currentShoppingCartClassic: [],
-    currentShoppingCartNew: []
+    currentShoppingCartNew: [],
+    searchProductCategory: ''
   },
   mutations: {
     getOrgProductsClassic (state, payload) {
@@ -47,6 +48,10 @@ export default new Vuex.Store({
     },
     getCurrentShoppingCartNew (state, payload) {
       state.currentShoppingCartNew = payload
+    },
+    navbarSearchProductCategory (state, payload) {
+      state.searchProductCategory = payload
+      console.log(58, state.searchProductCategory)
     }
   },
   actions: {

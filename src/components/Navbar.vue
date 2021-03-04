@@ -17,8 +17,8 @@
       <b-navbar-nav class="ml-auto navigation_content_right">
         <b-nav-item right>
           <div class="product_category_search">
-            <input type="text" placeholder="classic or new">
-            <div class="search">
+            <input type="text" placeholder="classic or new" v-model="searchText">
+            <div class="search" @click="searchProductCategory">
               <i class="fas fa-search"></i>
             </div>
           </div>
@@ -55,6 +55,7 @@ export default {
   },
   data () {
     return {
+      searchText: '',
       checkSignInData: false
     }
   },
@@ -70,6 +71,11 @@ export default {
     ...mapActions([
       'signOutChange'
     ]),
+    searchProductCategory () {
+      if (!this.searchText) return
+      this.$store.commit('navbarSearchProductCategory', this.searchText)
+      this.$router.push('/productsPage')
+    },
     signOut () {
       this.signOutChange()
     }
