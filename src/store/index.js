@@ -51,7 +51,6 @@ export default new Vuex.Store({
     },
     navbarSearchProductCategory (state, payload) {
       state.searchProductCategory = payload
-      console.log(58, state.searchProductCategory)
     }
   },
   actions: {

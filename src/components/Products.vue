@@ -185,7 +185,6 @@ export default {
         product_id: id,
         qty: qty
       }
-      console.log(190, params)
       // 判斷 新增加的product是否與當前 shoppingCart 內的 item 有相同
       this.checkItemIsDoubleOrNot(titleSplit, params, qty, id)
     },
