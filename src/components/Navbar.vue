@@ -100,6 +100,20 @@ export default {
 }
 .navabar_root {
   .navigation_content_right {
+    .product_category_search {
+      display: flex;
+      input {
+        width: 10vw;
+        height: 30px;
+        margin-right: 5px;
+      }
+      ::placeholder {
+        color: #ababab;
+      }
+      .search {
+        width: 2vw;
+      }
+    }
     a {
       color: white;
       text-decoration: none;
