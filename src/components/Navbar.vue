@@ -16,6 +16,14 @@
     <b-collapse id="nav-collapse" is-nav class="navigation_content">
       <b-navbar-nav class="ml-auto navigation_content_right">
         <b-nav-item right>
+          <div class="product_category_search">
+            <input type="text" placeholder="classic or new">
+            <div class="search">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+        </b-nav-item>
+        <b-nav-item right>
           <router-link to="/">首頁</router-link>
         </b-nav-item>
         <b-nav-item right>
@@ -95,7 +103,7 @@ export default {
     a {
       color: white;
       text-decoration: none;
-      margin: 0 30px;
+      margin: 0 10px;
       font-size: 1.2rem;
     }
   }
