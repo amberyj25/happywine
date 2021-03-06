@@ -93,8 +93,8 @@ export default {
   },
   data () {
     return {
-      wineCategory: ['New酒品', 'Classic酒品', '全部酒品'],
-      categoryRender: 'New酒品',
+      wineCategory: ['新款', '經典款', '全部酒品'],
+      categoryRender: '新款',
       classicAndNewData: []
     }
   },
@@ -114,7 +114,7 @@ export default {
     orgProductsClassic () {
       const tempClassicData = {}
       // eslint-disable-next-line dot-notation
-      tempClassicData['title'] = 'classic'
+      tempClassicData['title'] = '經典款'
       // eslint-disable-next-line dot-notation
       tempClassicData['data'] = this.orgProductsClassic
       this.classicAndNewData.push(tempClassicData)
@@ -122,7 +122,7 @@ export default {
     orgProductsNews () {
       const tempNewData = {}
       // eslint-disable-next-line dot-notation
-      tempNewData['title'] = 'new'
+      tempNewData['title'] = '新款'
       // eslint-disable-next-line dot-notation
       tempNewData['data'] = this.orgProductsNews
       this.classicAndNewData.push(tempNewData)
@@ -152,11 +152,11 @@ export default {
     },
     getCategory (category) {
       switch (category) {
-        case 'New酒品':
-          this.categoryRender = 'New酒品'
+        case '新款':
+          this.categoryRender = '新款'
           break
-        case 'Classic酒品':
-          this.categoryRender = 'Classic酒品'
+        case '經典款':
+          this.categoryRender = '經典款'
           break
         case '全部酒品':
           this.categoryRender = '全部酒品'
@@ -165,20 +165,20 @@ export default {
     },
     getCategoryProducts () {
       switch (this.searchProductCategory) {
-        case 'new':
-          this.categoryRender = 'New酒品'
+        case '新款':
+          this.categoryRender = '新款'
           break
-        case 'classic':
-          this.categoryRender = 'Classic酒品'
+        case '經典款':
+          this.categoryRender = '經典款'
           break
       }
 
       switch (this.categoryRender) {
-        case 'New酒品':
-          return this.classicAndNewData.filter(item => item.title === 'new')
-        case 'Classic酒品':
+        case '新款':
+          return this.classicAndNewData.filter(item => item.title === '新款')
+        case '經典款':
           return this.classicAndNewData.filter(
-            item => item.title === 'classic'
+            item => item.title === '經典款'
           )
         case '全部酒品':
           return this.classicAndNewData

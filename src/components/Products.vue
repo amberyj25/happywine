@@ -9,7 +9,7 @@
         <b-col cols="11">
           <h2>{{ category.title }}</h2>
         </b-col>
-        <b-col cols="1" class="page justify-content-center mb-4">
+        <b-col cols="1" class="page justify-content-center mb-3">
           <div>
             <i class="fas fa-angle-left" @click="getPreviousPage(category.title)"></i>
           </div>
@@ -99,14 +99,14 @@ export default {
   watch: {
     orgProductsClassic () {
       // eslint-disable-next-line dot-notation
-      this.classicData['title'] = 'classic'
+      this.classicData['title'] = '經典款'
       // eslint-disable-next-line dot-notation
       this.classicData['data'] = this.orgProductsClassic.filter(item => item.num < 5)
       this.classicAndNewData.push(this.classicData)
     },
     orgProductsNews () {
       // eslint-disable-next-line dot-notation
-      this.newData['title'] = 'new'
+      this.newData['title'] = '新款'
       // eslint-disable-next-line dot-notation
       this.newData['data'] = this.orgProductsNews.filter(item => item.num < 5)
       this.classicAndNewData.push(this.newData)
@@ -153,12 +153,12 @@ export default {
     ...mapActions(['getOrgProductsClassic', 'getOrgProductsNews', 'getCurrentShoppingCartClassic', 'getCurrentShoppingCartNew']),
     getPreviousPage (category) {
       switch (category) {
-        case 'classic':
+        case '經典款':
           if (this.currentClassicPage === 1) return
 
           this.currentClassicPage -= 1
           break
-        case 'new':
+        case '新款':
           if (this.currentNewPage === 1) return
 
           this.currentNewPage -= 1
@@ -167,12 +167,12 @@ export default {
     },
     getNextPage (category) {
       switch (category) {
-        case 'classic':
+        case '經典款':
           if (this.currentClassicPage === 2) return
 
           this.currentClassicPage += 1
           break
-        case 'new':
+        case '新款':
           if (this.currentNewPage === 2) return
 
           this.currentNewPage += 1
@@ -251,7 +251,7 @@ export default {
   display: flex;
   justify-content: space-between;
   h2 {
-    font-size: 50px;
+    font-size: 45px;
   }
   .page {
     display: flex;
