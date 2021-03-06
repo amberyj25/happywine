@@ -123,6 +123,7 @@ export default {
       }
       .search {
         width: 2vw;
+        text-align: center;
       }
     }
     a {
