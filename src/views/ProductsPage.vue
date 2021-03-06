@@ -242,15 +242,15 @@ export default {
 <style lang="scss" scoped>
 .header_img {
   width: 100%;
-  height: 580px;
-  background: url("../assets/banner.jpg") no-repeat 50% 50%;
+  height: 550px;
+  background: url("../assets/banner.jpg") no-repeat 50% 55%;
   background-size: cover;
 }
 
 .container {
   max-width: 1400px;
   width: 90%;
-  padding: 25px;
+  padding: 0 25px;
   display: flex;
   .filter {
     width: 15%;
