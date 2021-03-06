@@ -32,7 +32,7 @@
           <div class="product_category_search">
             <input
               type="text"
-              placeholder="classic or new"
+              placeholder="經典款 or 新款"
               v-model="searchText"
               @keyup.enter="searchProductCategory"
             >
