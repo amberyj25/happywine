@@ -16,14 +16,6 @@
     <b-collapse id="nav-collapse" is-nav class="navigation_content">
       <b-navbar-nav class="ml-auto navigation_content_right">
         <b-nav-item right>
-          <div class="product_category_search">
-            <input type="text" placeholder="classic or new" v-model="searchText">
-            <div class="search" @click="searchProductCategory">
-              <i class="fas fa-search"></i>
-            </div>
-          </div>
-        </b-nav-item>
-        <b-nav-item right>
           <router-link to="/">首頁</router-link>
         </b-nav-item>
         <b-nav-item right>
@@ -35,6 +27,19 @@
         </b-nav-item>
         <b-nav-item right>
           <router-link to="/checkout">結帳</router-link>
+        </b-nav-item>
+        <b-nav-item right>
+          <div class="product_category_search">
+            <input
+              type="text"
+              placeholder="classic or new"
+              v-model="searchText"
+              @keyup.enter="searchProductCategory"
+            >
+            <div class="search" @click="searchProductCategory">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
         </b-nav-item>
       </b-navbar-nav>
     </b-collapse>
