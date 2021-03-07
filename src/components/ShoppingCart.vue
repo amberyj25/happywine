@@ -13,7 +13,7 @@
         <i class="fas fa-shopping-cart"></i>
         <b-badge variant="primary">{{ shoppingItemsLength }}</b-badge>
       </template>
-      <p class="title">已選購 Classic 商品</p>
+      <p class="title">已選購 經典款 商品</p>
       <b-dropdown-item
         href="#"
         v-for="(classicProduct, index) in getClassicProducts"
@@ -30,7 +30,7 @@
         </div>
         <hr />
       </b-dropdown-item>
-      <p class="title">已選購 New 商品</p>
+      <p class="title">已選購 新款 商品</p>
       <b-dropdown-item
         href="#"
         v-for="(newProduct, index) in getNewProducts"
