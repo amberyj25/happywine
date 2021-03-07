@@ -178,15 +178,25 @@ export default {
 }
 @media (max-width: 576px) {
   .navabar_root {
-    h1 {
-      a {
-        font-size: 1.5rem;
+    .navbar-brand{
+      margin: 0;
+      h1 {
+        a {
+          font-size: 1.5rem;
+        }
       }
     }
     .navigation_content {
-      .product_category_search {
-        input {
-          width: 45vw;
+      .navbar-nav{
+        a {
+          font-size: 1rem;
+          line-height: 1rem;
+        }
+        .product_category_search {
+          input {
+            width: 45vw;
+            height: 25px;
+          }
         }
       }
     }
