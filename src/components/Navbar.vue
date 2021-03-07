@@ -114,12 +114,13 @@ export default {
     .product_category_search {
       display: flex;
       input {
-        width: 10vw;
+        width: 15vw;
         height: 30px;
         margin-right: 5px;
       }
       ::placeholder {
         color: #ababab;
+        font-size: 1rem;
       }
       .search {
         width: 2vw;
@@ -138,6 +139,13 @@ export default {
   .navabar_root {
     padding: 0 50px;
   }
+  .navigation_content_right {
+    .product_category_search {
+      ::placeholder {
+        font-size: 0.7rem;
+      }
+    }
+  }
 }
 @media (max-width: 992px) {
   .navabar_root {
@@ -154,6 +162,14 @@ export default {
     }
     .navigation_content {
       order: 4;
+      .product_category_search {
+        input {
+          width: 25vw;
+        }
+        ::placeholder {
+          font-size: 1rem;
+        }
+      }
     }
     .shopping_cart_root {
       order: 2;
@@ -165,6 +181,13 @@ export default {
     h1 {
       a {
         font-size: 1.5rem;
+      }
+    }
+    .navigation_content {
+      .product_category_search {
+        input {
+          width: 45vw;
+        }
       }
     }
   }
