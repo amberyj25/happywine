@@ -164,6 +164,11 @@ export default {
       }
     },
     getCategoryProducts () {
+      // 這個頁面 的 產品呈現 是由 category 選擇所呈現, category 有分成  經典款 / 新款
+      // 這個頁面 的 category 選擇可以來自於 Navbar  的 search 功能 或 這個頁面的 酒品分類選單
+      // if 這行主要判斷 是 使用到 Navbar search 功能, 還是使用 這個頁面的 酒品分類選單
+      // 使用 Navbar search 功能 - 才會 觸發 this.checkSearchProductCategory()
+      // 使用 這個頁面的 酒品分類選單 - 不會 觸發 this.checkSearchProductCategory()
       if (this.searchProductCategory) this.checkSearchProductCategory()
 
       switch (this.categoryRender) {
