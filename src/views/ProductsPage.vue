@@ -164,14 +164,7 @@ export default {
       }
     },
     getCategoryProducts () {
-      switch (this.searchProductCategory) {
-        case '新款':
-          this.categoryRender = '新款'
-          break
-        case '經典款':
-          this.categoryRender = '經典款'
-          break
-      }
+      if (this.searchProductCategory) this.checkSearchProductCategory()
 
       switch (this.categoryRender) {
         case '新款':
@@ -234,6 +227,18 @@ export default {
 
       this.$store.dispatch('deleteProductsNew', newDoubleItemId)
       this.$store.dispatch('addCartNews', params)
+    },
+    checkSearchProductCategory () {
+      switch (this.searchProductCategory) {
+        case '新款':
+          this.categoryRender = '新款'
+          this.$store.commit('navbarSearchProductCategory', '')
+          break
+        case '經典款':
+          this.categoryRender = '經典款'
+          this.$store.commit('navbarSearchProductCategory', '')
+          break
+      }
     }
   }
 }

@@ -78,6 +78,7 @@ export default {
     ]),
     searchProductCategory () {
       if (!this.searchText) return
+
       this.$store.commit('navbarSearchProductCategory', this.searchText)
       this.$router.push('/productsPage')
     },
