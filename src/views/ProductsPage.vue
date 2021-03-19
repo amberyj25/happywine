@@ -175,9 +175,7 @@ export default {
         case '新款':
           return this.classicAndNewData.filter(item => item.title === '新款')
         case '經典款':
-          return this.classicAndNewData.filter(
-            item => item.title === '經典款'
-          )
+          return this.classicAndNewData.filter(item => item.title === '經典款')
         case '全部酒品':
           return this.classicAndNewData
       }

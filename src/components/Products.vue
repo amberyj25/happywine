@@ -6,7 +6,10 @@
         :key="index"
       >
       <b-row class="top">
-        <b-col cols="11">
+        <b-col
+          cols="9"
+          sm="11"
+        >
           <h2>{{ category.title }}</h2>
         </b-col>
         <b-col cols="1" class="page justify-content-center mb-3">
@@ -371,6 +374,11 @@ export default {
         }
       }
     }
+  }
+}
+@media (max-width: 576px) {
+  .top {
+    justify-content: center;
   }
 }
 </style>
