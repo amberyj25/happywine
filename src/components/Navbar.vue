@@ -1,5 +1,9 @@
 <template>
-  <b-navbar class="navabar_root" toggleable="lg">
+  <b-navbar
+    :class="{navbar_root: true, navbarSticky: isScrollSticky}"
+    @scroll ="scrollSticky"
+    toggleable="lg"
+  >
     <!-- logo -->
     <b-navbar-brand class="brand_name">
       <h1>
@@ -61,7 +65,8 @@ export default {
   data () {
     return {
       searchText: '',
-      checkSignInData: false
+      checkSignInData: false,
+      isScrollSticky: false
     }
   },
   computed: {
@@ -71,6 +76,9 @@ export default {
     checkLogIn () {
       return this.checkSignIn
     }
+  },
+  mounted () {
+    this.windowScroll()
   },
   methods: {
     ...mapActions([
@@ -84,13 +92,25 @@ export default {
     },
     signOut () {
       this.signOutChange()
+    },
+    windowScroll () {
+      window.addEventListener('scroll', this.scrollSticky)
+    },
+    scrollSticky () {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+      if (scrollTop > 50) {
+        this.isScrollSticky = true
+        return
+      }
+
+      this.isScrollSticky = false
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.navabar_root {
+.navbar_root {
   width: 100%;
   position: absolute;
   top: 0;
@@ -110,7 +130,7 @@ export default {
     }
   }
 }
-.navabar_root {
+.navbar_root {
   .navigation_content_right {
     .product_category_search {
       display: flex;
@@ -136,8 +156,11 @@ export default {
     }
   }
 }
+.navbarSticky {
+  position: fixed;
+}
 @media (max-width: 1200px) {
-  .navabar_root {
+  .navbar_root {
     padding: 0 50px;
   }
   .navigation_content_right {
@@ -149,7 +172,7 @@ export default {
   }
 }
 @media (max-width: 992px) {
-  .navabar_root {
+  .navbar_root {
     .brand_name {
       order: 1;
       h1 {
@@ -178,7 +201,7 @@ export default {
   }
 }
 @media (max-width: 576px) {
-  .navabar_root {
+  .navbar_root {
     .navbar-brand{
       margin: 0;
       h1 {
