@@ -310,7 +310,7 @@ export default {
           }
         }
         .sale_price {
-          margin: 80px 0 0;
+          margin: 50px 0 0;
           .sale {
             font-size: 30px;
             color: red;
