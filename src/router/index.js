@@ -4,6 +4,7 @@ import App from '@/App.vue'
 import Login from '@/views/Login.vue'
 import ProductsPage from '@/views/ProductsPage.vue'
 import Checkout from '@/views/Checkout.vue'
+import SingleProduct from '@/views/SingleProduct.vue'
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,10 @@ export default new VueRouter({
       path: '/checkout',
       name: 'Checkout',
       component: Checkout
+    }, {
+      path: '/singleProduct/:id',
+      name: 'SingleProduct',
+      component: SingleProduct
     }
   ]
 })
