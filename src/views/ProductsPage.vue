@@ -1,3 +1,5 @@
+prodcuctPage
+
 <template>
   <div>
     <HeaderNavbar class="header_img"></HeaderNavbar>
@@ -55,6 +57,12 @@
                     <div class="sale_price">
                       <div class="sale">＄{{ product.price }}</div>
                       <div class="price">＄{{ product.origin_price }}</div>
+                    </div>
+                    <div class="more">
+                      <p
+                        class="text"
+                        @click="getDetail( product.id, category.title)"
+                      >點擊看更多介紹</p>
                     </div>
                   </div>
                   <div class="product_right">
@@ -242,6 +250,16 @@ export default {
           this.$store.commit('navbarSearchProductCategory', '')
           break
       }
+    },
+    getDetail (id, category) {
+      const query = {
+        id: id,
+        category: category
+      }
+      this.$router.push({
+        name: 'SingleProduct',
+        query
+      })
     }
   }
 }
@@ -315,7 +333,7 @@ export default {
               width: 60%;
               .year {
                 display: flex;
-                margin-top: 80px;
+                margin-top: 30px;
                 div + div {
                   margin-left: 15px;
                 }
@@ -332,7 +350,6 @@ export default {
                     margin: 0;
                   }
                 }
-
               }
               .sale_price {
                 margin: 50px 0 0;
@@ -343,6 +360,15 @@ export default {
                 .price {
                   font-size: 20px;
                   text-decoration: line-through;
+                }
+              }
+              .more {
+                .text {
+                  margin: 10px 0 0;
+                  color: #7f5c5c;
+                  &:hover {
+                    color: #8B4513;
+                  }
                 }
               }
             }
