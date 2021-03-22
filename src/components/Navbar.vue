@@ -36,7 +36,7 @@
           <div class="product_category_search">
             <input
               type="text"
-              placeholder="經典款 or 新款"
+              placeholder="經典款 or 新款 or AR(產品名)"
               v-model="searchText"
               @keyup.enter="searchProductCategory"
             >
@@ -71,7 +71,9 @@ export default {
   },
   computed: {
     ...mapState([
-      'checkSignIn'
+      'checkSignIn',
+      'orgProductsClassic',
+      'orgProductsNews'
     ]),
     checkLogIn () {
       return this.checkSignIn
@@ -86,9 +88,17 @@ export default {
     ]),
     searchProductCategory () {
       if (!this.searchText) return
-
+      // 分兩邊 一個是category  redirection to productsPage
+      // 一個是prodcut redirection to singlePage
       this.$store.commit('navbarSearchProductCategory', this.searchText)
       this.$router.push('/productsPage')
+      if (this.searchText === '經典款' || this.searchText === '新款') return
+
+      // this.getProductDetail(this.searchText)
+      this.$router.push({
+        name: 'SingleProduct',
+        query: this.getProductDetail(this.searchText)
+      })
     },
     signOut () {
       this.signOutChange()
@@ -104,6 +114,41 @@ export default {
       }
 
       this.isScrollSticky = false
+    },
+    getProductDetail (searchText) {
+      const titleSplit = searchText.split('')
+
+      const query = {
+        id: '',
+        category: ''
+      }
+      switch (titleSplit[0]) {
+        case 'A':
+          query.category = '經典款'
+          this.orgProductsClassic.forEach(item => {
+            if (item.title === searchText) {
+              query.id = item.id
+            }
+          })
+          break
+        case 'B':
+          query.category = '經典款'
+          this.orgProductsClassic.forEach(item => {
+            if (item.title === searchText) {
+              query.id = item.id
+            }
+          })
+          break
+        case 'V':
+          query.category = '新款'
+          this.orgProductsNews.forEach(item => {
+            if (item.title === searchText) {
+              query.id = item.id
+            }
+          })
+          break
+      }
+      return query
     }
   }
 }
