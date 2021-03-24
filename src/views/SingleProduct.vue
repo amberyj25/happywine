@@ -30,12 +30,12 @@
                 <div class="sale">＄{{ product.price }}</div>
                 <div class="price">＄{{ product.origin_price }}</div>
               </div>
-              <div class="cart_num_out">
+              <!-- <div class="cart_num_out">
                 <select class="cart_num" v-model="product.productNum">
                   <option :value="num" v-for="(num, index) in 10" :key="index">{{num}}</option>
                 </select>
-              <button @click="addCart(product.title, product.id, product.productNum)">Add to cart</button>
-            </div>
+                <button @click="addCart(product.title, product.id, product.productNum)">Add to cart</button>
+              </div> -->
             </div>
           </div>
         </div>
@@ -62,7 +62,6 @@ export default {
   computed: {
     ...mapState(['orgProductsClassic', 'orgProductsNews']),
     renderProduct () {
-      console.log(this.product)
       return this.product
     }
   },
