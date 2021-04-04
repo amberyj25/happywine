@@ -30,12 +30,12 @@
                 <div class="sale">＄{{ product.price }}</div>
                 <div class="price">＄{{ product.origin_price }}</div>
               </div>
-              <!-- <div class="cart_num_out">
+              <div class="cart_num_out">
                 <select class="cart_num" v-model="product.productNum">
                   <option :value="num" v-for="(num, index) in 10" :key="index">{{num}}</option>
                 </select>
                 <button @click="addCart(product.title, product.id, product.productNum)">Add to cart</button>
-              </div> -->
+              </div>
             </div>
           </div>
         </div>
@@ -60,7 +60,12 @@ export default {
     }
   },
   computed: {
-    ...mapState(['orgProductsClassic', 'orgProductsNews']),
+    ...mapState([
+      'orgProductsClassic',
+      'orgProductsNews',
+      'currentShoppingCartClassic',
+      'currentShoppingCartNew'
+    ]),
     renderProduct () {
       return this.product
     }
@@ -84,6 +89,66 @@ export default {
           this.product = this.orgProductsClassic.filter(item => item.id === id)
           break
       }
+    },
+    addCart (title, id, qty) {
+      const titleSplit = title.split('')
+      const params = {
+        product_id: id,
+        qty: qty
+      }
+      this.checkItemIsDoubleOrNot(titleSplit, id, params, qty)
+    },
+    checkItemIsDoubleOrNot (titleSplit, id, params, qty) {
+      const checkClassicItemIsDoubleOrNotArray = this.currentShoppingCartClassic.filter(item => item.product.id === id)
+      const checkNewItemIsDoubleOrNotArray = this.currentShoppingCartNew.filter(item => item.product.id === id)
+
+      if (checkClassicItemIsDoubleOrNotArray.length !== 0 || checkNewItemIsDoubleOrNotArray.length !== 0) {
+        this.checkDoubleItemCategory(titleSplit, checkClassicItemIsDoubleOrNotArray, checkNewItemIsDoubleOrNotArray, params, qty)
+        return
+      }
+
+      switch (titleSplit[0]) {
+        case 'A':
+          this.$store.dispatch('addCartClassic', params)
+          break
+        case 'B':
+          this.$store.dispatch('addCartClassic', params)
+          break
+        case 'V':
+          this.$store.dispatch('addCartNews', params)
+          break
+      }
+    },
+    checkDoubleItemCategory (titleSplit, checkClassicItemIsDoubleOrNotArray, checkNewItemIsDoubleOrNotArray, params, qty) {
+      switch (titleSplit[0]) {
+        case 'A':
+          this.updateClassicDoubleItemQty(checkClassicItemIsDoubleOrNotArray, params, qty)
+          break
+        case 'B':
+          this.updateClassicDoubleItemQty(checkClassicItemIsDoubleOrNotArray, params, qty)
+          break
+        case 'V':
+          this.updateNewDoubleItemQty(checkNewItemIsDoubleOrNotArray, params, qty)
+          break
+      }
+    },
+    updateClassicDoubleItemQty (checkClassicItemIsDoubleOrNotArray, params, qty) {
+      const classicDoubleItemId = checkClassicItemIsDoubleOrNotArray[0].id
+      const classicDoubleItemqty = checkClassicItemIsDoubleOrNotArray[0].qty
+
+      params.qty = qty + classicDoubleItemqty
+
+      this.$store.dispatch('deleteProductsClassic', classicDoubleItemId)
+      this.$store.dispatch('addCartClassic', params)
+    },
+    updateNewDoubleItemQty (checkNewItemIsDoubleOrNotArray, params, qty) {
+      const newDoubleItemId = checkNewItemIsDoubleOrNotArray[0].id
+      const newDoubleItemQty = checkNewItemIsDoubleOrNotArray[0].qty
+
+      params.qty = qty + newDoubleItemQty
+
+      this.$store.dispatch('deleteProductsNew', newDoubleItemId)
+      this.$store.dispatch('addCartNews', params)
     }
   }
 }
