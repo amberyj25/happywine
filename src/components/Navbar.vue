@@ -87,7 +87,7 @@ export default {
       'signOutChange'
     ]),
     searchProductCategory () {
-      if (!this.searchText) return
+      if (!this.searchText || (this.searchText && this.searchText !== '經典款' && this.searchText !== '新款')) return
       // 分兩邊 一個是category  redirection to productsPage
       // 一個是prodcut redirection to singlePage
       this.$store.commit('navbarSearchProductCategory', this.searchText)
