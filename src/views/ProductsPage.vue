@@ -35,7 +35,8 @@ prodcuctPage
               class="product"
               cols="12 mb-5"
               md="6"
-              lg="3"
+              lg="6"
+              xl="3"
               v-for="(product, index) in category.data"
               :key="index"
             >
@@ -275,7 +276,7 @@ export default {
 
 .container {
   max-width: 1400px;
-  width: 90%;
+  width: 100%;
   padding: 0 25px;
   display: flex;
   .filter {
