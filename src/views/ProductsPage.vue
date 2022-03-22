@@ -20,6 +20,7 @@ prodcuctPage
       </div>
 
       <div class="products_outer">
+        <loading :active.sync="isLoading"></loading>
         <div
           v-for="(category, index) in categoryProducts"
           :key="index"
@@ -104,7 +105,8 @@ export default {
     return {
       wineCategory: ['新款', '經典款', '全部酒品'],
       categoryRender: '新款',
-      classicAndNewData: []
+      classicAndNewData: [],
+      isLoading: true,
     }
   },
   computed: {
@@ -135,6 +137,7 @@ export default {
       // eslint-disable-next-line dot-notation
       tempNewData['data'] = this.orgProductsNews
       this.classicAndNewData.push(tempNewData)
+      this.isLoading = false
     }
   },
   mounted () {
