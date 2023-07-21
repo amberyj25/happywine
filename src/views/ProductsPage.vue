@@ -105,8 +105,10 @@ export default {
     return {
       wineCategory: ['新款', '經典款', '全部酒品'],
       categoryRender: '新款',
+      classicData: {},
+      newData: {},
       classicAndNewData: [],
-      isLoading: true,
+      isLoading: true
     }
   },
   computed: {
@@ -117,27 +119,17 @@ export default {
       'currentShoppingCartNew',
       'searchProductCategory'
     ]),
-    categoryProducts () {
-      return this.getCategoryProducts()
-    }
-  },
-  watch: {
-    orgProductsClassic () {
-      const tempClassicData = {}
-      // eslint-disable-next-line dot-notation
-      tempClassicData['title'] = '經典款'
-      // eslint-disable-next-line dot-notation
-      tempClassicData['data'] = this.orgProductsClassic
-      this.classicAndNewData.push(tempClassicData)
-    },
-    orgProductsNews () {
-      const tempNewData = {}
-      // eslint-disable-next-line dot-notation
-      tempNewData['title'] = '新款'
-      // eslint-disable-next-line dot-notation
-      tempNewData['data'] = this.orgProductsNews
-      this.classicAndNewData.push(tempNewData)
+    categoryProducts() {
+      if (!this.$store.getters.orgProductsClassic.length || !this.$store.getters.orgProductsNews.length) return []
+
+      this.classicData['title'] = '經典款'
+      this.newData['title'] = '新款'
+      this.classicData['data'] = this.$store.getters.orgProductsClassic
+      this.newData['data'] = this.$store.getters.orgProductsNews
+      this.classicAndNewData.push(this.classicData)
+      this.classicAndNewData.push(this.newData)
       this.isLoading = false
+      return this.getCategoryProducts()
     }
   },
   mounted () {

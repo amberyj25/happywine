@@ -121,5 +121,9 @@ export default new Vuex.Store({
         context.commit('checkSignIn', false)
       })
     }
+  },
+  getters: {
+    orgProductsClassic: state => state.orgProductsClassic,
+    orgProductsNews: state => state.orgProductsNews
   }
 })

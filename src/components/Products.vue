@@ -84,8 +84,7 @@ export default {
       currentClassicPage: 1,
       currentNewPage: 1,
       classicData: {},
-      newData: {},
-      classicAndNewData: []
+      newData: {}
     }
   },
   computed: {
@@ -97,53 +96,21 @@ export default {
     ]),
     categoryProducts () {
       return this.getCategoryProducts()
-    }
-  },
-  watch: {
-    orgProductsClassic () {
-      // eslint-disable-next-line dot-notation
+    },
+    classicAndNewData() {
+      let tempData = []
+      let getVuexProductsClassic = this.$store.getters.orgProductsClassic
+      let getVuexProductsNew = this.$store.getters.orgProductsNews
+      if (!getVuexProductsClassic.length || !getVuexProductsNew.length) return []
+
       this.classicData['title'] = '經典款'
-      // eslint-disable-next-line dot-notation
-      this.classicData['data'] = this.orgProductsClassic.filter(item => item.num < 5)
-      this.classicAndNewData.push(this.classicData)
-    },
-    orgProductsNews () {
-      // eslint-disable-next-line dot-notation
       this.newData['title'] = '新款'
-      // eslint-disable-next-line dot-notation
-      this.newData['data'] = this.orgProductsNews.filter(item => item.num < 5)
-      this.classicAndNewData.push(this.newData)
+      this.classicData['data'] = this.currentClassicPage === 1 ? getVuexProductsClassic.filter(item => item.num < 5) : getVuexProductsClassic.filter(item => item.num >= 5)
+      this.newData['data'] = this.currentNewPage === 1 ? getVuexProductsNew.filter(item => item.num < 5) : getVuexProductsNew.filter(item => item.num >= 5)
+      tempData.push(this.classicData)
+      tempData.push(this.newData)
       this.$emit('getLoadingData', false)
-    },
-    currentClassicPage () {
-      this.classicAndNewData = []
-      switch (this.currentClassicPage) {
-        case 1:
-          // eslint-disable-next-line dot-notation
-          this.classicData['data'] = this.orgProductsClassic.filter(item => item.num < 5)
-          break
-        case 2:
-          // eslint-disable-next-line dot-notation
-          this.classicData['data'] = this.orgProductsClassic.filter(item => item.num > 4 && item.num < 9)
-          break
-      }
-      this.classicAndNewData.push(this.classicData)
-      this.classicAndNewData.push(this.newData)
-    },
-    currentNewPage () {
-      this.classicAndNewData = []
-      switch (this.currentNewPage) {
-        case 1:
-          // eslint-disable-next-line dot-notation
-          this.newData['data'] = this.orgProductsNews.filter(item => item.num < 5)
-          break
-        case 2:
-          // eslint-disable-next-line dot-notation
-          this.newData['data'] = this.orgProductsNews.filter(item => item.num > 4 && item.num < 9)
-          break
-      }
-      this.classicAndNewData.push(this.classicData)
-      this.classicAndNewData.push(this.newData)
+      return tempData
     }
   },
   mounted () {
