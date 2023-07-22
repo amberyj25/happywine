@@ -122,6 +122,7 @@ export default {
     categoryProducts() {
       if (!this.$store.getters.orgProductsClassic.length || !this.$store.getters.orgProductsNews.length) return []
 
+      this.classicAndNewData = []
       this.classicData['title'] = '經典款'
       this.newData['title'] = '新款'
       this.classicData['data'] = this.$store.getters.orgProductsClassic
