@@ -1,10 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import App from '@/App.vue'
-import Login from '@/views/Login.vue'
-import ProductsPage from '@/views/ProductsPage.vue'
-import Checkout from '@/views/Checkout.vue'
-import SingleProduct from '@/views/SingleProduct.vue'
 
 Vue.use(VueRouter)
 
@@ -13,23 +8,23 @@ export default new VueRouter({
     {
       path: '/',
       name: 'App',
-      component: App
+      component: () => import('../App.vue')
     }, {
       path: '/productsPage',
       name: 'ProductsPage',
-      component: ProductsPage
+      component: () => import('../views/ProductsPage.vue')
     }, {
       path: '/login',
       name: 'Login',
-      component: Login
+      component: () => import('../views/Login.vue')
     }, {
       path: '/checkout',
       name: 'Checkout',
-      component: Checkout
+      component: () => import('../views/Checkout.vue')
     }, {
       path: '/singleProduct/:id',
       name: 'SingleProduct',
-      component: SingleProduct
+      component: () => import('../views/SingleProduct.vue')
     }
   ]
 })
