@@ -56,21 +56,21 @@ export default new Vuex.Store({
   actions: {
     getOrgProductsClassic (context) {
       axios
-        .get('https://vue-course-api.hexschool.io/api/wine5/products')
+        .get('https://fluffy-gold-tuxedo.cyclic.app/productListA')
         .then(res => {
-          context.commit('getOrgProductsClassic', res.data.products)
+          context.commit('getOrgProductsClassic', res.data.data)
         })
     },
     getOrgProductsNews (context) {
       axios
-        .get('https://vue-course-api.hexschool.io/api/wine52/products')
+        .get('https://fluffy-gold-tuxedo.cyclic.app/productListB')
         .then(res => {
-          context.commit('getOrgProductsNews', res.data.products)
+          context.commit('getOrgProductsNews', res.data.data)
         })
     },
     addCartClassic (context, payload) {
       axios
-        .post('https://vue-course-api.hexschool.io/api/wine5/cart', {
+        .post('https://fluffy-gold-tuxedo.cyclic.app/shoppingCartA', {
           data: payload
         })
         .then(res => {
@@ -80,7 +80,7 @@ export default new Vuex.Store({
     },
     addCartNews (context, payload) {
       axios
-        .post('https://vue-course-api.hexschool.io/api/wine52/cart', {
+        .post('https://fluffy-gold-tuxedo.cyclic.app/shoppingCartB', {
           data: payload
         })
         .then(res => {
@@ -90,34 +90,34 @@ export default new Vuex.Store({
     },
     getCurrentShoppingCartClassic (context) {
       axios
-        .get('https://vue-course-api.hexschool.io/api/wine5/cart')
+        .get('https://fluffy-gold-tuxedo.cyclic.app/shoppingCartA')
         .then(res => {
-          context.commit('getCurrentShoppingCartClassic', res.data.data.carts)
+          context.commit('getCurrentShoppingCartClassic', res.data.data)
         })
     },
     getCurrentShoppingCartNew (context) {
       axios
-        .get('https://vue-course-api.hexschool.io/api/wine52/cart')
+        .get('https://fluffy-gold-tuxedo.cyclic.app/shoppingCartB')
         .then(res => {
-          context.commit('getCurrentShoppingCartNew', res.data.data.carts)
+          context.commit('getCurrentShoppingCartNew', res.data.data)
         })
     },
     deleteProductsClassic (context, payload) {
       axios
         .delete(
-          `https://vue-course-api.hexschool.io/api/wine5/cart/${payload}`
+          `https://fluffy-gold-tuxedo.cyclic.app/shoppingCartA/${payload}`
         )
         .then(() => this.dispatch('getCurrentShoppingCartClassic'))
     },
     deleteProductsNew (context, payload) {
       axios
         .delete(
-          `https://vue-course-api.hexschool.io/api/wine52/cart/${payload}`
+          `https://fluffy-gold-tuxedo.cyclic.app/shoppingCartB/${payload}`
         )
         .then(() => this.dispatch('getCurrentShoppingCartNew'))
     },
     signOutChange (context) {
-      axios.post('https://vue-course-api.hexschool.io/logout').then(result => {
+      axios.post('https://fluffy-gold-tuxedo.cyclic.app/logout').then(result => {
         context.commit('checkSignIn', false)
       })
     }
